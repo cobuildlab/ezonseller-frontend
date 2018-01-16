@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import $ from 'jquery';
 
 import { userActions } from '../_actions';
 
@@ -8,7 +9,6 @@ class LoginPage extends React.Component {
     constructor(props) {
         super(props);
 
-        // reset login status
         this.props.dispatch(userActions.logout());
 
         this.state = {
@@ -28,7 +28,7 @@ class LoginPage extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-
+        
         this.setState({ submitted: true });
         const { username, password } = this.state;
         const { dispatch } = this.props;

@@ -116,9 +116,9 @@ class RegisterPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const { registering } = state.registration;
+    const { edit } = state.registration;
     return {
-        registering
+        edit
     };
 }
 
