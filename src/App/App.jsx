@@ -30,6 +30,7 @@ class App extends React.Component {
     render() {
         const { alert } = this.props;
         return (
+          
             <div className="container">
                 {alert.message &&
                     <div className={`alert ${alert.type}`}>{alert.message}</div>
@@ -46,7 +47,7 @@ class App extends React.Component {
                         <Route path="/terms" component={TermsPage} />
                     </div>
                 </Router>
-                
+
             </div>
         );
     }
