@@ -2,7 +2,6 @@ import { userConstants } from '../_constants';
 import { userService } from '../_services';
 import { alertActions } from './';
 import { history } from '../_helpers';
-import $ from 'jquery';
 
 export const userActions = {
     login,
@@ -20,22 +19,16 @@ export const userActions = {
     delete: _delete
 };
 
-function login(username, password) {
-    $(".fakeloader").show();
-    $(".fakeloader").show();
-
-    console.log(1);
+function login(username, password) { 
     return dispatch => {
         dispatch(request({ username }));
         userService.login(username, password)
             .then(
                 user => {
-                    $(".fakeloader").fadeOut();
                     dispatch(success(user));
                     history.push('/');
                 },
                 error => {
-                    $(".fakeloader").fadeOut();
                     error.then(function(value) {
                         dispatch(failure(value.message));
                         dispatch(alertActions.error(value.message));
@@ -44,9 +37,9 @@ function login(username, password) {
             );
     };
 
-    function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
-    function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
-    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
+    function request(user) { return  { type: userConstants.LOGIN_REQUEST, user } }
+    function success(user) { return  { type: userConstants.LOGIN_SUCCESS, user } }
+    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error} }
 }
 
 function logout() {

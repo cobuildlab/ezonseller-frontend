@@ -61,6 +61,21 @@ class ProfilePage extends React.Component {
                         </ul>
                     }
                 </div>
+                <div className="container">
+                    <h1>Credit Card</h1>
+                    {user.items &&
+                        <ul>
+                            {user.items.credit_cards.map((credit, index) =>
+                            <li key={credit.id}>
+                                <p>Title: {credit.name}</p>
+                                <p>Description: {credit.number_card}</p>
+                                <p>Terms: {credit.date_expiration}</p>
+                                <button className="btn btn-primary" onClick={this.handleAcquirePlan}>Delete Credit Card</button>
+                            </li>
+                        )}
+                        </ul>
+                    }
+                </div>
             </div>
         );
     }
