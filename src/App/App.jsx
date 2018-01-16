@@ -8,6 +8,8 @@ import { PrivateRoute } from '../_components';
 import { HomePage } from '../HomePage';
 import { ProfilePage } from '../ProfilePage';
 import { EditProfilePage } from '../EditProfilePage';
+import { EditPasswordPage } from '../EditPasswordPage';
+import { PaymentCardPage } from '../PaymentCardPage';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
 import { ForgotPage } from '../ForgotPage';
@@ -40,6 +42,9 @@ class App extends React.Component {
                         <PrivateRoute exact path="/" component={HomePage} />
                         <PrivateRoute exact path="/profile" component={ProfilePage} />
                         <PrivateRoute exact path="/edit-profile/:id" component={EditProfilePage} />
+                        <PrivateRoute exact path="/edit-password/" component={EditPasswordPage} />
+                        <PrivateRoute exact path="/credit-card/" component={PaymentCardPage} />
+
                         <Route path="/login" component={LoginPage} />
                         <Route path="/register" component={RegisterPage} />
                         <Route path="/forgot" component={ForgotPage} />

@@ -8,7 +8,11 @@ export const userService = {
     changePassword,
     getAll,
     getById,
+    editUserId,
     update,
+    changePasswordEdit,
+    paymentPlans,
+    addCreditCard,
     delete: _delete
 };
 
@@ -92,14 +96,50 @@ function changePassword(data) {
     return fetch(URL + 'accounts/changepassword/', requestOptions).then(handleResponse);
 }
 
+function editUserId(id) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(URL + 'accounts/profile/' + id + '/', requestOptions).then(handleResponse);;
+}
+
+function paymentPlans() {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(URL + 'payment/plans', requestOptions).then(handleResponse);;
+}
+
 function update(user) {
+    var formData = new FormData();
+    console.log(user);
+    formData.append('first_name', user.first_name);
+    formData.append('last_name', user.last_name);
+    formData.append('username', user.username);
+    formData.append('photo', user.photo);
+    console.log(formData);
+    const requestOptions = {
+        method: 'PUT',
+        headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' },
+        body: formData
+    };
+
+    return fetch(URL + 'accounts/profile/' + user.id + '/', requestOptions).then(handleResponse);;
+}
+
+function changePasswordEdit(data) {
+    let user = JSON.parse(localStorage.getItem('user'));
     const requestOptions = {
         method: 'PUT',
         headers: { ...authHeader(), 'Content-Type': 'application/json' },
-        body: JSON.stringify(user)
+        body: JSON.stringify(data)
     };
 
-    return fetch('/users/' + user.id, requestOptions).then(handleResponse);;
+    return fetch(URL + 'accounts/profile/' + user.id + '/changePassword/', requestOptions).then(handleResponse);;
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
@@ -110,6 +150,20 @@ function _delete(id) {
     };
 
     return fetch('/users/' + id, requestOptions).then(handleResponse);;
+}
+
+function addCreditCard(data) {
+    console.log(data);
+    //data.type_card = "visa"
+    const requestOptions = {
+        method: 'POST',
+        headers: { ...authHeader(), 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    };
+
+    console.log(requestOptions)
+
+    return fetch(URL + 'payment/card/', requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

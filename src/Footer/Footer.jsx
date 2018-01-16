@@ -10,7 +10,7 @@ class Footer extends React.Component {
         return (
             <div className="col-lg-12">
               <footer className="app-footer">
-  			        <span><a href="">4Geeks</a> &copy; 2018.</span>
+  			        <span><a href="">4Geeks</a> &copy; 2018. </span>
   			        <span className="ml-auto">Powered by <a href="">4Geeks</a></span>
   			      </footer>
             </div>

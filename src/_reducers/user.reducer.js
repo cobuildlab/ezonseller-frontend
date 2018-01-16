@@ -48,3 +48,44 @@ export function user(state = {}, action) {
       return state
   }
 }
+
+
+
+export function editUser(state = {}, action) {
+  switch (action.type) {
+    case userConstants.EDITBYID_REQUEST:
+      return {
+        loading: true
+      };
+    case userConstants.EDITBYID_SUCCESS:
+      return {
+        items: action.editUser
+      };
+    case userConstants.EDITBYID_FAILURE:
+      return {
+        error: action.error
+      };
+    default:
+      return state
+  }
+}
+
+
+export function paymentsPlans(state = {}, action) {
+  switch (action.type) {
+    case userConstants.GETALLPAYMENTS_REQUEST:
+      return {
+        loading: true
+      };
+    case userConstants.GETALLPAYMENTS_SUCCESS:
+      return {
+        items: action.payments
+      };
+    case userConstants.GETALLPAYMENTS_FAILURE:
+      return {
+        error: action.error
+      };
+    default:
+      return state
+  }
+}

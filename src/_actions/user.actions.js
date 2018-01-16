@@ -11,10 +11,15 @@ export const userActions = {
     changePassword,
     getAll,
     getUserId,
+    getEditUserId,
+    updateUser,
+    changePasswordEdit,
+    paymentPlans,
+    addCreditCard,
     delete: _delete
 };
 
-function login(username, password) {
+function login(username, password) { 
     return dispatch => {
         dispatch(request({ username }));
         userService.login(username, password)
@@ -24,18 +29,17 @@ function login(username, password) {
                     history.push('/');
                 },
                 error => {
-                  error.then(function(value) {
-                    dispatch(failure(value.message));
-                    dispatch(alertActions.error(value.message));
-
+                    error.then(function(value) {
+                        dispatch(failure(value.message));
+                        dispatch(alertActions.error(value.message));
                   });
                 }
             );
     };
 
-    function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
-    function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
-    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
+    function request(user) { return  { type: userConstants.LOGIN_REQUEST, user } }
+    function success(user) { return  { type: userConstants.LOGIN_SUCCESS, user } }
+    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error} }
 }
 
 function logout() {
@@ -115,6 +119,29 @@ function changePassword(data) {
     function failure(error) { return { type: userConstants.RECOVERY_FAILURE, error } }
 }
 
+function changePasswordEdit(data) {
+    return dispatch => {
+        dispatch(request(data));
+        userService.changePasswordEdit(data)
+            .then(
+                data => {
+                    dispatch(success());
+                    dispatch(alertActions.success(data.message));
+                    console.log(data);
+                    let value = {'Token': data.token, 'id': data.id};
+                    localStorage.setItem('user', JSON.stringify(value));
+                    history.push('/profile');
+                }).catch(error => {
+                    dispatch(failure(error))
+        });
+
+    };
+
+    function request(data) { return { type: userConstants.RECOVERY_REQUEST, data } }
+    function success(data) { return { type: userConstants.RECOVERY_SUCCESS, data } }
+    function failure(error) { return { type: userConstants.RECOVERY_FAILURE, error } }
+}
+
 function getAll() {
     return dispatch => {
         dispatch(request());
@@ -147,6 +174,43 @@ function getUserId(id) {
     function failure(error) { return { type: userConstants.GETBYID_FAILURE, error } }
 }
 
+function getEditUserId(id) {
+    return dispatch => {
+        dispatch(request());
+
+        userService.editUserId(id)
+            .then(
+                editUser  => dispatch(success(editUser)),
+                error => dispatch(failure(error))
+            );
+    };
+
+    function request() { return { type: userConstants.EDITBYID_REQUEST } }
+    function success(editUser) { return { type: userConstants.EDITBYID_SUCCESS, editUser } }
+    function failure(error) { return { type: userConstants.EDITBYID_FAILURE, error } }
+}
+
+function updateUser(user) {
+    return dispatch => {
+        dispatch(request());
+
+        userService.update(user)
+            .then(
+                user => {
+                    dispatch(success(user));
+                    console.log(user);
+                    dispatch(alertActions.success(user.message));
+                    history.push('/profile');
+                }).catch(error => {
+                    dispatch(failure(error))
+        });
+    };
+
+    function request() { return { type: userConstants.EDITBYID_REQUEST } }
+    function success(user) { return { type: userConstants.EDITBYID_SUCCESS, user } }
+    function failure(error) { return { type: userConstants.EDITBYID_FAILURE, error } }
+}
+
 // prefixed function name with underscore because delete is a reserved word in javascript
 function _delete(id) {
     return dispatch => {
@@ -166,4 +230,36 @@ function _delete(id) {
     function request(id) { return { type: userConstants.DELETE_REQUEST, id } }
     function success(id) { return { type: userConstants.DELETE_SUCCESS, id } }
     function failure(id, error) { return { type: userConstants.DELETE_FAILURE, id, error } }
+}
+
+function paymentPlans() {
+    return dispatch => {
+        dispatch(request());
+
+        userService.paymentPlans()
+            .then(
+                payments => dispatch(success(payments)),
+                error    => dispatch(failure(error))
+            );
+    };
+
+    function request()         { return { type: userConstants.GETALLPAYMENTS_REQUEST } }
+    function success(payments) { return { type: userConstants.GETALLPAYMENTS_SUCCESS, payments } }
+    function failure(error)    { return { type: userConstants.GETALLPAYMENTS_FAILURE, error } }
+}
+
+function addCreditCard(data) {
+    return dispatch => {
+        dispatch(request());
+
+        userService.addCreditCard(data)
+            .then(
+                card  => dispatch(success(card)),
+                error => dispatch(failure(error))
+            );
+    };
+
+    function request()      { return { type: userConstants.GETALLPAYMENTS_REQUEST } }
+    function success(card)  { return { type: userConstants.GETALLPAYMENTS_SUCCESS, card } }
+    function failure(error) { return { type: userConstants.GETALLPAYMENTS_FAILURE, error } }
 }
