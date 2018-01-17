@@ -116,6 +116,7 @@ class EditProfilePage extends React.Component {
         return (
             <div className="row">
                 <Header/>
+                <div className=""> </div>
                 <div className="col-lg-12"><h2>Edit Profile</h2></div>
                 <div className="col-lg-6">
                 
