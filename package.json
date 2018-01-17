@@ -5,7 +5,6 @@
   "dependencies": {
     "history": "^4.6.3",
     "jquery": "^3.2.1",
-    "jquery.fakeloader": "^1.0.0",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.0",
     "react-dom": "^16.2.0",
@@ -14,7 +13,10 @@
     "react-router-dom": "^4.1.2",
     "react-scripts": "1.0.17",
     "react-toastify": "^3.2.1",
+    "react-validify": "^3.1.0",
     "redux": "^3.7.2",
+    "redux-form": "^7.2.0",
+    "redux-form-validators": "^2.3.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0"
   },

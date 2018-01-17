@@ -32,12 +32,13 @@ class App extends React.Component {
     render() {
         const { alert } = this.props;
         return (
-            <div className="container-fluid">
+
+            <div className="container top-section">
                 {alert.message &&
                     <div className={`alert ${alert.type}`}>{alert.message}</div>
                 }
                 <Router history={history}>
-                    <div className="row justify-content-md-center">
+                    <div>
                         <PrivateRoute exact path="/" component={HomePage} />
                         <PrivateRoute exact path="/profile" component={ProfilePage} />
                         <PrivateRoute exact path="/edit-profile/:id" component={EditProfilePage} />
@@ -51,9 +52,7 @@ class App extends React.Component {
                         <Route path="/terms" component={TermsPage} />
                     </div>
                 </Router>
-                <div className="text-center">
-                    <Footer />
-                </div>
+
             </div>
         );
     }

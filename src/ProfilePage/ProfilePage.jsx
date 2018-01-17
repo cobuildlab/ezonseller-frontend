@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
+import './profile.css';
 
 
 import { userActions } from '../_actions';
@@ -29,52 +30,62 @@ class ProfilePage extends React.Component {
         return (
             <div className="">
                 <Header/>
-                <div className="container">
-                <h1>Profile</h1>
                 {user.items &&
-                    <ul>
-                        <li>{user.items.first_name}</li>
-                        <li>{user.items.last_name}</li>
-                        <li>{user.items.username}</li>
-                        <li>{user.items.type_plan}</li>
-                        <li>{user.items.email}</li>
-                        <li>{user.items.photo}</li>
-                    </ul>
+                  <div className="col-12 section-data">
+                    <div className="row">
+                    <div className="col-12">
+                      <div className="avatar-profile"></div>
+                      <div className="content-data">
+                        <h3>{user.items.first_name} {user.items.last_name}</h3>
+                        <h5>{user.items.username}</h5>
+                        <h5>{user.items.email}</h5>
+                      </div>
+                      <div className="btn-group-vertical btn-opt">
+                        <Link to={"/edit-profile/" + valueUser.id} className="btn btn-primary btn-top">Edit Profile</Link>
+                        <Link to={"/edit-password/"} className="btn btn-primary">Change Password</Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 }
-                <Link to={"/edit-profile/" + valueUser.id} className="">Edit Profile</Link>
-                <Link to={"/edit-password/"} className="">Change Password</Link>
-                <Link to={"/credit-card/"} className="">Add Credit Card</Link>
+                <div className="col-12 no-padding">
+                    <h2>Credit Card <Link to={"/credit-card/"} className="btn btn-primary rigth-input rigth-add">Add Credit Card</Link></h2>
+                    {user.items &&
+                        <div className="data-credit">
+                            {user.items.credit_cards.map((credit, index) =>
+                            <div key={credit.id}>
+                                <h5>{credit.name}</h5>
+                                <h5>{credit.number_card}</h5>
+                                <h5>{credit.date_expiration}</h5>
+                                <Link to={"/credit-card/"} className="btn btn-primary rigth-input">Select Credit Card</Link>
+                                <button className="btn btn-danger" onClick={this.handleAcquirePlan}>Delete Credit Card</button>
+                            </div>
+
+                        )}
+
+                        </div>
+
+
+                    }
 
                 </div>
-                <div className="container">
-                    <h1>Plan</h1>
+
+                <div className="col-12 no-padding">
+                    <h2>Plans <button className="btn btn-primary rigth-add" onClick={this.handleAcquirePlan}>Adquire Plan</button></h2>
                     {paymentsPlans.items &&
-                        <ul>
+                        <div className="data-credit">
                             {paymentsPlans.items.map((payment, index) =>
-                            <li key={payment.id}>
-                                <p>Title: {payment.title}</p>
-                                <p>Description: {payment.description}</p>
-                                <p>Terms: {payment.terms}</p>
-                                <button className="btn btn-primary" onClick={this.handleAcquirePlan}>Acquire Plan</button>
-                            </li>
+                            <div  key={payment.id}>
+                                <h5>{payment.title}</h5>
+                                <h5>{payment.description}</h5>
+                                <h5>{payment.terms}</h5>
+                                <button className="btn btn-danger" onClick={this.handleAcquirePlan}>Cancel Plan</button>
+                            </div>
                         )}
-                        </ul>
+                      </div>
                     }
                 </div>
-                <div className="container">
-                    <h1>Credit Cards</h1>
-                    {user.items &&
-                        <ul>
-                            {user.items.credit_cards.map((credit_card, index) =>
-                            <li key={credit_card.id}>
-                                <p>Name: {credit_card.name}</p>
-                                <p>Number Card: {credit_card.number_card}</p>
-                                <p>Type Card: {credit_card.type_card}</p>
-                            </li>
-                        )}
-                        </ul>
-                    }
-                </div>
+
             </div>
         );
     }

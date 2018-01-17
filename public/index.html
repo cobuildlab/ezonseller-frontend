@@ -12,7 +12,14 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link href="css/jquery.fakeloader.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/font-awesome.css" />
+    <style>
+    form>div>div>span {
+      border: none;
+      font-weight: 700;
+      color: #700;
+    }
+    </style>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -24,11 +31,14 @@
     -->
     <title>EzonSeller</title>
   </head>
-  <body>
+  <body style="    background-image: url(http://www.ezonseller.com/wp-content/uploads/2018/01/image1.png);
+    background-repeat: repeat-x;
+    background-position: bottom;
+    height: 100vh;">
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
-    
+
     <div id="root"></div>
     <div id="fakeLoader"></div>
     <!--
@@ -44,15 +54,5 @@
     <script src="js/jquery-3.1.1.slim.min.js" crossorigin="anonymous"></script>
     <script src="js/tether.min.js" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery-3.1.0.min.js"></script>
-    <script src="js/jquery.fakeloader.min.js"></script>
-    <script type="text/javascript">
-    $("#fakeLoader").fakeLoader({    
-            timeToHide:1200, //Time in milliseconds for fakeLoader disappear 
-            zIndex:999, // Default zIndex 
-            spinner:"spinner1",//Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'  
-            bgColor:"#2ecc71", //Hex, RGB or RGBA colors 
-    });
-    </script> 
   </body>
 </html>

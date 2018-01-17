@@ -38,9 +38,9 @@ function login(username, password) {
             );
     };
 
-    function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
-    function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
-    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
+    function request(user) { return  { type: userConstants.LOGIN_REQUEST, user } }
+    function success(user) { return  { type: userConstants.LOGIN_SUCCESS, user } }
+    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error} }
 }
 
 function logout() {
@@ -229,7 +229,7 @@ function uploadImage(data){
     function request() { return { type: userConstants.EDITBYID_REQUEST } }
     function success(data) { return { type: userConstants.EDITBYID_SUCCESS, data } }
     function failure(error) { return { type: userConstants.EDITBYID_FAILURE, error } }
-} 
+}
 // prefixed function name with underscore because delete is a reserved word in javascript
 function _delete(id) {
     return dispatch => {
