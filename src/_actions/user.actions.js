@@ -2,7 +2,6 @@ import { userConstants } from '../_constants';
 import { userService } from '../_services';
 import { alertActions } from './';
 import { history } from '../_helpers';
-import $ from 'jquery';
 
 export const userActions = {
     login,
@@ -17,25 +16,20 @@ export const userActions = {
     changePasswordEdit,
     paymentPlans,
     addCreditCard,
+    uploadImage,
     delete: _delete
 };
 
 function login(username, password) {
-    $(".fakeloader").show();
-    $(".fakeloader").show();
-
-    console.log(1);
     return dispatch => {
         dispatch(request({ username }));
         userService.login(username, password)
             .then(
                 user => {
-                    $(".fakeloader").fadeOut();
                     dispatch(success(user));
                     history.push('/');
                 },
                 error => {
-                    $(".fakeloader").fadeOut();
                     error.then(function(value) {
                         dispatch(failure(value.message));
                         dispatch(alertActions.error(value.message));
@@ -217,7 +211,25 @@ function updateUser(user) {
     function success(user) { return { type: userConstants.EDITBYID_SUCCESS, user } }
     function failure(error) { return { type: userConstants.EDITBYID_FAILURE, error } }
 }
+function uploadImage(data){
+    return dispatch => {
+        dispatch(request());
 
+        userService.uploadImage(data)
+            .then(
+                data => {
+                    dispatch(success(data));
+                    dispatch(alertActions.success(data.message));
+                    history.push('/profile');
+                }).catch(error => {
+                    dispatch(failure(error))
+        });
+    };
+
+    function request() { return { type: userConstants.EDITBYID_REQUEST } }
+    function success(data) { return { type: userConstants.EDITBYID_SUCCESS, data } }
+    function failure(error) { return { type: userConstants.EDITBYID_FAILURE, error } }
+} 
 // prefixed function name with underscore because delete is a reserved word in javascript
 function _delete(id) {
     return dispatch => {

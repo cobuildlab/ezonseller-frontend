@@ -13,6 +13,7 @@ export const userService = {
     changePasswordEdit,
     paymentPlans,
     addCreditCard,
+    uploadImage,
     delete: _delete
 };
 
@@ -115,20 +116,31 @@ function paymentPlans() {
 }
 
 function update(user) {
-    var formData = new FormData();
-    console.log(user);
-    formData.append('first_name', user.first_name);
-    formData.append('last_name', user.last_name);
-    formData.append('username', user.username);
-    formData.append('photo', user.photo);
-    console.log(formData);
+
     const requestOptions = {
         method: 'PUT',
-        headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' },
-        body: formData
+        headers: { ...authHeader(), 'Content-Type': 'application/json' },
+        body: JSON.stringify(user)
     };
 
     return fetch(URL + 'accounts/profile/' + user.id + '/', requestOptions).then(handleResponse);;
+}
+
+function uploadImage(data){
+    let aux;
+    for (var value of data.values()) {
+        console.log(value); 
+        aux = value;
+     }    
+    let user = JSON.parse(localStorage.getItem('user'));
+    const requestOptions = {
+        method: 'POST',
+        headers: { ...authHeader(),  'Content-Type': 'multipart/form-data', 'Accept': 'application/json' },
+        body: data
+    };
+    console.log(requestOptions);
+
+    return fetch(URL + 'accounts/profile/' + user.id + '/uploadImage/', requestOptions).then(handleResponse);
 }
 
 function changePasswordEdit(data) {
@@ -160,8 +172,6 @@ function addCreditCard(data) {
         headers: { ...authHeader(), 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     };
-
-    console.log(requestOptions)
 
     return fetch(URL + 'payment/card/', requestOptions).then(handleResponse);
 }

@@ -17,7 +17,8 @@ class RegisterPage extends React.Component {
                 password: '',
                 terms: ''
             },
-            submitted: false
+            submitted: false,
+            invalid: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -39,16 +40,27 @@ class RegisterPage extends React.Component {
         event.preventDefault();
 
         this.setState({ submitted: true });
-        const { user } = this.state;
+        const { user, error } = this.state;
         const { dispatch } = this.props;
+        var regex = /^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@{[a-zA-Z0-9_\-\.]+0\.([a-zA-Z]{2,5}){1,25})+)*$/;
+        
         if (user.first_name && user.last_name && user.username && user.password && user.email && user.terms) {
-            dispatch(userActions.register(user));
+            if(regex.test(user.email)){
+                console.log('is Valid');
+            }else{
+                this.setState({
+                    invalid: true
+                });
+                console.log('is inValid');
+            }
+            //dispatch(userActions.register(user));
         }
     }
 
     render() {
         const { registering  } = this.props;
-        const { user, submitted } = this.state;
+        const { user, submitted, invalid } = this.state;
+        console.log(this.state);
         return (
             <div className="col-md-6 col-md-offset-3">
                 <h2>Register</h2>
@@ -74,11 +86,14 @@ class RegisterPage extends React.Component {
                             <div className="form-control-feedback">Username is required</div>
                         }
                     </div>
-                    <div className={'form-group' + (submitted && !user.email ? ' has-danger' : '')}>
+                    <div className={'form-group' + (submitted && invalid && !user.email ? ' has-danger' : '')}>
                         <label htmlFor="username">Email</label>
                         <input type="text" className="form-control" name="email" value={user.email} onChange={this.handleChange} />
                         {submitted && !user.email &&
                             <div className="form-control-feedback">Email is required</div>
+                        }
+                        {invalid &&
+                            <div className="form-control-feedback">Email is invalid</div> 
                         }
                     </div>
                     <div className={'form-group' + (submitted && !user.password ? ' has-danger' : '')}>

@@ -61,6 +61,20 @@ class ProfilePage extends React.Component {
                         </ul>
                     }
                 </div>
+                <div className="container">
+                    <h1>Credit Cards</h1>
+                    {user.items &&
+                        <ul>
+                            {user.items.credit_cards.map((credit_card, index) =>
+                            <li key={credit_card.id}>
+                                <p>Name: {credit_card.name}</p>
+                                <p>Number Card: {credit_card.number_card}</p>
+                                <p>Type Card: {credit_card.type_card}</p>
+                            </li>
+                        )}
+                        </ul>
+                    }
+                </div>
             </div>
         );
     }

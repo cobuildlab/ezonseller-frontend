@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header } from '../Header';
+import $ from 'jquery';
 
 
 import { userActions } from '../_actions';
@@ -12,11 +13,14 @@ class EditProfilePage extends React.Component {
 
         this.state = {
             user:{},
-            submitted: false
+            submitted: false,
+            photo: ""
         };
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange      = this.handleChange.bind(this);
+        this.handleSubmit      = this.handleSubmit.bind(this);
+        this.handleChangeImg   = this.handleChangeImg.bind(this);
+        this.handleSubmitImage = this.handleSubmitImage.bind(this);
     }
 
     componentDidMount() {
@@ -49,6 +53,15 @@ class EditProfilePage extends React.Component {
         });
     }
 
+    handleChangeImg(event) {
+        
+        const { name, value } = event.target;
+        const { photo } = this.state;
+        this.setState({
+            photo: value
+        });
+    }
+
     handleSubmit(event) {
         event.preventDefault();
         this.setState({ submitted: true });
@@ -59,52 +72,102 @@ class EditProfilePage extends React.Component {
         }
     }
 
+    handleSubmitImage(event) {
+        event.preventDefault();
+        this.setState({ submitted: true });
+        const { photo, user } = this.state;
+        const { dispatch } = this.props;
+    
+        var form = $('#myform')[0];
+		// Create an FormData object
+        var data = new FormData(form);
+		// If you want to add an extra field for the FormData
+        let valueUser = JSON.parse(localStorage.getItem('user'));
+
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: "http://192.168.0.14:8000/accounts/profile/2/uploadImage/",
+            data: data,
+            "headers": {
+                "authorization": "token " + valueUser.Token,
+            },
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+
+                console.log("SUCCESS : ", data);
+
+            },
+            error: function (e) {
+
+                console.log("ERROR : ", e);
+
+            }
+        });
+    }
+
 
     render() {
         const { editUser } = this.props;
-        const { submitted, user } = this.state;
+        const { submitted, user, photo } = this.state;
         return (
-            <div className="col-lg-12">
+            <div className="row">
                 <Header/>
-                <h2>Edit Profile</h2>
-                {editUser.items &&
-                    <form name="form" onSubmit={this.handleSubmit}>
-                        <div className={'form-group' + (submitted && !user.first_name ? ' has-danger' : '')}>
-                            <label htmlFor="firstName">First Name</label>
-                            <input type="text" className="form-control" name="first_name" defaultValue={editUser.items.first_name} onChange={this.handleChange} />
-                            {submitted && !user.first_name &&
-                                <div className="form-control-feedback">First Name is required</div>
-                            }
-                        </div>
-                        <div className={'form-group' + (submitted && !user.last_name ? ' has-danger' : '')}>
-                            <label htmlFor="lastName">Last Name</label>
-                            <input type="text" className="form-control" name="last_name" defaultValue={editUser.items.last_name} onChange={this.handleChange} />
-                            {submitted && !user.last_name &&
-                                <div className="form-control-feedback">Last Name is required</div>
-                            }
-                        </div>
-                        <div className={'form-group' + (submitted && !user.username ? ' has-danger' : '')}>
-                            <label htmlFor="username">Username</label>
-                            <input type="text" className="form-control" name="username" defaultValue={editUser.items.username} onChange={this.handleChange} />
-                            {submitted && !user.username &&
-                                <div className="form-control-feedback">Username is required</div>
-                            }
-                        </div>
-                        <div className={'form-group' + (submitted && !user.photo ? ' has-danger' : '')}>
-                            <label htmlFor="photo">Photo</label>
-                            <input type="file" name="photo" defaultValue={editUser.items.photo} onChange={this.handleChange} />
-                            {submitted && !user.Photo &&
-                                <div className="form-control-feedback">Photo is required</div>
-                            }
-                        </div>
-                        <div className="form-group">
-                            <button className="btn btn-primary">Edit Profile</button>
-                   
-                            <Link to="/profile" className="btn btn-link">Cancel</Link>
-                        </div>
-                    </form>
-                }
+                <div className="col-lg-12"><h2>Edit Profile</h2></div>
+                <div className="col-lg-6">
+                
+                    {editUser.items &&
+                        <form name="form" onSubmit={this.handleSubmit}>
+                            <div className={'form-group' + (submitted && !user.first_name ? ' has-danger' : '')}>
+                                <label htmlFor="firstName">First Name</label>
+                                <input type="text" className="form-control" name="first_name" defaultValue={editUser.items.first_name} onChange={this.handleChange} />
+                                {submitted && !user.first_name &&
+                                    <div className="form-control-feedback">First Name is required</div>
+                                }
+                            </div>
+                            <div className={'form-group' + (submitted && !user.last_name ? ' has-danger' : '')}>
+                                <label htmlFor="lastName">Last Name</label>
+                                <input type="text" className="form-control" name="last_name" defaultValue={editUser.items.last_name} onChange={this.handleChange} />
+                                {submitted && !user.last_name &&
+                                    <div className="form-control-feedback">Last Name is required</div>
+                                }
+                            </div>
+                            <div className={'form-group' + (submitted && !user.username ? ' has-danger' : '')}>
+                                <label htmlFor="username">Username</label>
+                                <input type="text" className="form-control" name="username" defaultValue={editUser.items.username} onChange={this.handleChange} />
+                                {submitted && !user.username &&
+                                    <div className="form-control-feedback">Username is required</div>
+                                }
+                            </div>
+                            <div className="form-group">
+                                <button className="btn btn-primary">Edit Profile</button>
+                    
+                                <Link to="/profile" className="btn btn-link">Cancel</Link>
+                            </div>
+                        </form>
+                    }
+                </div>
+                <div className="col-lg-6">
+                    {editUser.items &&
+                        <form name="form-image" id="myform" enctype="multipart/form-data" onSubmit={this.handleSubmitImage}>
+                            <div className={'form-group' + (!photo ? ' has-danger' : '')}>
+                                <label htmlFor="photo">Photo</label>
+                                <input type="file" name="photo" value={photo} onChange={this.handleChangeImg} />
+                                {submitted && !photo &&
+                                    <div className="form-control-feedback">Image is required</div>
+                                }
+                            </div>
+                            <div className="form-group">
+                                <button className="btn btn-primary">Uplodad Photo</button>
+                            </div>
+                        </form>
+                    }
+                </div>
             </div>
+
         );
     }
 }
