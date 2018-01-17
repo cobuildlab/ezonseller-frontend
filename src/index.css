@@ -12,3 +12,52 @@ body {
 .btn {
     border-radius: 0;
 }
+.no-padding{
+  padding: 0px !important;
+}
+.custom-select{
+  border-radius: 0px !important;
+}
+.form-control{
+  border-radius: 0px !important;
+}
+.rigth-input{
+  margin-right: 5px;
+}
+.shadow-nav{
+  box-shadow: 1px 1px 8px 1px #ccc;
+}
+.top-section{
+  padding-top: 0px;
+}
+.tam-input-nav{
+  width: 250px;
+}
+.avatar-nav{
+  background-image: url(./assets/avatar.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: #4487c5;
+  position: absolute;
+  top: -10px;
+  right: 40px;
+}
+.avatar-profile{
+  background-image: url(./assets/avatar.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #4487c5;
+  display: inline-block;
+}
+.pos-menu{
+  left: -100px;
+  top: 45px;
+}
