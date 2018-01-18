@@ -1,4 +1,5 @@
 import { authHeader } from '../_helpers';
+import $ from 'jquery';
 
 export const userService = {
     login,
@@ -127,20 +128,33 @@ function update(user) {
 }
 
 function uploadImage(data){
-    let aux;
-    for (var value of data.values()) {
-        console.log(value); 
-        aux = value;
-     }    
-    let user = JSON.parse(localStorage.getItem('user'));
-    const requestOptions = {
-        method: 'POST',
-        headers: { ...authHeader(),  'Content-Type': 'multipart/form-data', 'Accept': 'application/json' },
-        body: data
-    };
-    console.log(requestOptions);
 
-    return fetch(URL + 'accounts/profile/' + user.id + '/uploadImage/', requestOptions).then(handleResponse);
+    let user = JSON.parse(localStorage.getItem('user'));
+    return $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: URL + "accounts/profile/2/uploadImage/",
+            data: data,
+            "headers": {
+                "authorization": "token " + user.Token,
+            },
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+
+                console.log(data);
+
+            },
+            error: function (e) {
+
+                console.log("ERROR : ", e);
+
+            }
+        });
+
+    //return fetch(URL + 'accounts/profile/' + user.id + '/uploadImage/', requestOptions).then(handleResponse);
 }
 
 function changePasswordEdit(data) {
@@ -165,8 +179,7 @@ function _delete(id) {
 }
 
 function addCreditCard(data) {
-    console.log(data);
-    //data.type_card = "visa"
+
     const requestOptions = {
         method: 'POST',
         headers: { ...authHeader(), 'Content-Type': 'application/json' },

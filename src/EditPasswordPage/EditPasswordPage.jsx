@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header } from '../Header';
+import $ from 'jquery';
 
 import { userActions } from '../_actions';
 
@@ -39,7 +40,12 @@ class EditPasswordPage extends React.Component {
         const { user } = this.state;
         const { dispatch } = this.props;
         if (user.new_password && user.old_password) {
-            dispatch(userActions.changePasswordEdit(user));
+            $().ready(function() {
+                var value =  $("#editPassword_form").val();
+                if(value) {
+                    dispatch(userActions.changePasswordEdit(user));
+                }     
+            });
         }
     }
 
@@ -52,20 +58,15 @@ class EditPasswordPage extends React.Component {
                 <Header/>
 
                 <h2>Change Password</h2>
-                <form name="form" onSubmit={this.handleSubmit}>
-                    <div className={'form-group' + (submitted && !user.old_password ? ' has-danger' : '')}>
+                <form name="form" id="formEditPassword" onSubmit={this.handleSubmit}>
+                    <div className="form-group">
                         <label htmlFor="oldPassword">Old Password</label>
-                        <input type="password" className="form-control" name="old_password" onChange={this.handleChange} />
-                        {submitted && !user.old_password &&
-                            <div className="form-control-feedback">Old Password is required</div>
-                        }
+                        <input type="password" className="form-control" name="old_password" onChange={this.handleChange} required />
                     </div>
-                    <div className={'form-group' + (submitted && !user.new_password ? ' has-danger' : '')}>
+                    <div className="form-group">
                         <label htmlFor="newPassword">New Password</label>
-                        <input type="password" className="form-control" name="new_password" onChange={this.handleChange} />
-                        {submitted && !user.new_password &&
-                            <div className="form-control-feedback">New Password is required</div>
-                        }
+                        <input type="password" className="form-control" name="new_password" onChange={this.handleChange} required />
+                        <input type="hidden" name="editPassword_form" id="editPassword_form" />
                     </div>
                     <div className="form-group">
                         <button className="btn btn-primary">Register</button>

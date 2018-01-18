@@ -47,7 +47,7 @@ class ChangePasswordPage extends React.Component {
             <div className="row top d-flex justify-content-center">
               <div className="col-md-6 section-register">
                   <h2>Change Password</h2>
-                  <form name="form" onSubmit={this.handleSubmit}>
+                  <form name="form" id="formChangePassword" onSubmit={this.handleSubmit}>
                       <div className={'form-group' + (submitted && !code ? ' has-error' : '')}>
                           <label htmlFor="username">Code</label>
                           <input type="text" className="form-control" name="code" value={code} onChange={this.handleChange} />

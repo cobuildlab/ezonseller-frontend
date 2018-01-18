@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Header } from '../Header';
 import $ from 'jquery';
 
-
 import { userActions } from '../_actions';
 
 class EditProfilePage extends React.Component {
@@ -14,7 +13,9 @@ class EditProfilePage extends React.Component {
         this.state = {
             user:{},
             submitted: false,
-            photo: ""
+            photo: "",
+            render: true,
+            route: "https://ezonseller-backend.herokuapp.com/"
         };
 
         this.handleChange      = this.handleChange.bind(this);
@@ -36,7 +37,8 @@ class EditProfilePage extends React.Component {
                         first_name: nextProps.editUser.items.first_name, 
                         last_name: nextProps.editUser.items.last_name,
                         username: nextProps.editUser.items.username
-                    }
+                },
+                render: true
             })
         }        
     }
@@ -68,51 +70,41 @@ class EditProfilePage extends React.Component {
         const { user } = this.state;
         const { dispatch, editUser } = this.props;
         if (user.first_name && user.last_name && user.username) {
+            $().ready(function() {
+                var value =  $("#editProfile_form").val();
+                if(value) {
             dispatch(userActions.updateUser(user));
         }
+            });
+            //dispatch(userActions.updateUser(user));
+    }
     }
 
     handleSubmitImage(event) {
         event.preventDefault();
         this.setState({ submitted: true });
-        const { photo, user } = this.state;
+        const { photo } = this.state;
         const { dispatch } = this.props;
-    
-        var form = $('#myform')[0];
+        let valueUser = JSON.parse(localStorage.getItem('user'));
+        if (photo) {
+            $().ready(function() {
+                var value =  $("#image_form").val();
+                if(value) {
+                    var form = $('#myFormImage')[0];
 		// Create an FormData object
         var data = new FormData(form);
-		// If you want to add an extra field for the FormData
-        let valueUser = JSON.parse(localStorage.getItem('user'));
-
-        $.ajax({
-            type: "POST",
-            enctype: 'multipart/form-data',
-            url: "http://192.168.0.14:8000/accounts/profile/2/uploadImage/",
-            data: data,
-            "headers": {
-                "authorization": "token " + valueUser.Token,
-            },
-            processData: false,
-            contentType: false,
-            cache: false,
-            timeout: 600000,
-            success: function (data) {
-
-                console.log("SUCCESS : ", data);
-
-            },
-            error: function (e) {
-
-                console.log("ERROR : ", e);
-
+                    dispatch(userActions.uploadImage(data));
             }
         });
     }
 
+    }
+
 
     render() {
+        if(this.state.render){
         const { editUser } = this.props;
-        const { submitted, user, photo } = this.state;
+            const { submitted, user, photo, route } = this.state;
         return (
             <div className="row">
                 <Header/>
@@ -121,27 +113,19 @@ class EditProfilePage extends React.Component {
                 <div className="col-lg-6">
                 
                     {editUser.items &&
-                        <form name="form" onSubmit={this.handleSubmit}>
-                            <div className={'form-group' + (submitted && !user.first_name ? ' has-danger' : '')}>
+                            <form name="form" id="myFormEditProfile" onSubmit={this.handleSubmit}>
+                                <div className="form-group">
                                 <label htmlFor="firstName">First Name</label>
-                                <input type="text" className="form-control" name="first_name" defaultValue={editUser.items.first_name} onChange={this.handleChange} />
-                                {submitted && !user.first_name &&
-                                    <div className="form-control-feedback">First Name is required</div>
-                                }
+                                    <input type="text" className="form-control" name="first_name" defaultValue={editUser.items.first_name} onChange={this.handleChange} required />
                             </div>
-                            <div className={'form-group' + (submitted && !user.last_name ? ' has-danger' : '')}>
+                                <div className="form-group">
                                 <label htmlFor="lastName">Last Name</label>
-                                <input type="text" className="form-control" name="last_name" defaultValue={editUser.items.last_name} onChange={this.handleChange} />
-                                {submitted && !user.last_name &&
-                                    <div className="form-control-feedback">Last Name is required</div>
-                                }
+                                    <input type="text" className="form-control" name="last_name" defaultValue={editUser.items.last_name} onChange={this.handleChange} required />
                             </div>
-                            <div className={'form-group' + (submitted && !user.username ? ' has-danger' : '')}>
+                                <div className="form-group">
                                 <label htmlFor="username">Username</label>
-                                <input type="text" className="form-control" name="username" defaultValue={editUser.items.username} onChange={this.handleChange} />
-                                {submitted && !user.username &&
-                                    <div className="form-control-feedback">Username is required</div>
-                                }
+                                    <input type="text" className="form-control" name="username" defaultValue={editUser.items.username} onChange={this.handleChange} required />
+                                    <input type="hidden" name="editProfile_form" id="editProfile_form" />
                             </div>
                             <div className="form-group">
                                 <button className="btn btn-primary">Edit Profile</button>
@@ -153,14 +137,16 @@ class EditProfilePage extends React.Component {
                 </div>
                 <div className="col-lg-6">
                     {editUser.items &&
-                        <form name="form-image" id="myform" enctype="multipart/form-data" onSubmit={this.handleSubmitImage}>
+                        <form name="form-image" id="myFormImage" onSubmit={this.handleSubmitImage}>
                             <div className={'form-group' + (!photo ? ' has-danger' : '')}>
+                                <div>
+                                    <img src={editUser.items.photo} className="rounded-circle" height="100px" width="100px" />
+                                </div>
                                 <label htmlFor="photo">Photo</label>
-                                <input type="file" name="photo" value={photo} onChange={this.handleChangeImg} />
-                                {submitted && !photo &&
-                                    <div className="form-control-feedback">Image is required</div>
-                                }
+                                <input type="file" name="photo" value={photo} onChange={this.handleChangeImg} required />
+                                
                             </div>
+                            
                             <div className="form-group">
                                 <button className="btn btn-primary">Uplodad Photo</button>
                             </div>
@@ -170,6 +156,9 @@ class EditProfilePage extends React.Component {
             </div>
 
         );
+        }else{
+            return (<div className="backgroud-body"></div>);
+        }  
     }
 }
 

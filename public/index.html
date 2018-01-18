@@ -27,7 +27,14 @@
       border-top-color: red;
       border-left-color: red;
       border-right-color: red;
-    }    
+    }
+    .image-upload > input{
+      display: none;
+    }
+    .image-upload img{
+      width: 80px;
+      cursor: pointer;
+    }
     </style>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -43,7 +50,7 @@
   <body style="background-image: url(http://www.ezonseller.com/wp-content/uploads/2018/01/image1.png);
     background-repeat: repeat-x;
     background-position: bottom;
-    height: 100vh;">
+    height: 100vh;padding-top:70px;">
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
@@ -69,7 +76,7 @@
     <script src="js/validate.js"></script>
     <script type="text/javascript">
       $(".fakeloader").fakeLoader({
-        timeToHide: 480,
+        timeToHide: 50,
         spinner:"spinner4",
         bgColor: "#4487c5",
         zIndex: '9999'

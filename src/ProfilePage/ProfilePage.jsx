@@ -20,8 +20,8 @@ class ProfilePage extends React.Component {
         this.props.dispatch(userActions.paymentPlans());
     }
 
-    handleAcquirePlan(){
-        console.log('Adquired');
+    handleAcquirePlan(param, e){
+        console.log(param);
     }
 
     render() {
@@ -57,28 +57,29 @@ class ProfilePage extends React.Component {
                                 <h5>{credit.name}</h5>
                                 <h5>{credit.number_card}</h5>
                                 <h5>{credit.date_expiration}</h5>
-                                <Link to={"/credit-card/"} className="btn btn-primary rigth-input">Select Credit Card</Link>
-                                <button className="btn btn-danger" onClick={this.handleAcquirePlan}>Delete Credit Card</button>
+                                <button className="btn btn-danger" onClick={this.handleAcquirePlan.bind(this, 'Parameter')}>Delete Credit Card</button>
                             </div>
-
-                        )}
-
+                            )}
                         </div>
-
-
                     }
-
                 </div>
 
                 <div className="col-12 no-padding">
-                    <h2>Plans <button className="btn btn-primary rigth-add" onClick={this.handleAcquirePlan}>Adquire Plan</button></h2>
+                    <h2>Plans</h2>
+                    {paymentsPlans.items &&
+                        <div>
+                            { paymentsPlans.items.plan_subscription ?  'You are logged In' : 'You are not logged In' }
+                        </div>
+                    }
                     {paymentsPlans.items &&
                         <div className="data-credit">
+                            <button className="btn btn-primary rigth-add" onClick={this.handleAcquirePlan.bind(this, paymentsPlans.items)}>Adquire Plan</button>
                             {paymentsPlans.items.map((payment, index) =>
                             <div  key={payment.id}>
-                                <h5>{payment.title}</h5>
-                                <h5>{payment.description}</h5>
-                                <h5>{payment.terms}</h5>
+                                <h5>Name: {payment.title}</h5>
+                                <h5>Description: {payment.description}</h5>
+                                <h5>Terms: {payment.terms}</h5>
+                                <h5>Cost: {payment.cost}</h5>
                                 <button className="btn btn-danger" onClick={this.handleAcquirePlan}>Cancel Plan</button>
                             </div>
                         )}
