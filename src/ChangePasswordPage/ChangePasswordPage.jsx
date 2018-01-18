@@ -48,19 +48,14 @@ class ChangePasswordPage extends React.Component {
               <div className="col-md-6 section-register">
                   <h2>Change Password</h2>
                   <form name="form" id="formChangePassword" onSubmit={this.handleSubmit}>
-                      <div className={'form-group' + (submitted && !code ? ' has-error' : '')}>
+                      <div  className="form-group">
                           <label htmlFor="username">Code</label>
                           <input type="text" className="form-control" name="code" value={code} onChange={this.handleChange} />
-                          {submitted && !code &&
-                              <div className="help-block">Code is required</div>
-                          }
                       </div>
-                      <div className={'form-group' + (submitted && !password ? ' has-error' : '')}>
+                      <div className="form-group">
                           <label htmlFor="password">New Password</label>
                           <input type="password" className="form-control" name="password" value={password} onChange={this.handleChange} />
-                          {submitted && !password &&
-                              <div className="help-block">Password is required</div>
-                          }
+                          <input type="hidden" name="changePassword_form" id="changePassword_form" />
                       </div>
                       <div className="form-group">
                           <button className="btn btn-primary">Change</button>
