@@ -15,8 +15,6 @@ import { RegisterPage } from '../RegisterPage';
 import { ForgotPage } from '../ForgotPage';
 import { ChangePasswordPage } from '../ChangePasswordPage';
 import { TermsPage } from '../TermsPage';
-import { Footer } from '../Footer';
-
 
 class App extends React.Component {
     constructor(props) {
@@ -39,14 +37,14 @@ class App extends React.Component {
                 }
                 <Router history={history}>
                     <div>
-                        <PrivateRoute exact path="/" component={HomePage} />
+                        <PrivateRoute exact path="/" component={HomePage}  />
                         <PrivateRoute exact path="/profile" component={ProfilePage} />
                         <PrivateRoute exact path="/edit-profile/:id" component={EditProfilePage} />
                         <PrivateRoute exact path="/edit-password/" component={EditPasswordPage} />
                         <PrivateRoute exact path="/credit-card/" component={PaymentCardPage} />
 
-                        <Route path="/login" component={LoginPage} />
-                        <Route path="/register" component={RegisterPage} />
+                        <Route path="/login" refresh="true" component={LoginPage} />
+                        <Route path="/register" refresh="true" component={RegisterPage} />
                         <Route path="/forgot" component={ForgotPage} />
                         <Route path="/change" component={ChangePasswordPage} />
                         <Route path="/terms" component={TermsPage} />

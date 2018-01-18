@@ -13,12 +13,21 @@
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/font-awesome.css" />
+    <link rel="stylesheet" href="css/fakeLoader.css" />
+
     <style>
     form>div>div>span {
       border: none;
       font-weight: 700;
       color: #700;
     }
+    .error{
+      color: red;
+      border-bottom-color: red;
+      border-top-color: red;
+      border-left-color: red;
+      border-right-color: red;
+    }    
     </style>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -40,7 +49,7 @@
     </noscript>
 
     <div id="root"></div>
-    <div id="fakeLoader"></div>
+    <div class="fakeloader"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -51,8 +60,21 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script src="js/jquery-3.1.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.1.0.min.js"></script>
     <script src="js/tether.min.js" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.fakeloader.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/additional-methods.js"></script>
+    <script src="js/validate.js"></script>
+    <script type="text/javascript">
+      $(".fakeloader").fakeLoader({
+        timeToHide: 480,
+        spinner:"spinner4",
+        bgColor: "#4487c5",
+        zIndex: '9999'
+      });
+    </script>
+
   </body>
 </html>
