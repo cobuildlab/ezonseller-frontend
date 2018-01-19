@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { history } from '../_helpers';
@@ -37,7 +37,7 @@ class App extends React.Component {
                     <div className={`alert ${alert.type}`}>{alert.message}</div>
                 }
                 <Router history={history}>
-                    <div>
+                    <Switch>
                         <PrivateRoute exact path="/" component={HomePage}  />
                         <PrivateRoute exact path="/profile" component={ProfilePage} />
                         <PrivateRoute exact path="/edit-profile/:id" component={EditProfilePage} />
@@ -45,13 +45,14 @@ class App extends React.Component {
                         <PrivateRoute exact path="/cancel-plan/:id" component={CancelSuscriptionPage} />
                         <PrivateRoute exact path="/edit-password/" component={EditPasswordPage} />
                         <PrivateRoute exact path="/credit-card/" component={PaymentCardPage} />
+                        <PrivateRoute path="*" component={HomePage}/>
 
                         <Route path="/login" refresh="true" component={LoginPage} />
                         <Route path="/register" refresh="true" component={RegisterPage} />
                         <Route path="/forgot" component={ForgotPage} />
                         <Route path="/change" component={ChangePasswordPage} />
                         <Route path="/terms" component={TermsPage} />
-                    </div>
+                    </Switch>
                 </Router>
             </div>
         );

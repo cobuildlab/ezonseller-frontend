@@ -20,7 +20,8 @@ export const userActions = {
     delete: _delete,
     deleteCreditCard,
     acquirePlan,
-    cancelSuscription
+    cancelSuscription,
+    cancelPlan
 };
 
 function login(username, password) {
@@ -131,7 +132,6 @@ function changePasswordEdit(data) {
                 data => {
                     dispatch(success());
                     dispatch(alertActions.success(data.message));
-                    console.log(data);
                     let value = {'Token': data.token, 'id': data.id};
                     localStorage.setItem('user', JSON.stringify(value));
                     history.push('/profile');
@@ -202,7 +202,6 @@ function updateUser(user) {
             .then(
                 user => {
                     dispatch(success(user));
-                    console.log(user);
                     dispatch(alertActions.success(user.message));
                     history.push('/profile');
                 }).catch(error => {
@@ -356,3 +355,26 @@ function cancelSuscription() {
     function success(suscription) { return { type: userConstants.SUSCRIPTION_GET_SUCCESS, suscription } }
     function failure(error)    { return { type: userConstants.SUSCRIPTION_GET_FAILURE, error } }
 }
+
+function cancelPlan(data) {
+    return dispatch => {
+        dispatch(request());
+
+        userService.cancelPlan(data)
+            .then(
+                suscription => {
+                    history.push('/profile');
+                    dispatch(success(suscription));
+                },
+                error => {
+                    dispatch(failure(error));
+                }
+            );
+    };
+
+    function request()         { return { type: userConstants.SUSCRIPTION_GET_REQUEST } }
+    function success(suscription) { return { type: userConstants.SUSCRIPTION_GET_SUCCESS, suscription } }
+    function failure(error)    { return { type: userConstants.SUSCRIPTION_GET_FAILURE, error } }
+}
+
+

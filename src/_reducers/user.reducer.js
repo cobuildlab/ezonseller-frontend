@@ -2,9 +2,9 @@ import { userConstants } from '../_constants';
 
 export function user(state = {}, action) {
   if(state.items != undefined){
-    console.log(state.items.credit_cards);
+    //console.log(state.items.credit_cards);
     state.items.credit_cards.map(user => {
-              console.log(user)
+              //console.log(user)
         })
   }
        
@@ -115,7 +115,6 @@ export function paymentsPlans(state = {}, action) {
 
 
 export function cancelPlans(state = {}, action) {
-  console.log(action);
   switch (action.type) {
     case userConstants.SUSCRIPTION_GET_REQUEST:
       return {

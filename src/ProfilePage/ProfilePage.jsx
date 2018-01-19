@@ -9,7 +9,6 @@ import { userActions } from '../_actions';
 
 class ProfilePage extends React.Component {
     super(props){
-        this.handleAcquirePlan = this.handleAcquirePlan.bind(this);
         this.handleDeleteCard  = this.handleDeleteCard.bind(this);
     }
 
@@ -17,10 +16,6 @@ class ProfilePage extends React.Component {
         let valueUser = JSON.parse(localStorage.getItem('user'));
         this.props.dispatch(userActions.getUserId(valueUser.id));
         this.props.dispatch(userActions.paymentPlans());
-    }
-
-    handleAcquirePlan(param, e){
-        console.log(param);
     }
 
     handleDeleteCard(data, e){
@@ -82,7 +77,7 @@ class ProfilePage extends React.Component {
                                             <h5>Description: {plan.description}</h5>
                                             <h5>Date Start: {new Date(plan.date_start).toDateString()}</h5>
                                             <h5>Date Finish: {new Date(plan.date_finish).toDateString()}</h5>
-                                            <Link to={"/cancel-plan/" + plan.id} className="btn btn-danger">Cancel Plan</Link>
+                                            <Link to={"/cancel-plan/" + user.items.id_plan} className="btn btn-danger">Cancel Plan</Link>
                                             </div>
                                         )}  
                                     </div>

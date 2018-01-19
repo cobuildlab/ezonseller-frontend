@@ -41,7 +41,10 @@ class CancelSuscriptionPage extends React.Component {
         this.setState({ submitted: true });
         const { purchase } = this.state;
         const { dispatch, editUser } = this.props;
-        console.log(purchase);
+        purchase.id_plan = this.props.match.params.id;
+        if(purchase.reason){
+            dispatch(userActions.cancelPlan(purchase));
+        }
     }
 
     render() {
@@ -70,20 +73,20 @@ class CancelSuscriptionPage extends React.Component {
                         <div>
                             {cancelPlans.items.map((cancel, index) =>
                                 <div>
-                                    <form name="form-cancel" id="myFormCancel" onSubmit={this.handleSubmitImage} >
+                                    <form name="form-cancel" id="myFormCancel" onSubmit={this.handleSubmit} >
                                     {cancel.list.map((list, index) =>
                                         <div className={'form-group' + (!purchase ? ' has-danger' : '')}>
-                                            <input type="radio" className="" name="id_plan" defaultValue={purchase.list} required  />
+                                            <input type="radio" className="" name="id_plan" defaultValue={list} onChange={this.handleChange} required  />
                                             {list}
                                         </div>                              
                                     )}
                                     <div className={'form-group' + (!purchase ? ' has-danger' : '')}>
-                                        <input type="radio" className="" name="id_plan" defaultValue="purchase.other" required  />
+                                        <input type="radio" className="" name="id_plan" defaultValue="Other" onChange={this.handleChange} required  />
                                         Other
                                     </div>
                                     <div className={'form-group' + (!purchase ? ' has-danger' : '')}>
                                         <label htmlFor="purchase"><b>Reason:</b></label>
-                                        <textarea name="reason" defaultValue="purchase.reason" className="form-control">
+                                        <textarea name="reason" defaultValue={purchase.reason} className="form-control" onChange={this.handleChange} >
                                         
                                         </textarea>
                                     </div>

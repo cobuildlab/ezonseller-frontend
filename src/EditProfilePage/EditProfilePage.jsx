@@ -84,12 +84,9 @@ class EditProfilePage extends React.Component {
         this.setState({ submitted: true });
         const { photo } = this.state;
         const { dispatch } = this.props;
-        console.log(photo);
         if (photo) {
             $().ready(function() {
                 var value =  $("#image_form").val();
-                console.log(value);
-
                 if(value) {
                     var form = $('#myFormImage')[0];
                     // Create an FormData object
