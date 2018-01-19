@@ -50,7 +50,6 @@ class CancelSuscriptionPage extends React.Component {
     render() {
         const { user, paymentsPlans, cancelPlans } = this.props;
         const { purchase, submitted } = this.state;
-        console.log(this.props);
         let valueUser = JSON.parse(localStorage.getItem('user'));
         return (
             <div className="">
