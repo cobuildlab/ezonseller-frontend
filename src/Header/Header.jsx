@@ -52,7 +52,6 @@ class Header extends React.Component {
                         <input type="text" className="form-control rigth-input tam-input-nav" id="inputPassword2" placeholder="Keywords"/>
                         <button type="submit" className="btn btn-primary">Search</button>
                       </div>
-
                   </form>
                 </li>
               </ul>
@@ -61,21 +60,18 @@ class Header extends React.Component {
                   <div className="dropdown">
                     <div className="avatar-nav"></div>
                     <button className="btn btn-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
                     </button>
                     <div className="dropdown-menu pos-menu" aria-labelledby="dropdownMenuButton">
                       <Link to="/" className="nav-link">Home <span className="sr-only">(current)</span></Link>
                       <Link to="/profile" className="nav-link">Profile</Link>
-                        <Link to="/login" className="nav-link">Logout</Link>
+                      <Link to="/login" className="nav-link">Logout</Link>
                     </div>
                   </div>
                 </li>
               </ul>
             </div>
-          </nav>
-
+            </nav>
           </div>
-
         );
     }
 }

@@ -15,7 +15,10 @@ export const userService = {
     paymentPlans,
     addCreditCard,
     uploadImage,
-    delete: _delete
+    delete: _delete,
+    deleteCreditCard,
+    acquirePlan,
+    cancelSuscription
 };
 
 const URL = "https://ezonseller-backend.herokuapp.com/";
@@ -143,18 +146,12 @@ function uploadImage(data){
             cache: false,
             timeout: 600000,
             success: function (data) {
-
                 console.log(data);
-
             },
             error: function (e) {
-
                 console.log("ERROR : ", e);
-
             }
         });
-
-    //return fetch(URL + 'accounts/profile/' + user.id + '/uploadImage/', requestOptions).then(handleResponse);
 }
 
 function changePasswordEdit(data) {
@@ -178,6 +175,16 @@ function _delete(id) {
     return fetch('/users/' + id, requestOptions).then(handleResponse);;
 }
 
+function deleteCreditCard(id) {
+    const requestOptions = {
+        method: 'DELETE',
+        headers: authHeader()
+    };
+
+    return fetch(URL + 'payment/card/' + id + '/', requestOptions).then(handleResponse);
+}
+
+
 function addCreditCard(data) {
 
     const requestOptions = {
@@ -187,6 +194,26 @@ function addCreditCard(data) {
     };
 
     return fetch(URL + 'payment/card/', requestOptions).then(handleResponse);
+}
+
+function acquirePlan(data) {
+
+    const requestOptions = {
+        method: 'POST',
+        headers: { ...authHeader(), 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    };
+
+    return fetch(URL + 'payment/purchase/', requestOptions).then(handleResponse);
+}
+
+function cancelSuscription() {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(URL + 'payment/cancel-subscription/', requestOptions).then(handleResponse);;
 }
 
 function handleResponse(response) {

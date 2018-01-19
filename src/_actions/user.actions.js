@@ -1,4 +1,4 @@
-import { userConstants } from '../_constants';
+import { userConstants, cardConstants } from '../_constants';
 import { userService } from '../_services';
 import { alertActions } from './';
 import { history } from '../_helpers';
@@ -17,7 +17,10 @@ export const userActions = {
     paymentPlans,
     addCreditCard,
     uploadImage,
-    delete: _delete
+    delete: _delete,
+    deleteCreditCard,
+    acquirePlan,
+    cancelSuscription
 };
 
 function login(username, password) {
@@ -251,14 +254,39 @@ function _delete(id) {
     function failure(id, error) { return { type: userConstants.DELETE_FAILURE, id, error } }
 }
 
+function deleteCreditCard(id) {
+    return dispatch => {
+        dispatch(request(id));
+
+        userService.deleteCreditCard(id)
+            .then(
+                card => {
+                    dispatch(success(id));
+                    window.location.reload();
+                },
+                error => {
+                    dispatch(failure(id, error));
+                }
+            );
+    };
+
+    function request(id) { return { type: userConstants.CARD_DELETE_REQUEST, id } }
+    function success(id) { return { type: userConstants.CARD_DELETE_SUCCESS, id } }
+    function failure(id, error) { return { type: userConstants.CARD_DELETE_FAILURE, id, error } }
+}
+
 function paymentPlans() {
     return dispatch => {
         dispatch(request());
 
         userService.paymentPlans()
             .then(
-                payments => dispatch(success(payments)),
-                error    => dispatch(failure(error))
+                payments => {
+                    dispatch(success(payments));
+                },
+                error => {
+                    dispatch(failure(error));
+                }
             );
     };
 
@@ -273,12 +301,58 @@ function addCreditCard(data) {
 
         userService.addCreditCard(data)
             .then(
-                card  => dispatch(success(card)),
-                error => dispatch(failure(error))
+                card  => {
+                    dispatch(success(card))
+                    history.push('/profile')
+                },
+                error => {
+                    dispatch(failure(error))
+                }
             );
     };
 
     function request()      { return { type: userConstants.GETALLPAYMENTS_REQUEST } }
     function success(card)  { return { type: userConstants.GETALLPAYMENTS_SUCCESS, card } }
     function failure(error) { return { type: userConstants.GETALLPAYMENTS_FAILURE, error } }
+}
+
+function acquirePlan(data) {
+    return dispatch => {
+        dispatch(request());
+
+        userService.acquirePlan(data)
+            .then(
+                plan  => {
+                    dispatch(success(plan))
+                    history.push('/profile')
+                },
+                error => {
+                    dispatch(failure(error))
+                }
+            );
+    };
+
+    function request()      { return { type: userConstants.GETALLPAYMENTS_REQUEST } }
+    function success(plan)  { return { type: userConstants.GETALLPAYMENTS_SUCCESS, plan } }
+    function failure(error) { return { type: userConstants.GETALLPAYMENTS_FAILURE, error } }
+}
+
+function cancelSuscription() {
+    return dispatch => {
+        dispatch(request());
+
+        userService.cancelSuscription()
+            .then(
+                suscription => {
+                    dispatch(success(suscription));
+                },
+                error => {
+                    dispatch(failure(error));
+                }
+            );
+    };
+
+    function request()         { return { type: userConstants.SUSCRIPTION_GET_REQUEST } }
+    function success(suscription) { return { type: userConstants.SUSCRIPTION_GET_SUCCESS, suscription } }
+    function failure(error)    { return { type: userConstants.SUSCRIPTION_GET_FAILURE, error } }
 }

@@ -1,0 +1,124 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Header } from '../Header';
+import { Footer } from '../Footer';
+import './profile.css';
+import $ from 'jquery';
+
+import { userActions } from '../_actions';
+
+class AcquirePlanPage extends React.Component {
+    constructor(props) {
+        super(props);
+            this.state = {
+                purchase: {},
+                submitted: false
+            };
+
+            this.handleSubmit = this.handleSubmit.bind(this);
+            this.handleChange = this.handleChange.bind(this);        
+    }
+
+    componentDidMount() {
+        let valueUser = JSON.parse(localStorage.getItem('user'));
+        this.props.dispatch(userActions.getUserId(valueUser.id));
+        this.props.dispatch(userActions.paymentPlans());
+    }
+
+    handleChange(event) {
+        const { name, value } = event.target;
+        const { purchase } = this.state;
+
+        this.setState({
+            purchase: {
+                ...purchase,
+                [name]: value
+            }
+        })
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        this.setState({ submitted: true });
+        const { purchase } = this.state;
+        const { dispatch, editUser } = this.props;
+        if (purchase.terms && purchase.id_card) {
+            purchase.id_plan   = this.props.match.params.id;
+            purchase.automatic = "False";
+            purchase.accept    = "True"
+            dispatch(userActions.acquirePlan(purchase));
+        }
+
+    }
+
+    render() {
+        const { user, paymentsPlans } = this.props;
+        const { purchase, submitted } = this.state;
+        let valueUser = JSON.parse(localStorage.getItem('user'));
+        return (
+            <div className="">
+                <Header/>
+                <div className="col-12 no-padding">
+                    <h2>Plans</h2>
+                    {user.items &&
+                    <div>
+                        <form name="form" id="myFormPurchasePlan" onSubmit={this.handleSubmit}>
+                            <div className={'form-group' + (submitted && !purchase ? ' has-danger' : '')}>
+                                <label htmlFor="credit_card">Credit Card</label>
+                                <select className="form-control" name="id_card" onChange={this.handleChange} defaulValue={purchase.id_card}>
+                                    <option>Select a Credit Card</option>
+                                    {user.items.credit_cards.map(option => {
+                                        return <option value={option.id} key={option.id}>{option.name} - {option.type_card}</option>
+                                    })}
+                                </select>
+                                {submitted && !purchase &&
+                                    <div className="form-control-feedback">Credit Card is required</div>
+                                }
+                            </div>
+                            <div className='form-group'>
+                                <div className="row">
+                                    <div className="col-md-12">
+                                    <input type="radio" className="" name="terms" onChange={this.handleChange} value={purchase.terms} required />
+                                    <label htmlFor="terms"> <Link to="/terms" className="btn btn-link term">I Accept the Terms and Conditions Ezonseller.</Link></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button className="btn btn-primary">Purchase</button>
+                        </form>
+                    </div>
+                    }
+                    {paymentsPlans.items &&
+                        <div className="data-credit">
+                            {paymentsPlans.items.map((payment, index) =>
+                            <div  key={payment.id}>
+                            <div>
+
+                            
+                            </div>
+                                <h5>Name: {payment.title}</h5>
+                                <h5>Description: {payment.description}</h5>
+                                <h5>Terms: {payment.terms}</h5>
+                                <h5>Cost: {payment.cost}$</h5>
+                                <h5>Duration: {payment.duration}</h5>
+                            </div>
+                        )}
+                      </div>
+                    }
+                </div>
+
+            </div>
+        );
+    }
+}
+
+function mapStateToProps(state) {
+    const { user, paymentsPlans } = state;
+    return {
+        user,
+        paymentsPlans
+    };
+}
+
+const connectedAcquirePlanPage = connect(mapStateToProps)(AcquirePlanPage);
+export { connectedAcquirePlanPage as AcquirePlanPage };

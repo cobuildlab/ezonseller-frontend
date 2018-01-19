@@ -14,8 +14,7 @@ class EditProfilePage extends React.Component {
             user:{},
             submitted: false,
             photo: "",
-            render: true,
-            route: "https://ezonseller-backend.herokuapp.com/"
+            render: true
         };
 
         this.handleChange      = this.handleChange.bind(this);
@@ -33,13 +32,14 @@ class EditProfilePage extends React.Component {
         if(nextProps.editUser.items){
             this.setState({
                 user: {
-                        id: nextProps.editUser.items.id,
-                        first_name: nextProps.editUser.items.first_name, 
-                        last_name: nextProps.editUser.items.last_name,
-                        username: nextProps.editUser.items.username
+                    id: nextProps.editUser.items.id,
+                    first_name: nextProps.editUser.items.first_name, 
+                    last_name: nextProps.editUser.items.last_name,
+                    username: nextProps.editUser.items.username
                 },
                 render: true
             })
+            
         }        
     }
 
@@ -73,11 +73,10 @@ class EditProfilePage extends React.Component {
             $().ready(function() {
                 var value =  $("#editProfile_form").val();
                 if(value) {
-            dispatch(userActions.updateUser(user));
-        }
+                    dispatch(userActions.updateUser(user));
+                 }
             });
-            //dispatch(userActions.updateUser(user));
-    }
+        }
     }
 
     handleSubmitImage(event) {
@@ -85,26 +84,27 @@ class EditProfilePage extends React.Component {
         this.setState({ submitted: true });
         const { photo } = this.state;
         const { dispatch } = this.props;
-        let valueUser = JSON.parse(localStorage.getItem('user'));
+        console.log(photo);
         if (photo) {
             $().ready(function() {
                 var value =  $("#image_form").val();
+                console.log(value);
+
                 if(value) {
                     var form = $('#myFormImage')[0];
-		// Create an FormData object
-        var data = new FormData(form);
+                    // Create an FormData object
+                    var data = new FormData(form);
                     dispatch(userActions.uploadImage(data));
-            }
-        });
-    }
-
+                }
+            });
+        }
     }
 
 
     render() {
         if(this.state.render){
         const { editUser } = this.props;
-            const { submitted, user, photo, route } = this.state;
+        const { submitted, user, photo, validate } = this.state;
         return (
             <div className="row">
                 <Header/>
@@ -116,18 +116,18 @@ class EditProfilePage extends React.Component {
                             <form name="form" id="myFormEditProfile" onSubmit={this.handleSubmit}>
                                 <div className="form-group">
                                 <label htmlFor="firstName">First Name</label>
-                                    <input type="text" className="form-control" name="first_name" defaultValue={editUser.items.first_name} onChange={this.handleChange} required />
-                            </div>
+                                    <input type="text" className="form-control" id="first_name" name="first_name" defaultValue={editUser.items.first_name} onChange={this.handleChange} required />
+                                </div>
                                 <div className="form-group">
                                 <label htmlFor="lastName">Last Name</label>
                                     <input type="text" className="form-control" name="last_name" defaultValue={editUser.items.last_name} onChange={this.handleChange} required />
-                            </div>
+                                </div>
                                 <div className="form-group">
                                 <label htmlFor="username">Username</label>
                                     <input type="text" className="form-control" name="username" defaultValue={editUser.items.username} onChange={this.handleChange} required />
                                     <input type="hidden" name="editProfile_form" id="editProfile_form" />
-                            </div>
-                            <div className="form-group">
+                                </div>
+                                <div className="form-group">
                                 <button className="btn btn-primary">Edit Profile</button>
                     
                                 <Link to="/profile" className="btn btn-link">Cancel</Link>
@@ -144,9 +144,8 @@ class EditProfilePage extends React.Component {
                                 </div>
                                 <label htmlFor="photo">Photo</label>
                                 <input type="file" name="photo" value={photo} onChange={this.handleChangeImg} required />
-                                
+                                <input type="hidden" name="image_form" id="image_form" />
                             </div>
-                            
                             <div className="form-group">
                                 <button className="btn btn-primary">Uplodad Photo</button>
                             </div>

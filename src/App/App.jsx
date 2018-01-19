@@ -15,6 +15,8 @@ import { RegisterPage } from '../RegisterPage';
 import { ForgotPage } from '../ForgotPage';
 import { ChangePasswordPage } from '../ChangePasswordPage';
 import { TermsPage } from '../TermsPage';
+import { AcquirePlanPage } from '../AcquirePlanPage';
+import { CancelSuscriptionPage } from '../CancelSuscriptionPage';
 
 class App extends React.Component {
     constructor(props) {
@@ -39,6 +41,8 @@ class App extends React.Component {
                         <PrivateRoute exact path="/" component={HomePage}  />
                         <PrivateRoute exact path="/profile" component={ProfilePage} />
                         <PrivateRoute exact path="/edit-profile/:id" component={EditProfilePage} />
+                        <PrivateRoute exact path="/acquire-plan/:id" component={AcquirePlanPage} />
+                        <PrivateRoute exact path="/cancel-plan/:id" component={CancelSuscriptionPage} />
                         <PrivateRoute exact path="/edit-password/" component={EditPasswordPage} />
                         <PrivateRoute exact path="/credit-card/" component={PaymentCardPage} />
 

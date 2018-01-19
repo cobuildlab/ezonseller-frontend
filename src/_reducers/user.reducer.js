@@ -1,6 +1,13 @@
 import { userConstants } from '../_constants';
 
 export function user(state = {}, action) {
+  if(state.items != undefined){
+    console.log(state.items.credit_cards);
+    state.items.credit_cards.map(user => {
+              console.log(user)
+        })
+  }
+       
   switch (action.type) {
     case userConstants.GETBYID_REQUEST:
       return {
@@ -44,6 +51,22 @@ export function user(state = {}, action) {
           return user;
         })
       };
+      case userConstants.CARD_DELETE_REQUEST:
+      // add 'deleting:true' property to user being deleted
+      return {
+        ...state
+      };
+    case userConstants.CARD_DELETE_SUCCESS:
+      // remove deleted user from state
+      return {
+        items: state.items
+      };
+    case userConstants.CARD_DELETE_FAILURE:
+      // remove 'deleting:true' property and add 'deleteError:[error]' property to user
+      return {
+        ...state,
+        items: action.user
+      };
     default:
       return state
   }
@@ -82,6 +105,27 @@ export function paymentsPlans(state = {}, action) {
         items: action.payments
       };
     case userConstants.GETALLPAYMENTS_FAILURE:
+      return {
+        error: action.error
+      };
+    default:
+      return state
+  }
+}
+
+
+export function cancelPlans(state = {}, action) {
+  console.log(action);
+  switch (action.type) {
+    case userConstants.SUSCRIPTION_GET_REQUEST:
+      return {
+        loading: true
+      };
+    case userConstants.SUSCRIPTION_GET_SUCCESS:
+      return {
+        items: action.suscription
+      };
+    case userConstants.SUSCRIPTION_GET_FAILURE:
       return {
         error: action.error
       };

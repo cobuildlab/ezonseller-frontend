@@ -1,0 +1,33 @@
+.top-data{
+  padding-top: 20px;
+}
+.section-data{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 0px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #4487c6;
+  display: inline-block;
+}
+.content-data{
+  display: inline-block;
+  position: relative;
+  top: -15px;
+  left: 20px;
+}
+.btn-opt{
+  position: absolute;
+  right: 15px;
+  top: 30px;
+}
+.btn-top{
+ margin-bottom: 10px;
+}
+.data-credit{
+  padding: 20px 0px;
+  border-bottom: 2px solid #4487c7;
+  margin-bottom: 15px
+}
+.rigth-add{
+  float: right;
+}

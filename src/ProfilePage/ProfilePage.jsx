@@ -5,13 +5,12 @@ import { Header } from '../Header';
 import { Footer } from '../Footer';
 import './profile.css';
 
-
 import { userActions } from '../_actions';
 
 class ProfilePage extends React.Component {
     super(props){
-
         this.handleAcquirePlan = this.handleAcquirePlan.bind(this);
+        this.handleDeleteCard  = this.handleDeleteCard.bind(this);
     }
 
     componentDidMount() {
@@ -23,6 +22,11 @@ class ProfilePage extends React.Component {
     handleAcquirePlan(param, e){
         console.log(param);
     }
+
+    handleDeleteCard(data, e){
+        this.props.dispatch(userActions.deleteCreditCard(data));
+    }
+
 
     render() {
         const { user, paymentsPlans } = this.props;
@@ -54,37 +58,67 @@ class ProfilePage extends React.Component {
                         <div className="data-credit">
                             {user.items.credit_cards.map((credit, index) =>
                             <div key={credit.id}>
-                                <h5>{credit.name}</h5>
-                                <h5>{credit.number_card}</h5>
-                                <h5>{credit.date_expiration}</h5>
-                                <button className="btn btn-danger" onClick={this.handleAcquirePlan.bind(this, 'Parameter')}>Delete Credit Card</button>
+                                <h5>Name: {credit.name}</h5>
+                                <h5>Credit Card Number: {credit.number_card}</h5>
+                                <h5>Date Expiration: {credit.date_expiration}</h5>
+                                <button role="button" className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}>Delete Credit Card</button>
                             </div>
                             )}
                         </div>
                     }
                 </div>
-
+                    
                 <div className="col-12 no-padding">
-                    <h2>Plans</h2>
-                    {paymentsPlans.items &&
+                    <div> 
+                    {user.items &&
                         <div>
-                            { paymentsPlans.items.plan_subscription ?  'You are logged In' : 'You are not logged In' }
+                            {user.items.plan_subscription.length > 0 &&
+                                <div className="data-credit">
+                                    <h2>Plan Purchase</h2>
+                                    <div className="col-12 no-padding">
+                                        {user.items.plan_subscription.map((plan, index) => 
+                                            <div key={plan.id}>
+                                            <h5>Name: {plan.title}</h5>
+                                            <h5>Description: {plan.description}</h5>
+                                            <h5>Date Start: {new Date(plan.date_start).toDateString()}</h5>
+                                            <h5>Date Finish: {new Date(plan.date_finish).toDateString()}</h5>
+                                            <Link to={"/cancel-plan/" + plan.id} className="btn btn-danger">Cancel Plan</Link>
+                                            </div>
+                                        )}  
+                                    </div>
+                                </div>
+                            }
                         </div>
                     }
-                    {paymentsPlans.items &&
-                        <div className="data-credit">
-                            <button className="btn btn-primary rigth-add" onClick={this.handleAcquirePlan.bind(this, paymentsPlans.items)}>Adquire Plan</button>
-                            {paymentsPlans.items.map((payment, index) =>
-                            <div  key={payment.id}>
-                                <h5>Name: {payment.title}</h5>
-                                <h5>Description: {payment.description}</h5>
-                                <h5>Terms: {payment.terms}</h5>
-                                <h5>Cost: {payment.cost}</h5>
-                                <button className="btn btn-danger" onClick={this.handleAcquirePlan}>Cancel Plan</button>
+                    </div>
+                </div>
+                
+                <div className="col-12 no-padding">
+                <div> 
+                {user.items &&
+                    <div>
+                        {user.items.plan_subscription.length == 0 &&
+                            <div>
+                                <h2>Plans</h2>
+                                {paymentsPlans.items &&
+                                    <div className="data-credit">
+                                        {paymentsPlans.items.map((payment, index) =>
+                                        <div  key={payment.id}>
+                                        <div>
+                                        <Link to={"/acquire-plan/" + payment.id} className="btn btn-primary rigth-add">Acquire Plan</Link>
+                                        </div>
+                                            <h5>Name: {payment.title}</h5>
+                                            <h5>Cost: {payment.cost}</h5>
+                                        </div>
+                                        )}
+                                    </div>
+                                }
                             </div>
-                        )}
-                      </div>
-                    }
+                        }
+                    </div>
+                }
+                </div>
+                    
                 </div>
 
             </div>

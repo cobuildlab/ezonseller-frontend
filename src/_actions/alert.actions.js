@@ -16,7 +16,6 @@ function error(message) {
 }
 
 function clear() {
-    window.location.reload();   
     return { type: alertConstants.CLEAR };
 }
 
