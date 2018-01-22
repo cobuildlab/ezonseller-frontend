@@ -1,13 +1,7 @@
 import { userConstants } from '../_constants';
 
 export function user(state = {}, action) {
-  if(state.items != undefined){
-    //console.log(state.items.credit_cards);
-    state.items.credit_cards.map(user => {
-              //console.log(user)
-        })
-  }
-       
+
   switch (action.type) {
     case userConstants.GETBYID_REQUEST:
       return {

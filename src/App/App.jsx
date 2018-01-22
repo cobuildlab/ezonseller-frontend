@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { history } from '../_helpers';
@@ -17,6 +17,8 @@ import { ChangePasswordPage } from '../ChangePasswordPage';
 import { TermsPage } from '../TermsPage';
 import { AcquirePlanPage } from '../AcquirePlanPage';
 import { CancelSuscriptionPage } from '../CancelSuscriptionPage';
+import { AmazonKeyPage } from '../AmazonKeyPage';
+import { ToastContainer } from 'react-toastify';
 
 class App extends React.Component {
     constructor(props) {
@@ -32,12 +34,15 @@ class App extends React.Component {
     render() {
         const { alert } = this.props;
         return (
+
             <div className="container top-section">
+                <ToastContainer autoClose={10000} />
+
                 {alert.message &&
                     <div className={`alert ${alert.type}`}>{alert.message}</div>
                 }
                 <Router history={history}>
-                    <Switch>
+                    <div>
                         <PrivateRoute exact path="/" component={HomePage}  />
                         <PrivateRoute exact path="/profile" component={ProfilePage} />
                         <PrivateRoute exact path="/edit-profile/:id" component={EditProfilePage} />
@@ -45,14 +50,14 @@ class App extends React.Component {
                         <PrivateRoute exact path="/cancel-plan/:id" component={CancelSuscriptionPage} />
                         <PrivateRoute exact path="/edit-password/" component={EditPasswordPage} />
                         <PrivateRoute exact path="/credit-card/" component={PaymentCardPage} />
-                        <PrivateRoute path="*" component={HomePage}/>
+                        <PrivateRoute exact path="/amazon-key/" component={AmazonKeyPage} />
 
                         <Route path="/login" refresh="true" component={LoginPage} />
                         <Route path="/register" refresh="true" component={RegisterPage} />
                         <Route path="/forgot" component={ForgotPage} />
                         <Route path="/change" component={ChangePasswordPage} />
                         <Route path="/terms" component={TermsPage} />
-                    </Switch>
+                    </div>
                 </Router>
             </div>
         );

@@ -6,7 +6,6 @@ import '../index.css';
 class Footer extends React.Component {
 
     render() {
-        const { user, users } = this.props;
         return (
             <div className="col-lg-12">
               <footer className="app-footer">
@@ -18,14 +17,7 @@ class Footer extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    const { users, authentication } = state;
-    const { user } = authentication;
-    return {
-        user,
-        users
-    };
-}
 
-const connectedFooter = connect(mapStateToProps)(Footer);
+
+const connectedFooter = connect(null)(Footer);
 export { connectedFooter as Footer };

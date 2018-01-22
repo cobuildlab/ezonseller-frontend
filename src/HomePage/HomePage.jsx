@@ -1,7 +1,4 @@
 import React from 'react';
-import { Router, Route } from 'react-router-dom';
-import { PrivateRoute } from '../_components';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header } from '../Header';
 

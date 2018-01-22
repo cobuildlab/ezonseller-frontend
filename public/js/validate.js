@@ -84,6 +84,11 @@ $( "body" ).mousemove(function( event ) {
 				}
             }
         });
+
+        $("#myFormCancel").validate({
+            submitHandler: function(form) {
+            }
+        });
     
         $("#myFormPurchasePlan").validate({
             submitHandler: function(form) {

@@ -107,7 +107,6 @@ function editUserId(id) {
         method: 'GET',
         headers: authHeader()
     };
-
     return fetch(URL + 'accounts/profile/' + id + '/', requestOptions).then(handleResponse);;
 }
 
@@ -116,23 +115,19 @@ function paymentPlans() {
         method: 'GET',
         headers: authHeader()
     };
-
     return fetch(URL + 'payment/plans', requestOptions).then(handleResponse);;
 }
 
 function update(user) {
-
     const requestOptions = {
         method: 'PUT',
         headers: { ...authHeader(), 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
-
     return fetch(URL + 'accounts/profile/' + user.id + '/', requestOptions).then(handleResponse);;
 }
 
 function uploadImage(data){
-
     let user = JSON.parse(localStorage.getItem('user'));
     return $.ajax({
             type: "POST",
@@ -172,7 +167,6 @@ function _delete(id) {
         method: 'DELETE',
         headers: authHeader()
     };
-
     return fetch('/users/' + id, requestOptions).then(handleResponse);;
 }
 
@@ -181,30 +175,25 @@ function deleteCreditCard(id) {
         method: 'DELETE',
         headers: authHeader()
     };
-
     return fetch(URL + 'payment/card/' + id + '/', requestOptions).then(handleResponse);
 }
 
 
 function addCreditCard(data) {
-
     const requestOptions = {
         method: 'POST',
         headers: { ...authHeader(), 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     };
-
     return fetch(URL + 'payment/card/', requestOptions).then(handleResponse);
 }
 
 function acquirePlan(data) {
-
     const requestOptions = {
         method: 'POST',
         headers: { ...authHeader(), 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     };
-
     return fetch(URL + 'payment/purchase/', requestOptions).then(handleResponse);
 }
 
@@ -218,13 +207,11 @@ function cancelSuscription() {
 }
 
 function cancelPlan(data) {
-
     const requestOptions = {
         method: 'POST',
         headers: { ...authHeader(), 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     };
-
     return fetch(URL + 'payment/cancel-subscription/', requestOptions).then(handleResponse);
 }
 
@@ -232,6 +219,5 @@ function handleResponse(response) {
     if (!response.ok) {
         return Promise.reject(response.json());
     }
-
     return response.json();
 }

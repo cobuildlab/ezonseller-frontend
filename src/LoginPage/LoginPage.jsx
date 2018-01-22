@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import  Logo  from '../assets/logo.png'
 import { userActions } from '../_actions';
+import $ from 'jquery';
 import './login.css';
 import '../index.css';
 
@@ -24,6 +25,9 @@ class LoginPage extends React.Component {
     }
 
     componentWillMount() {
+        $().ready(function() {
+            $(".fakeloader").fadeOut();
+        });
         setTimeout(function(){ 
             this.setState({render: true})
         }.bind(this), 150); 
@@ -41,6 +45,9 @@ class LoginPage extends React.Component {
         const { username, password } = this.state;
         const { dispatch } = this.props;
         if (username && password) {
+            $().ready(function() {
+                $(".fakeloader").show();
+            });
             dispatch(userActions.login(username, password));
         }
     }

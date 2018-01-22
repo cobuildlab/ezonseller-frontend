@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
-import { PaymentCard } from '../_utils';
+import { AmazonKey } from '../_utils';
 
 import $ from 'jquery';
 
 
 import { userActions } from '../_actions';
 
-class PaymentCardPage extends React.Component {
+class AmazonKeyPage extends React.Component {
     
     componentWillMount(){
         $().ready(function() {
@@ -29,7 +29,7 @@ class PaymentCardPage extends React.Component {
         return (
             <div className="">
                 <Header/>
-                <PaymentCard />
+                <AmazonKey />
             </div>
         );
     }
@@ -42,5 +42,5 @@ function mapStateToProps(state) {
     };
 }
 
-const connectedPaymentCardPage= connect(mapStateToProps)(PaymentCardPage);
-export { connectedPaymentCardPage as PaymentCardPage };
+const connectedAmazonKeyPage = connect(mapStateToProps)(AmazonKeyPage);
+export { connectedAmazonKeyPage as AmazonKeyPage };

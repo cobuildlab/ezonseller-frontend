@@ -1,0 +1,32 @@
+.content-edit{
+    padding: 50px;
+    background-color: #eaeaea;
+    margin-top: 20px;
+}
+.form-padding{
+    padding: 0px 60px;
+    width: 100%
+}
+.col-center{
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+.center-block{
+    float: none;
+}
+.file-input-wrapper {
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+.file-input-wrapper > input[type="file"] {
+    font-size: 10px;
+    opacity: 0;
+}
+.file-input-wrapper > .btn-file-input {
+}
+.center{
+    margin-left: auto;
+    margin-right: auto;
+}

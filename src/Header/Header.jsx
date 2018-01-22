@@ -32,17 +32,17 @@ class Header extends React.Component {
                 <li className="nav-item">
                   <select className="custom-select rigth-input tam-input-nav">
                     <option selected>Country</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option defaultValue="1">One</option>
+                    <option defaultValue="2">Two</option>
+                    <option defaultValue="3">Three</option>
                   </select>
                 </li>
                 <li className="nav-item">
                   <select className="custom-select rigth-input tam-input-nav">
                     <option selected>Category</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option defaultValue="1">One</option>
+                    <option defaultValue="2">Two</option>
+                    <option defaultValue="3">Three</option>
                   </select>
                 </li>
                 <li className="nav-item">
