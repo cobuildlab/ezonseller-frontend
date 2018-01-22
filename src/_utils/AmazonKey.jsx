@@ -52,7 +52,7 @@ class AmazonKey extends React.Component {
         
         return (
             <div className="">
-                <Header/>
+                <Header url={this.props} />
                 <div className="container">
                     <h2 className="text-center">Add Amazon Key</h2>
                     <div className="col-md-7 content-edit col-center">

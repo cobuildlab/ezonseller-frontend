@@ -37,7 +37,7 @@ class EditProfilePage extends React.Component {
 
         return (
             <div className="">
-                <Header/>
+                <Header  url={this.props}/>
                 <EditProfile editUser={editUser} />
             </div>
         );

@@ -1,7 +1,6 @@
 import { countryConstants } from '../_constants';
 
 export function countrys(state = {}, action) {
-  console.log(action)
   switch (action.type) {
     case countryConstants.GETALL_REQUEST:
       return {

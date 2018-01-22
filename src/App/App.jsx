@@ -49,9 +49,9 @@ class App extends React.Component {
                         <PrivateRoute exact path="/edit-profile/:id" component={EditProfilePage} />
                         <PrivateRoute exact path="/acquire-plan/:id" component={AcquirePlanPage} />
                         <PrivateRoute exact path="/cancel-plan/:id" component={CancelSuscriptionPage} />
-                        <PrivateRoute exact path="/edit-password/" component={EditPasswordPage} />
-                        <PrivateRoute exact path="/credit-card/" component={PaymentCardPage} />
-                        <PrivateRoute exact path="/amazon-key/" component={AmazonKeyPage} />
+                        <PrivateRoute exact path="/edit-password" component={EditPasswordPage} />
+                        <PrivateRoute exact path="/credit-card" component={PaymentCardPage} />
+                        <PrivateRoute exact path="/amazon-key" component={AmazonKeyPage} />
                         <PrivateRoute exact path="/ebay-key/" component={EbayKeyPage} />
 
                         <Route path="/login" refresh="true" component={LoginPage} />

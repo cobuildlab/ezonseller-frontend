@@ -26,12 +26,12 @@ class AmazonKeyPage extends React.Component {
 
     render() {
         const { countrys } = this.props;
-        console.log(countrys);
+        console.log(this.props);
         return (
             <div>
+                <Header url={this.props} />
                 {countrys.items &&
                 <div>
-                    <Header/>
                     <AmazonKey countrys={countrys.items} />
                 </div>
                 }

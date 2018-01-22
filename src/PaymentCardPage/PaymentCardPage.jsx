@@ -29,7 +29,7 @@ class PaymentCardPage extends React.Component {
         return (
             <div className="">
                 <Header/>
-                <PaymentCard />
+                <PaymentCard  url={this.props} />
             </div>
         );
     }

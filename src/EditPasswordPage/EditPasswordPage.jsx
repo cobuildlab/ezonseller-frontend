@@ -55,7 +55,7 @@ class EditPasswordPage extends React.Component {
         return (
 
             <div className="col-md-12">
-                <Header/>
+                <Header  url={this.props}/>
                 <h2 className="text-center">Change Password</h2>
                 <div className="col-md-7 content-edit col-center">
                     <div className="row d-flex justify-content-center">

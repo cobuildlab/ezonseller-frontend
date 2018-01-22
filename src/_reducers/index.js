@@ -8,6 +8,7 @@ import { term } from './term.reducer';
 import { recovery } from './recovery.reducer';
 import { alert } from './alert.reducer';
 import { countrys, country } from './country.reducer';
+import { search } from './search.reducer';
 
 const rootReducer = combineReducers({
   authentication,
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
   paymentsPlans,
   cancelPlans,
   countrys,
-  country
+  country,
+  search
 });
 
 export default rootReducer;

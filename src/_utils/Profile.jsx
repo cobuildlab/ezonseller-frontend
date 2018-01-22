@@ -39,10 +39,10 @@ class Profile extends React.Component {
                                 <h5>{user.items.email}</h5>
                             </div>
                             <div className="btn-group-vertical btn-opt">
-                                <Link to={"/edit-profile/" + valueUser.id} className="btn btn-primary btn-top">Edit Profile</Link>
-                                <Link to={"/edit-password/"} className="btn btn-primary btn-top">Change Password</Link>
-                                <Link to={"/amazon-key/"} className="btn btn-primary btn-top">Add Amazon Key</Link>
-                                <Link to={"/ebay-key/"} className="btn btn-primary btn-top">Add Ebay Key</Link>
+                                <Link to={"/edit-profile" + valueUser.id} className="btn btn-primary btn-top">Edit Profile</Link>
+                                <Link to={"/edit-password"} className="btn btn-primary btn-top">Change Password</Link>
+                                <Link to={"/amazon-key"} className="btn btn-primary btn-top">Add Amazon Key</Link>
+                                <Link to={"/ebay-key"} className="btn btn-primary btn-top">Add Ebay Key</Link>
 
                             </div>
                         </div>
@@ -50,7 +50,7 @@ class Profile extends React.Component {
                 </div>
 
                 <div className="col-12 no-padding">
-                    <h2>Credit Card <Link to={"/credit-card/"} className="btn btn-primary rigth-input rigth-add">Add Credit Card</Link></h2>
+                    <h2>Credit Card <Link to={"/credit-card"} className="btn btn-primary rigth-input rigth-add">Add Credit Card</Link></h2>
                     {user.items &&
                     <div className="data-credit">
                         {user.items.credit_cards.map((credit, index) =>

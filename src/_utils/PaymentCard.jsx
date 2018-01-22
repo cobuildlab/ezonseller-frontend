@@ -76,7 +76,7 @@ class PaymentCard extends React.Component {
         const { submitted, card } = this.state;
         return (
             <div className="">
-                <Header/>
+                <Header url={this.props}/>
                 <div className="container">
                     <h2 className="text-center">Add Credit Card</h2>
                     <div className="col-md-7 content-edit col-center">

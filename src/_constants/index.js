@@ -3,3 +3,4 @@ export * from './user.constants';
 export * from './term.constants';
 export * from './card.constants';
 export * from './country.constants';
+export * from './search.constants';

@@ -64,7 +64,7 @@ class AcquirePlanPage extends React.Component {
         let valueUser = JSON.parse(localStorage.getItem('user'));
         return (
             <div className="">
-                <Header/>
+                <Header url={this.props} />
                 <Acquire user={user} paymentsPlans={paymentsPlans}  params={this.props.match.params.id} />
             </div>
         );

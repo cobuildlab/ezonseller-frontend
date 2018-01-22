@@ -32,7 +32,7 @@ class EbayKeyPage extends React.Component {
             <div>
                 {country.items &&
                 <div>
-                    <Header/>
+                    <Header  url={this.props}/>
                     <EbayKey />
                 </div>
                 }

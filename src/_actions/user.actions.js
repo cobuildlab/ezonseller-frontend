@@ -1,4 +1,4 @@
-import { userConstants, countryConstants } from '../_constants';
+import { userConstants, countryConstants, searchConstants } from '../_constants';
 import { userService } from '../_services';
 import { alertActions } from './';
 import { history } from '../_helpers';
@@ -557,7 +557,7 @@ function getSearch(data){
             );
     };
 
-    function request()      { return { type: countryConstants.GET_REQUEST } }
-    function success(data)  { return { type: countryConstants.GET_SUCCESS, data } }
-    function failure(error) { return { type: countryConstants.GET_FAILURE, error } }
+    function request()      { return { type: searchConstants.SEARCH_GET_REQUEST } }
+    function success(data)  { return { type: searchConstants.SEARCH_GET_SUCCESS, data } }
+    function failure(error) { return { type: searchConstants.SEARCH_GET_FAILURE, error } }
 }
