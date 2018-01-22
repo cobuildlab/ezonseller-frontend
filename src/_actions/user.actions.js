@@ -2,7 +2,6 @@ import { userConstants, countryConstants } from '../_constants';
 import { userService } from '../_services';
 import { alertActions } from './';
 import { history } from '../_helpers';
-import { toast } from 'react-toastify';
 
 export const userActions = {
     login,
@@ -23,7 +22,11 @@ export const userActions = {
     acquirePlan,
     cancelSuscription,
     cancelPlan,
-    countryList
+    countryList,
+    amazonKey,
+    ebayKey,
+    deleteAmazonAssociate,
+    deleteEbayAssociate
 };
 
 function login(username, password) {
@@ -415,4 +418,104 @@ function countryList() {
     function request()            { return { type: countryConstants.GETALL_REQUEST } }
     function success(countryList) { return { type: countryConstants.GETALL_SUCCESS, countryList } }
     function failure(error)       { return { type: countryConstants.GETALL_FAILURE, error } }
+}
+
+function amazonKey(data){
+    return dispatch => {
+        dispatch(request());
+
+        userService.amazonKey(data)
+            .then(
+                amazon  => {
+                    dispatch(success(amazon))
+                    console.log(amazon);
+                    dispatch(alertActions.success(amazon.message));
+                    history.push('/profile')
+                },
+                error => {
+                    dispatch(failure, (error));
+                    dispatch(alertActions.error(error));
+                }
+        );
+};
+
+
+
+    function request()      { return { type: userConstants.GETALLPAYMENTS_REQUEST } }
+    function success(amazon)  { return { type: userConstants.GETALLPAYMENTS_SUCCESS, amazon } }
+    function failure(error) { return { type: userConstants.GETALLPAYMENTS_FAILURE, error } }
+}
+
+function ebayKey(data){
+    return dispatch => {
+        dispatch(request());
+
+        userService.ebayKey(data)
+            .then(
+                ebay  => {
+                    dispatch(success(ebay))
+                    console.log(ebay);
+                    dispatch(alertActions.success(ebay.message));
+                    history.push('/profile')
+                },
+                error => {
+                    dispatch(failure, (error));
+                    console.log(error);
+                    dispatch(alertActions.error(error));
+                }
+        );
+};
+
+
+
+    function request()      { return { type: userConstants.GETALLPAYMENTS_REQUEST } }
+    function success(ebay)  { return { type: userConstants.GETALLPAYMENTS_SUCCESS, ebay } }
+    function failure(error) { return { type: userConstants.GETALLPAYMENTS_FAILURE, error } }
+}
+
+function deleteAmazonAssociate(id) {
+    return dispatch => {
+        dispatch(request(id));
+
+        userService.deleteAmazonAssociate(id)
+            .then(
+                amazon => {
+                    dispatch(success(id));
+                    console.log(amazon)
+                    dispatch(alertActions.success(amazon.message));
+                    window.location.reload();
+                },
+                error => {
+                    dispatch(failure, (id, error));
+                    dispatch(alertActions.error(error));
+                }
+        );
+};
+
+    function request(id)        { return { type: userConstants.CARD_DELETE_REQUEST, id } }
+    function success(id)        { return { type: userConstants.CARD_DELETE_SUCCESS, id } }
+    function failure(id, error) { return { type: userConstants.CARD_DELETE_FAILURE, id, error } }
+}
+
+function deleteEbayAssociate(id) {
+    return dispatch => {
+        dispatch(request(id));
+
+        userService.deleteEbayAssociate(id)
+            .then(
+                ebay => {
+                    dispatch(success(id));
+                    dispatch(alertActions.success(ebay.message));
+                    window.location.reload();
+                },
+                error => {
+                    dispatch(failure, (id, error));
+                    dispatch(alertActions.error(error));
+                }
+        );
+};
+
+    function request(id)        { return { type: userConstants.CARD_DELETE_REQUEST, id } }
+    function success(id)        { return { type: userConstants.CARD_DELETE_SUCCESS, id } }
+    function failure(id, error) { return { type: userConstants.CARD_DELETE_FAILURE, id, error } }
 }

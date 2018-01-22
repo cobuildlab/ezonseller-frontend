@@ -20,7 +20,11 @@ export const userService = {
     acquirePlan,
     cancelSuscription,
     cancelPlan,
-    countryList
+    countryList,
+    amazonKey,
+    ebayKey,
+    deleteAmazonAssociate,
+    deleteEbayAssociate
 };
 
 const URL = "https://ezonseller-backend.herokuapp.com/";
@@ -224,6 +228,40 @@ function cancelPlan(data) {
         body: JSON.stringify(data)
     };
     return fetch(URL + 'payment/cancel-subscription/', requestOptions).then(handleResponse);
+}
+
+function amazonKey(data) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { ...authHeader(), 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    };
+    return fetch(URL + 'product/amazon/', requestOptions).then(handleResponse);
+}
+
+function ebayKey(data) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { ...authHeader(), 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    };
+    return fetch(URL + 'product/ebay/', requestOptions).then(handleResponse);
+}
+
+function deleteAmazonAssociate(id) {
+    const requestOptions = {
+        method: 'DELETE',
+        headers: authHeader()
+    };
+    return fetch(URL + 'product/amazon/' + id + '/', requestOptions).then(handleResponse);
+}
+
+function deleteEbayAssociate(id) {
+    const requestOptions = {
+        method: 'DELETE',
+        headers: authHeader()
+    };
+    return fetch(URL + 'product/ebay/' + id + '/', requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

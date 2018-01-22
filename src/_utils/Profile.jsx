@@ -6,12 +6,23 @@ import { userActions } from '../_actions';
 class Profile extends React.Component {
 
     super(props){
-        this.handleDeleteCard  = this.handleDeleteCard.bind(this);
+        this.handleDeleteCard             = this.handleDeleteCard.bind(this);
+        this.handleDeleteAmazonAssociate  = this.handleDeleteAmazonAssociate.bind(this);
+        this.handleDeleteEbayAssociate    = this.handleDeleteEbayAssociate.bind(this);
     }
 
     handleDeleteCard(data, e){
         this.props.dispatch(userActions.deleteCreditCard(data));
     }
+
+    handleDeleteAmazonAssociate(id){
+        this.props.dispatch(userActions.deleteAmazonAssociate(id));
+    }
+
+    handleDeleteEbayAssociate(id){
+        this.props.dispatch(userActions.deleteEbayAssociate(id));
+    }
+    
 
     render() {
         const { user, paymentsPlans } = this.props;
@@ -31,6 +42,8 @@ class Profile extends React.Component {
                                 <Link to={"/edit-profile/" + valueUser.id} className="btn btn-primary btn-top">Edit Profile</Link>
                                 <Link to={"/edit-password/"} className="btn btn-primary btn-top">Change Password</Link>
                                 <Link to={"/amazon-key/"} className="btn btn-primary btn-top">Add Amazon Key</Link>
+                                <Link to={"/ebay-key/"} className="btn btn-primary btn-top">Add Ebay Key</Link>
+
                             </div>
                         </div>
                     </div>
@@ -102,7 +115,57 @@ class Profile extends React.Component {
                         </div>
                             }
                     </div>
+                </div>
 
+                <div className="col-12 no-padding">
+                    <div>
+                        {user.items &&
+                        <div>
+                            {user.items.amazon_account.length != 0 &&
+                            <div>
+                                {user.items.amazon_account.length}
+                                <h2>Amazon Associate</h2>
+                                {paymentsPlans.items &&
+                                <div className="data-credit">
+                                    {user.items.amazon_account.map((amazon, index) =>
+                                    <div  key={amazon.id}>
+                                        <div>
+                                        <button className="btn btn-danger" onClick={this.handleDeleteAmazonAssociate.bind(this, amazon.id)}>Delete</button>
+                                        </div>
+                                        <h5>Name: {amazon.associate_tag}</h5>
+                                        <h5>Cost: {amazon.access_key_id}</h5>
+                                    </div>
+                                        )}
+                                </div>
+                                    }
+                            </div>
+                            }
+                        </div>
+                            }
+                    </div>
+                </div>
+                <div className="col-12 no-padding">
+                    <div>
+                        {user.items &&
+                        <div>
+                            {user.items.ebay_account.length != 0 &&
+                            <div>
+                                <h2>Ebay Associate</h2>
+                                <div className="data-credit">
+                                    {user.items.ebay_account.map((ebay, index) =>
+                                    <div  key={ebay.id}>
+                                        <div>
+                                            <button className="btn btn-danger" onClick={this.handleDeleteEbayAssociate.bind(this, ebay.id)}>Delete</button>
+                                        </div>
+                                        <h5>Client Id: {ebay.client_id}</h5>
+                                    </div>
+                                        )}
+                                </div>
+                            </div>
+                            }
+                        </div>
+                            }
+                    </div>
                 </div>
             </div>
         );

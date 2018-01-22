@@ -12,6 +12,9 @@ function success(message) {
     $().ready(function() {
         $(".fakeloader").fadeOut();
     });
+    toast.success(message, {
+        position: toast.POSITION.BOTTOM_RIGHT
+    });
     return { type: alertConstants.SUCCESS, message };
 }
 
@@ -25,10 +28,12 @@ function error(message) {
 
     if(Promise.resolve(message) === message){
         message.then(function(value) {
-            error = value.message;
-            toast.error(value.message, {
-                position: toast.POSITION.BOTTOM_RIGHT
+            value.message.forEach(data => {
+                toast.error(data, {
+                    position: toast.POSITION.BOTTOM_RIGHT
+                });
             });
+            
         });
     }else{
         error = String(message);
