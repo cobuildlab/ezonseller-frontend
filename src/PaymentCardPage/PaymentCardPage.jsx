@@ -1,14 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header } from '../Header';
-import { Footer } from '../Footer';
 import { PaymentCard } from '../_utils';
 
 import $ from 'jquery';
-
-
-import { userActions } from '../_actions';
 
 class PaymentCardPage extends React.Component {
     

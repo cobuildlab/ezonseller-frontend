@@ -40,7 +40,7 @@ class ChangePasswordPage extends React.Component {
 
     render() {
         const { loggingIn } = this.props;
-        const { code, password, submitted } = this.state;
+        const { code, password } = this.state;
         return (
           <div className="col-md-12">
             <img src={Logo} className="logo-img center-block img-responsive" alt="" />

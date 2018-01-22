@@ -54,7 +54,7 @@ class Header extends React.Component {
               <span className="navbar-toggler-icon"></span>
             </button>
             <a className="navbar-brand" href="#">
-              <img src={Logo} className="logo-nav center-block img-responsive" alt="" />
+              <img src={Logo} className="logo-nav center-block img-responsive" alt="Logo ezonSeller" />
             </a>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav mr-auto">

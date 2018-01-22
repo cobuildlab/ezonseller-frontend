@@ -55,7 +55,7 @@ class ForgotPage extends React.Component {
     render() {
         if(this.state.render){
             const { loggingIn } = this.props;
-            const { email, submitted } = this.state;
+            const { email } = this.state;
             return (
             <div className="col-md-12">
                 <img src={Logo} className="logo-img center-block img-responsive" alt="" />
@@ -63,7 +63,7 @@ class ForgotPage extends React.Component {
                     <div className="col-md-6 section-forgot">
                         <h1>Forgot Password?</h1>
                         <p>Enter your email shorly we will send you an email with access code </p>
-                        <form name="form" name="forgotForm" id="forgotForm" onSubmit={this.handleSubmit}>
+                        <form name="forgotForm" id="forgotForm" onSubmit={this.handleSubmit}>
                             <div className="form-group">
                                 <label htmlFor="username">Email</label>
                                 <input type="email" className="form-control" name="email" value={email} onChange={this.handleChange} required />

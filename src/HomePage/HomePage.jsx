@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Header } from '../Header';
-import { Link } from 'react-router-dom';
 import $ from 'jquery';
 
 class HomePage extends React.Component {
@@ -25,7 +24,7 @@ class HomePage extends React.Component {
                             <div className="row">
                                 {search.items.map((item, index) =>
                                     <div key={index} className="col"> 
-                                        <img src={item.large_image_url} width="30px" height="30px" />
+                                        <img src={item.large_image_url} width="30px" height="30px" alt={item.title} />
                                         <h5>Name: {item.title}</h5>
                                         <h5>Asin: {item.asin}</h5>
                                         <h5>Availability: {item.availability}</h5>

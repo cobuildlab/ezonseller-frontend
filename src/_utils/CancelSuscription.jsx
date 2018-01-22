@@ -45,7 +45,7 @@ class CancelSuscription extends React.Component {
         
     render() {
         const { body } = this.props;
-        const { purchase, value } = this.state;
+        const { purchase } = this.state;
         return (
             <div className="container">
                 <div className="col-md-10 content-edit col-center">

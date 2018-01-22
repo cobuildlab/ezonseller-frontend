@@ -1,4 +1,4 @@
-import { createStore, combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 
 import { authentication } from './authentication.reducer';
 import { registration } from './registration.reducer';
