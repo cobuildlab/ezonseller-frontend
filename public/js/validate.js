@@ -89,7 +89,17 @@ $( "body" ).mousemove(function( event ) {
             submitHandler: function(form) {
             }
         });
-    
+
+        $("#formAmazonKey").validate({
+            submitHandler: function(form) {
+            },
+            rules: {
+                country_id: {
+                    required: true
+                }
+            }
+        });
+
         $("#myFormPurchasePlan").validate({
             submitHandler: function(form) {
         },

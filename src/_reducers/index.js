@@ -7,6 +7,7 @@ import { user, editUser, paymentsPlans, cancelPlans } from './user.reducer';
 import { term } from './term.reducer';
 import { recovery } from './recovery.reducer';
 import { alert } from './alert.reducer';
+import { country } from './country.reducer';
 
 const rootReducer = combineReducers({
   authentication,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   term,
   editUser,
   paymentsPlans,
-  cancelPlans
+  cancelPlans,
+  country
 });
 
 export default rootReducer;

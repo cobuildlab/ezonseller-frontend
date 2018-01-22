@@ -1,4 +1,4 @@
-import { userConstants } from '../_constants';
+import { userConstants, countryConstants } from '../_constants';
 import { userService } from '../_services';
 import { alertActions } from './';
 import { history } from '../_helpers';
@@ -22,7 +22,8 @@ export const userActions = {
     deleteCreditCard,
     acquirePlan,
     cancelSuscription,
-    cancelPlan
+    cancelPlan,
+    countryList
 };
 
 function login(username, password) {
@@ -391,4 +392,27 @@ function cancelPlan(data) {
     function request()            { return { type: userConstants.SUSCRIPTION_GET_REQUEST } }
     function success(suscription) { return { type: userConstants.SUSCRIPTION_GET_SUCCESS, suscription } }
     function failure(error)       { return { type: userConstants.SUSCRIPTION_GET_FAILURE, error } }
+}
+
+
+
+function countryList() {
+    return dispatch => {
+        dispatch(request());
+
+        userService.countryList()
+            .then(
+                countryList => {
+                    dispatch(success(countryList));
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request()            { return { type: countryConstants.GETALL_REQUEST } }
+    function success(countryList) { return { type: countryConstants.GETALL_SUCCESS, countryList } }
+    function failure(error)       { return { type: countryConstants.GETALL_FAILURE, error } }
 }

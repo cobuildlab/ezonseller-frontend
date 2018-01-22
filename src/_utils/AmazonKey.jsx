@@ -14,21 +14,20 @@ class AmazonKey extends React.Component {
             super(props);
 
             this.state = {
-                card:{},
+                amazon: {},
                 submitted: false
             };
 
             this.handleChange = this.handleChange.bind(this);
             this.handleSubmit = this.handleSubmit.bind(this);
-            this.handleCreditCardTypeFromNumber = this.handleCreditCardTypeFromNumber.bind(this)
     }
 
     handleChange(event) {
         const { name, value } = event.target;
-        const { card } = this.state;
+        const { amazon } = this.state;
         this.setState({
-            card: {
-                ...card,
+            amazon: {
+                ...amazon,
                 [name]: value
             }
         });
@@ -37,72 +36,46 @@ class AmazonKey extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.setState({ submitted: true });
-        const { card } = this.state;
+        const { amazon } = this.state;
         const { dispatch } = this.props;
-        if (card.name && card.number_card && card.cod_security &&  card.year && card.month) {
-            let type_card = this.handleCreditCardTypeFromNumber(card.number_card);
-            card.date_expiration = '20' + card.year + '-' + card.month + '-01';
-            card.type_card = type_card;
-            $().ready(function() {
-                var value =  $("#creditCard_form").val();
-                if(value) {
-                    $(".fakeloader").show();
-                    dispatch(userActions.addCreditCard(card));
-                }
-            });
-            
-            
+        if (amazon.country_id && amazon.associate_tag && amazon.access_key_id &&  amazon.secrect_access_key) {
         }
+        console.log(amazon);
     }
-    handleCreditCardTypeFromNumber(num) {
-        // first, sanitize the number by removing all non-digit characters.
-        num = num.replace(/[^\d]/g,'');
-        // now test the number against some regexes to figure out the card type.
-        if (num.match(/^5[1-5]\d{14}$/)) {
-          return 'MasterCard';
-        } else if (num.match(/^4\d{15}/) || num.match(/^4\d{12}/)) {
-          return 'Visa';
-        } else if (num.match(/^3[47]\d{13}/)) {
-          return 'AmEx';
-        } else if (num.match(/^6011\d{12}/)) {
-          return 'Discover';
-        }
-        return 'UNKNOWN';
-      }
-
 
     render() {
-        const { registering  } = this.props;
-        const { submitted, card } = this.state;
+        const { registering, country  } = this.props;
+        const { submitted, amazon } = this.state;
         return (
             <div className="">
                 <Header/>
                 <div className="container">
-                    <h2 className="text-center">Add Credit Card</h2>
+                    <h2 className="text-center">Add Amazon Key</h2>
                     <div className="col-md-7 content-edit col-center">
                         <div className="row d-flex justify-content-center">
                             <div className="col-md-6">
-                                <form name="form" id="formCreditCard" onSubmit={this.handleSubmit}>
+                                <form name="form" id="formAmazonKey" onSubmit={this.handleSubmit}>
                                     <div className="form-group">
-                                        <label htmlFor="number">Number Card</label>
-                                        <input type="text" className="form-control" placeholder="xxxxxxxxxx" name="number_card" onChange={this.handleChange} required />
+                                        <label htmlFor="number">Country</label>
+                                        <select className="form-control" id="country_id" name="country_id" onChange={this.handleChange} required>
+                                            <option defaultValue="" selected>Select a Country</option>
+                                            {country.map(option => {
+                                                return <option value={option.id} key={option.id}>{option.name} - {option.code}</option>
+                                            })}
+                                        </select>
                                    </div>
                                     <div className="form-group">
-                                        <label htmlFor="name">Name PlaceHolder</label>
-                                        <input type="text" className="form-control" placeholder="Ex: Jhon Doe" name="name"  onChange={this.handleChange} required />
+                                        <label htmlFor="name">Associate Tag</label>
+                                        <input type="text" className="form-control" placeholder="" name="associate_tag"  onChange={this.handleChange} required />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="cod_security">Cod Security</label>
-                                        <input type="text" className="form-control" placeholder="Ex: 123" name="cod_security"  onChange={this.handleChange} required />
+                                        <label htmlFor="cod_security">Access Key Id</label>
+                                        <input type="text" className="form-control" placeholder="" name="access_key_id"  onChange={this.handleChange} required />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="year">Year</label>
-                                        <input type="text" className="form-control" placeholder="Ex: 18" name="year" onChange={this.handleChange} required />
+                                        <label htmlFor="year">Secrect Access Key</label>
+                                        <input type="text" className="form-control" placeholder="" name="secrect_access_key" onChange={this.handleChange} required />
                                         <input type="hidden" name="creditCard_form" id="creditCard_form" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="month">Month</label>
-                                        <input type="text" className="form-control" placeholder="Ex: 10" name="month" onChange={this.handleChange} required />
                                     </div>
 
                                     <div className="form-group">
@@ -123,9 +96,9 @@ class AmazonKey extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const { card } = state;
+    const { amazon } = state;
     return {
-        card
+        amazon
     };
 }
 

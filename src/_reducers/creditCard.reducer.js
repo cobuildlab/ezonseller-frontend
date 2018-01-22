@@ -1,9 +1,6 @@
 import { cardConstants } from '../_constants';
 
 export function card(state = {}, action) {
-    console.log(action);
-    console.log(state);
-
   switch (action.type) {
     case cardConstants.CARD_REQUEST:
       return {

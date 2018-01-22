@@ -19,7 +19,8 @@ export const userService = {
     deleteCreditCard,
     acquirePlan,
     cancelSuscription,
-    cancelPlan
+    cancelPlan,
+    countryList
 };
 
 const URL = "https://ezonseller-backend.herokuapp.com/";
@@ -204,6 +205,16 @@ function cancelSuscription() {
     };
 
     return fetch(URL + 'payment/cancel-subscription/', requestOptions).then(handleResponse);;
+}
+
+
+function countryList() {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(URL + 'country-list/', requestOptions).then(handleResponse);;
 }
 
 function cancelPlan(data) {

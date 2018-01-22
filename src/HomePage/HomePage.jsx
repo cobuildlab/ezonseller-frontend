@@ -1,9 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Header } from '../Header';
+import $ from 'jquery';
 
 class HomePage extends React.Component {
     
+    componentWillMount(){
+        $().ready(function() {
+            $(".fakeloader").show();
+        });
+    }
+
     render() {
 
         return (
