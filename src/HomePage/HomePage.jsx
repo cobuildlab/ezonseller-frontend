@@ -7,7 +7,7 @@ class HomePage extends React.Component {
     
     componentWillMount(){
         $().ready(function() {
-            $(".fakeloader").show();
+            $(".fakeloader").fadeOut();
         });
     }
 
