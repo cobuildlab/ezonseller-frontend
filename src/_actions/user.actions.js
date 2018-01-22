@@ -26,7 +26,9 @@ export const userActions = {
     amazonKey,
     ebayKey,
     deleteAmazonAssociate,
-    deleteEbayAssociate
+    deleteEbayAssociate,
+    getCountry,
+    getSearch
 };
 
 function login(username, password) {
@@ -397,16 +399,14 @@ function cancelPlan(data) {
     function failure(error)       { return { type: userConstants.SUSCRIPTION_GET_FAILURE, error } }
 }
 
-
-
 function countryList() {
     return dispatch => {
         dispatch(request());
 
         userService.countryList()
             .then(
-                countryList => {
-                    dispatch(success(countryList));
+                allCountry => {
+                    dispatch(success(allCountry));
                 },
                 error => {
                     dispatch(failure(error));
@@ -416,7 +416,7 @@ function countryList() {
     };
 
     function request()            { return { type: countryConstants.GETALL_REQUEST } }
-    function success(countryList) { return { type: countryConstants.GETALL_SUCCESS, countryList } }
+    function success(allCountry)  { return { type: countryConstants.GETALL_SUCCESS, allCountry } }
     function failure(error)       { return { type: countryConstants.GETALL_FAILURE, error } }
 }
 
@@ -441,9 +441,9 @@ function amazonKey(data){
 
 
 
-    function request()      { return { type: userConstants.GETALLPAYMENTS_REQUEST } }
+    function request()        { return { type: userConstants.GETALLPAYMENTS_REQUEST } }
     function success(amazon)  { return { type: userConstants.GETALLPAYMENTS_SUCCESS, amazon } }
-    function failure(error) { return { type: userConstants.GETALLPAYMENTS_FAILURE, error } }
+    function failure(error)   { return { type: userConstants.GETALLPAYMENTS_FAILURE, error } }
 }
 
 function ebayKey(data){
@@ -518,4 +518,46 @@ function deleteEbayAssociate(id) {
     function request(id)        { return { type: userConstants.CARD_DELETE_REQUEST, id } }
     function success(id)        { return { type: userConstants.CARD_DELETE_SUCCESS, id } }
     function failure(id, error) { return { type: userConstants.CARD_DELETE_FAILURE, id, error } }
+}
+
+function getCountry() {
+    return dispatch => {
+        dispatch(request());
+
+        userService.getCountry()
+            .then(
+                country => {
+                    dispatch(success(country));
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request()        { return { type: countryConstants.GET_REQUEST } }
+    function success(country) { return { type: countryConstants.GET_SUCCESS, country } }
+    function failure(error)   { return { type: countryConstants.GET_FAILURE, error } }
+}
+
+function getSearch(data){
+    return dispatch => {
+        dispatch(request());
+
+        userService.getSearch(data)
+            .then(
+                data => {
+                    dispatch(success(data));
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request()      { return { type: countryConstants.GET_REQUEST } }
+    function success(data)  { return { type: countryConstants.GET_SUCCESS, data } }
+    function failure(error) { return { type: countryConstants.GET_FAILURE, error } }
 }

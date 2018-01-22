@@ -7,7 +7,6 @@ import { AmazonKey } from '../_utils';
 
 import $ from 'jquery';
 
-
 import { userActions } from '../_actions';
 
 class AmazonKeyPage extends React.Component {
@@ -26,14 +25,14 @@ class AmazonKeyPage extends React.Component {
     }
 
     render() {
-        const { country } = this.props;
-        console.log(this.props);
+        const { countrys } = this.props;
+        console.log(countrys);
         return (
             <div>
-                {country.items &&
+                {countrys.items &&
                 <div>
                     <Header/>
-                    <AmazonKey country={country.items} />
+                    <AmazonKey countrys={countrys.items} />
                 </div>
                 }
 
@@ -43,10 +42,9 @@ class AmazonKeyPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const { card, country } = state;
+    const { countrys } = state;
     return {
-        card,
-        country
+        countrys
     };
 }
 

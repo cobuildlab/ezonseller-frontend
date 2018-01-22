@@ -58,7 +58,7 @@ class Profile extends React.Component {
                             <h5>Name: {credit.name}</h5>
                             <h5>Credit Card Number: {credit.number_card}</h5>
                             <h5>Date Expiration: {credit.date_expiration}</h5>
-                            <button role="button" className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}>Delete Credit Card</button>
+                            <button className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}>Delete Credit Card</button>
                         </div>
                             )}
                     </div>
@@ -94,7 +94,7 @@ class Profile extends React.Component {
                     <div>
                         {user.items &&
                         <div>
-                            {user.items.plan_subscription.length == 0 &&
+                            {user.items.plan_subscription.length === 0 &&
                             <div>
                                 <h2>Plans</h2>
                                 {paymentsPlans.items &&
@@ -121,7 +121,7 @@ class Profile extends React.Component {
                     <div>
                         {user.items &&
                         <div>
-                            {user.items.amazon_account.length != 0 &&
+                            {user.items.amazon_account.length !== 0 &&
                             <div>
                                 {user.items.amazon_account.length}
                                 <h2>Amazon Associate</h2>
@@ -148,7 +148,7 @@ class Profile extends React.Component {
                     <div>
                         {user.items &&
                         <div>
-                            {user.items.ebay_account.length != 0 &&
+                            {user.items.ebay_account.length !== 0 &&
                             <div>
                                 <h2>Ebay Associate</h2>
                                 <div className="data-credit">

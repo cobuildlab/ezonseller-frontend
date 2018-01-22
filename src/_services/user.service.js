@@ -24,7 +24,9 @@ export const userService = {
     amazonKey,
     ebayKey,
     deleteAmazonAssociate,
-    deleteEbayAssociate
+    deleteEbayAssociate,
+    getCountry,
+    getSearch
 };
 
 const URL = "https://ezonseller-backend.herokuapp.com/";
@@ -262,6 +264,22 @@ function deleteEbayAssociate(id) {
         headers: authHeader()
     };
     return fetch(URL + 'product/ebay/' + id + '/', requestOptions).then(handleResponse);
+}
+
+function getCountry() {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(URL + 'country/', requestOptions).then(handleResponse);;
+}
+
+function getSearch(data) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(URL + '/product/amazon-search/?keyword=' + data.keyword + '&category='+ data.category +'&country=' + data.country +'&limit=10&offset=0', requestOptions).then(handleResponse);;
 }
 
 function handleResponse(response) {

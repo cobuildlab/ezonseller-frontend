@@ -47,8 +47,9 @@ class AmazonKey extends React.Component {
     }
 
     render() {
-        const { registering, country  } = this.props;
+        const { registering, countrys  } = this.props;
         const { submitted, amazon } = this.state;
+        
         return (
             <div className="">
                 <Header/>
@@ -62,7 +63,7 @@ class AmazonKey extends React.Component {
                                         <label htmlFor="number">Country</label>
                                         <select className="form-control" id="country_id" name="country_id" onChange={this.handleChange} required>
                                             <option defaultValue="" selected>Select a Country</option>
-                                            {country.map(option => {
+                                            {countrys.map(option => {
                                                 return <option value={option.id} key={option.id}>{option.name} - {option.code}</option>
                                             })}
                                         </select>
