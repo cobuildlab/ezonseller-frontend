@@ -45,8 +45,7 @@ class Header extends React.Component {
     
     render() {
         const { country, url } = this.props;
-        const { search }  = this.state
-        console.log(this.props)
+        const { search }  = this.state;
         return (
           <div className="container-fluid no-padding">
             <nav className="navbar navbar-toggleable-md navbar-light fixed-top bg-faded shadow-nav">
@@ -126,7 +125,7 @@ class Header extends React.Component {
                     </li>
                     <li className="nav-item">
                       <div className="form-group">
-                        <label for="inputPassword2" className="sr-only">Password</label>
+                        <label htmlFor="inputPassword2" className="sr-only">Password</label>
                           <input type="text" className="form-control rigth-input tam-input-nav" name="keyword" id="inputPassword2" onChange={this.handleChange} placeholder="Keywords"/>
                           <button type="submit" className="btn btn-primary">Search</button>
                       </div>
