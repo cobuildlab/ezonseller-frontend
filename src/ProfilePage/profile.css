@@ -16,9 +16,9 @@
   left: 20px;
 }
 .btn-opt{
-  position: absolute;
-  right: 15px;
-  top: 30px;
+  position: absolute !important;
+  right: 15px !important;
+  top: 30px !important;
 }
 .btn-top{
  margin-bottom: 10px;
