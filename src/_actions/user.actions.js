@@ -28,7 +28,8 @@ export const userActions = {
     deleteAmazonAssociate,
     deleteEbayAssociate,
     getCountry,
-    getSearch
+    getSearch,
+    activateAccount
 };
 
 function login(username, password) {
@@ -560,4 +561,27 @@ function getSearch(data){
     function request()      { return { type: searchConstants.SEARCH_GET_REQUEST } }
     function success(data)  { return { type: searchConstants.SEARCH_GET_SUCCESS, data } }
     function failure(error) { return { type: searchConstants.SEARCH_GET_FAILURE, error } }
+}
+
+
+function activateAccount(data){
+    return dispatch => {
+        dispatch(request());
+
+        userService.activateAccount(data)
+            .then(
+                data => {
+                    dispatch(success(data));
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request()      { return { type: searchConstants.SEARCH_GET_REQUEST } }
+    function success(data)  { return { type: searchConstants.SEARCH_GET_SUCCESS, data } }
+    function failure(error) { return { type: searchConstants.SEARCH_GET_FAILURE, error } }
+
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import  Logo  from '../assets/logo.png'
+import  Logo  from '../assets/logo.png';
+import $ from 'jquery';
 
 import { userActions } from '../_actions';
 
@@ -20,6 +21,12 @@ class ChangePasswordPage extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount(){
+        $().ready(function() {
+            $(".fakeloader").fadeOut();
+        });
     }
 
     handleChange(e) {

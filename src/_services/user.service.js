@@ -26,11 +26,12 @@ export const userService = {
     deleteAmazonAssociate,
     deleteEbayAssociate,
     getCountry,
-    getSearch
+    getSearch,
+    activateAccount
 };
 
-const URL = "https://ezonseller-backend.herokuapp.com/";
-
+//const URL = "https://ezonseller-backend.herokuapp.com/";
+const URL = "http://192.168.0.12:8000/";
 
 function login(username, password) {
     const requestOptions = {
@@ -287,4 +288,14 @@ function handleResponse(response) {
         return Promise.reject(response.json());
     }
     return response.json();
+}
+
+function activateAccount(data) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    };
+
+    return fetch(URL + 'activate/', requestOptions).then(handleResponse);
 }
