@@ -27,7 +27,8 @@ export const userService = {
     deleteEbayAssociate,
     getCountry,
     getSearch,
-    activateAccount
+    activateAccount,
+    getProductEbay
 };
 
 const URL = "https://ezonseller-backend.herokuapp.com/";
@@ -298,4 +299,13 @@ function activateAccount(data) {
     };
 
     return fetch(URL + 'activate/', requestOptions).then(handleResponse);
+}
+
+function getProductEbay(data) {
+    console.log(data);
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(URL + 'product/ebay-search/?keyword=' + data + '&limit=1&offset=0', requestOptions).then(handleResponse);;
 }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import  Logo  from '../assets/logo.png'
 import './header.css';
+import { history } from '../_helpers';
 
 import { userActions } from '../_actions';
 
@@ -17,7 +18,6 @@ class Header extends React.Component {
     this.handleChange        = this.handleChange.bind(this);
   }
 
-    
     componentDidMount() {
       this.props.dispatch(userActions.getCountry());
     }

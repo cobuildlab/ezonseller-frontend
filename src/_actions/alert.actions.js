@@ -12,7 +12,6 @@ function success(message) {
     $().ready(function() {
         $(".fakeloader").fadeOut();
     });
-    console.log(message);
     toast.success(message, {
         position: toast.POSITION.BOTTOM_RIGHT
     });

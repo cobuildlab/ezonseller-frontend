@@ -29,7 +29,8 @@ export const userActions = {
     deleteEbayAssociate,
     getCountry,
     getSearch,
-    activateAccount
+    activateAccount,
+    getProductEbay
 };
 
 function login(username, password) {
@@ -464,8 +465,6 @@ function ebayKey(data){
         );
 };
 
-
-
     function request()      { return { type: userConstants.GETALLPAYMENTS_REQUEST } }
     function success(ebay)  { return { type: userConstants.GETALLPAYMENTS_SUCCESS, ebay } }
     function failure(error) { return { type: userConstants.GETALLPAYMENTS_FAILURE, error } }
@@ -581,4 +580,25 @@ function activateAccount(data){
     function success(data)  { return { type: searchConstants.SEARCH_GET_SUCCESS, data } }
     function failure(error) { return { type: searchConstants.SEARCH_GET_FAILURE, error } }
 
+}
+
+function getProductEbay(data){
+    return dispatch => {
+        dispatch(request());
+
+        userService.getProductEbay(data)
+            .then(
+                data => {
+                    dispatch(success(data));
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request()      { return { type: searchConstants.SEARCH_GET_REQUEST } }
+    function success(data)  { return { type: searchConstants.SEARCH_GET_SUCCESS, data } }
+    function failure(error) { return { type: searchConstants.SEARCH_GET_FAILURE, error } }
 }
