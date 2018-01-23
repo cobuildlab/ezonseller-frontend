@@ -1,4 +1,4 @@
-import { createStore, combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 
 import { authentication } from './authentication.reducer';
 import { registration } from './registration.reducer';
@@ -7,7 +7,8 @@ import { user, editUser, paymentsPlans, cancelPlans } from './user.reducer';
 import { term } from './term.reducer';
 import { recovery } from './recovery.reducer';
 import { alert } from './alert.reducer';
-import { country } from './country.reducer';
+import { countrys, country } from './country.reducer';
+import { search } from './search.reducer';
 
 const rootReducer = combineReducers({
   authentication,
@@ -20,7 +21,9 @@ const rootReducer = combineReducers({
   editUser,
   paymentsPlans,
   cancelPlans,
-  country
+  countrys,
+  country,
+  search
 });
 
 export default rootReducer;

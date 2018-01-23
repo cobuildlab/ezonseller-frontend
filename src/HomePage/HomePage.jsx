@@ -12,23 +12,40 @@ class HomePage extends React.Component {
     }
 
     render() {
-
+        console.log(this.props)
+        const { search } = this.props;
         return (
             <div>
-                <Header />
+                <Header url={this.props} />
                 <div className="container">
-                <h1>Home</h1>
-                </div>    
-            </div> 
-            
+                    <h1>Home</h1>
+                    <div className="row">
+                        {search.items &&
+                            <div className="row">
+                                {search.items.map((item, index) =>
+                                    <div key={index} className="col"> 
+                                        <img src={item.large_image_url} width="30px" height="30px" alt={item.title} />
+                                        <h5>Name: {item.title}</h5>
+                                        <h5>Asin: {item.asin}</h5>
+                                        <h5>Availability: {item.availability}</h5>
+                                        <a href={item.detail_page_url} target="_blank">Amazon</a>
+                                    </div>
+                                )}
+                            </div>
+                        }
+                    </div>    
+                </div> 
+            </div>
         );
     }
 }
 
 function mapStateToProps(state) {
+    const { search } = state;
     const { loggingIn } = state.authentication;
     return {
-        loggingIn
+        loggingIn,
+        search
     };
 }
 

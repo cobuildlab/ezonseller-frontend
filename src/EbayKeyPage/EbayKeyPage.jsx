@@ -1,8 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header } from '../Header';
-import { Footer } from '../Footer';
 import { EbayKey } from '../_utils';
 
 import $ from 'jquery';
@@ -32,7 +30,7 @@ class EbayKeyPage extends React.Component {
             <div>
                 {country.items &&
                 <div>
-                    <Header/>
+                    <Header  url={this.props}/>
                     <EbayKey />
                 </div>
                 }

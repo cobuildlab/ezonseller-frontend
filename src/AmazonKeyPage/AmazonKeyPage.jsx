@@ -1,12 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header } from '../Header';
-import { Footer } from '../Footer';
 import { AmazonKey } from '../_utils';
 
 import $ from 'jquery';
-
 
 import { userActions } from '../_actions';
 
@@ -26,14 +23,14 @@ class AmazonKeyPage extends React.Component {
     }
 
     render() {
-        const { country } = this.props;
+        const { countrys } = this.props;
         console.log(this.props);
         return (
             <div>
-                {country.items &&
+                <Header url={this.props} />
+                {countrys.items &&
                 <div>
-                    <Header/>
-                    <AmazonKey country={country.items} />
+                    <AmazonKey countrys={countrys.items} />
                 </div>
                 }
 
@@ -43,10 +40,9 @@ class AmazonKeyPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const { card, country } = state;
+    const { countrys } = state;
     return {
-        card,
-        country
+        countrys
     };
 }
 

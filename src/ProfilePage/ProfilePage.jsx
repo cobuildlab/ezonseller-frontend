@@ -34,7 +34,7 @@ class ProfilePage extends React.Component {
         const { user } = this.props;
         return (
             <div className="">
-                <Header/>
+                <Header url={this.props} />
 
                 {user.items &&
                     <Profile user={user.items} />

@@ -12,6 +12,7 @@ function success(message) {
     $().ready(function() {
         $(".fakeloader").fadeOut();
     });
+    console.log(message);
     toast.success(message, {
         position: toast.POSITION.BOTTOM_RIGHT
     });
@@ -28,12 +29,17 @@ function error(message) {
 
     if(Promise.resolve(message) === message){
         message.then(function(value) {
-            value.message.forEach(data => {
-                toast.error(data, {
+            if(typeof value === 'object'){
+                toast.error(value.message, {
                     position: toast.POSITION.BOTTOM_RIGHT
+                });            
+            }else{
+                value.message.forEach(data => {
+                    toast.error(data, {
+                        position: toast.POSITION.BOTTOM_RIGHT
+                    });
                 });
-            });
-            
+            }            
         });
     }else{
         error = String(message);

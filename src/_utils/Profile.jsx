@@ -55,7 +55,7 @@ class Profile extends React.Component {
                 </div>
 
                 <div className="col-12 no-padding">
-                    <h2>Credit Card <Link to={"/credit-card/"} className="btn btn-primary rigth-input rigth-add">Add Credit Card</Link></h2>
+                    <h2>Credit Card <Link to={"/credit-card"} className="btn btn-primary rigth-input rigth-add">Add Credit Card</Link></h2>
                     {user.items &&
                       <div className="row data-credit">
                         <div className="col-md-4">
@@ -102,7 +102,7 @@ class Profile extends React.Component {
                     <div>
                         {user.items &&
                         <div>
-                            {user.items.plan_subscription.length == 0 &&
+                            {user.items.plan_subscription.length === 0 &&
                             <div>
                                 <h2>Plans</h2>
                                 {paymentsPlans.items &&
@@ -129,7 +129,7 @@ class Profile extends React.Component {
                     <div>
                         {user.items &&
                         <div>
-                            {user.items.amazon_account.length != 0 &&
+                            {user.items.amazon_account.length !== 0 &&
                             <div>
                                 {user.items.amazon_account.length}
                                 <h2>Amazon Associate</h2>
@@ -157,7 +157,7 @@ class Profile extends React.Component {
                     <div>
                         {user.items &&
                         <div>
-                            {user.items.ebay_account.length != 0 &&
+                            {user.items.ebay_account.length !== 0 &&
                             <div>
                                 <h2>Ebay Associate</h2>
                                 <div className="data-credit">

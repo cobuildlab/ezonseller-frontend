@@ -1,7 +1,5 @@
 import { termConstants } from '../_constants';
 import { termsService } from '../_services';
-import { alertActions } from './';
-import { history } from '../_helpers';
 
 export const termsActions = {
     getTerms

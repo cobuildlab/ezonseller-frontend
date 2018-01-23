@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Header } from '../Header';
-import { Footer } from '../Footer';
 import $ from 'jquery';
 
 import { userActions } from '../_actions';
@@ -41,7 +39,7 @@ class Acquire extends React.Component {
         event.preventDefault();
         this.setState({ submitted: true });
         const { purchase } = this.state;
-        const { dispatch, editUser } = this.props;
+        const { dispatch } = this.props;
         if (purchase.terms && purchase.id_card) {
             purchase.id_plan   = this.props.params;
             purchase.automatic = "False";
@@ -56,7 +54,6 @@ class Acquire extends React.Component {
     render() {
         const { user, paymentsPlans } = this.props;
         const { purchase, submitted } = this.state;
-        let valueUser = JSON.parse(localStorage.getItem('user'));
         return (
             <div className="">
                

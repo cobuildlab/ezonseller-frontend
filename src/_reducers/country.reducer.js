@@ -1,8 +1,6 @@
 import { countryConstants } from '../_constants';
 
-export function country(state = {}, action) {
-  console.log(action)
-  console.log(state)
+export function countrys(state = {}, action) {
   switch (action.type) {
     case countryConstants.GETALL_REQUEST:
       return {
@@ -10,9 +8,29 @@ export function country(state = {}, action) {
       };
     case countryConstants.GETALL_SUCCESS:
       return {
-        items: action.countryList
+        items: action.allCountry
       };
     case countryConstants.GETALL_FAILURE:
+      return {
+        error: action.error
+      };
+    default:
+      return state
+  }
+}
+
+
+export function country(state = {}, action) {
+  switch (action.type) {
+    case countryConstants.GET_REQUEST:
+      return {
+        loading: true
+      };
+    case countryConstants.GET_SUCCESS:
+      return {
+        items: action.country
+      };
+    case countryConstants.GET_FAILURE:
       return {
         error: action.error
       };

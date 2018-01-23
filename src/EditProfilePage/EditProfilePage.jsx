@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header } from '../Header';
 import { EditProfile } from '../_utils';
@@ -37,7 +36,7 @@ class EditProfilePage extends React.Component {
 
         return (
             <div className="">
-                <Header/>
+                <Header  url={this.props}/>
                 <EditProfile editUser={editUser} />
             </div>
         );

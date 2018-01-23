@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Header } from '../Header';
 import $ from 'jquery';
 
 import { userActions } from '../_actions';
@@ -53,9 +52,7 @@ class EditProfile extends React.Component {
     }
 
     handleChangeImg(event) {
-        
-        const { name, value } = event.target;
-        const { photo } = this.state;
+        const { value } = event.target;
         this.setState({
             photo: value
         });
@@ -64,7 +61,7 @@ class EditProfile extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.setState({ submitted: true });
-        const { user, editUser } = this.state;
+        const { user } = this.state;
         const { dispatch } = this.props;
 
         if (user.first_name && user.last_name && user.username) {
@@ -103,10 +100,9 @@ class EditProfile extends React.Component {
 
     render() {
         const { editUser } = this.props;
-        const { submitted, user, photo } = this.state;
+        const { photo } = this.state;
         return (
-            <div className="">
-
+            <div>
                 <h2 className="text-center">Edit Profile</h2>
                     {editUser.items &&
                     <div className="col-md-7 content-edit col-center">

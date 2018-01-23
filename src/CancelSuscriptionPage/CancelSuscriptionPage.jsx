@@ -38,7 +38,7 @@ class CancelSuscriptionPage extends React.Component {
         const { cancelPlans } = this.props;
         return (
             <div className="">
-                <Header />
+                <Header  url={this.props} />
                 <div className="col-12 no-padding">
                     {cancelPlans.items &&
                     <div>
