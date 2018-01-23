@@ -429,7 +429,6 @@ function amazonKey(data){
             .then(
                 amazon  => {
                     dispatch(success(amazon))
-                    console.log(amazon);
                     dispatch(alertActions.success(amazon.message));
                     history.push('/profile')
                 },
@@ -455,13 +454,11 @@ function ebayKey(data){
             .then(
                 ebay  => {
                     dispatch(success(ebay))
-                    console.log(ebay);
                     dispatch(alertActions.success(ebay.message));
                     history.push('/profile')
                 },
                 error => {
                     dispatch(failure, (error));
-                    console.log(error);
                     dispatch(alertActions.error(error));
                 }
         );
@@ -482,7 +479,6 @@ function deleteAmazonAssociate(id) {
             .then(
                 amazon => {
                     dispatch(success(id));
-                    console.log(amazon)
                     dispatch(alertActions.success(amazon.message));
                     window.location.reload();
                 },
@@ -572,6 +568,7 @@ function activateAccount(data){
             .then(
                 data => {
                     dispatch(success(data));
+                    dispatch(alertActions.success(data.message));
                 },
                 error => {
                     dispatch(failure(error));

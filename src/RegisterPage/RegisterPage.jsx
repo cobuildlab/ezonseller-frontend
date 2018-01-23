@@ -114,13 +114,13 @@ class RegisterPage extends React.Component {
                           <div className="col-md-6">
                             <div className='form-group'>
                                 <label htmlFor="password">Password</label>
-                                <input type="password" className="form-control" name="password" value={user.password} onChange={this.handleChange} required />
+                                <input type="password" className="form-control" id="password" name="password" value={user.password} onChange={this.handleChange} required />
                             </div>
                           </div>
                           <div className="col-md-6">
                             <div className='form-group'>
                                 <label htmlFor="password">Confirm Password</label>
-                                <input type="password" className="form-control" name="password" value={user.password} onChange={this.handleChange} required />
+                                <input type="password" className="form-control" name="confirm_password" value={user.confirm_password} onChange={this.handleChange} required />
                             </div>
                           </div>
                         </div>

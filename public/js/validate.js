@@ -8,7 +8,31 @@ $( "body" ).mousemove(function( event ) {
     $("#commentForm").validate({
         submitHandler: function(form) {
         $('#register_form').val('1');
-        }
+        },
+        rules: {
+            first_name: {
+                    required: true,
+                    lettersonly: true 
+                },
+				last_name: {
+                    required: true,
+                    lettersonly: true
+                },
+                username: {
+                    required: true
+                },
+				email: {
+					required: true,
+                    email: true
+				},
+				password: {
+					required: true,
+				},
+				confirm_password: {
+					required: true,
+                    equalTo: "#password"
+                }
+            }
     });
 
     $("#forgotForm").validate({

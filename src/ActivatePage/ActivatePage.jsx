@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import  Logo  from '../assets/logo.png'
+import { history } from '../_helpers';
+import Logo from '../assets/logo.png'
 import $ from 'jquery';
 
 import { userActions } from '../_actions';
@@ -11,12 +12,12 @@ class ActivatePage extends React.Component {
         super(props);
     }
 
-    componentDidMount(){
-        console.log(1);
+    componentWillReceiveProps = (nextProps) =>{
         $().ready(function() {
             $(".fakeloader").fadeOut();
         });
-    }
+        history.push('/profile')
+    };
 
     componentWillMount() {
        this.props.dispatch(userActions.activateAccount(this.props.match.params))
@@ -25,8 +26,7 @@ class ActivatePage extends React.Component {
     render() {
         const { loggingIn } = this.props;
         return (
-            <div className="col-md-12">
-                <h1>Hola</h1>
+            <div>
             </div>
         );
 
