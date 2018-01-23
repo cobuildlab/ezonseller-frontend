@@ -24,27 +24,23 @@ class EbayKeyPage extends React.Component {
     }
 
     render() {
-        const { country } = this.props;
-        console.log(this.props);
+        const { logginIn } = this.props;
         return (
             <div>
-                {country.items &&
+                
                 <div>
                     <Header  url={this.props}/>
                     <EbayKey />
                 </div>
-                }
-
             </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    const { card, country } = state;
+    const { loggingIn } = state.authentication;
     return {
-        card,
-        country
+        loggingIn
     };
 }
 

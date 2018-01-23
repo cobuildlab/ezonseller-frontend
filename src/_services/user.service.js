@@ -26,11 +26,13 @@ export const userService = {
     deleteAmazonAssociate,
     deleteEbayAssociate,
     getCountry,
-    getSearch
+    getSearch,
+    activateAccount,
+    getProductEbay
 };
 
 const URL = "https://ezonseller-backend.herokuapp.com/";
-
+//const URL = "http://192.168.0.12:8000/";
 
 function login(username, password) {
     const requestOptions = {
@@ -287,4 +289,23 @@ function handleResponse(response) {
         return Promise.reject(response.json());
     }
     return response.json();
+}
+
+function activateAccount(data) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    };
+
+    return fetch(URL + 'activate/', requestOptions).then(handleResponse);
+}
+
+function getProductEbay(data) {
+    console.log(data);
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(URL + 'product/ebay-search/?keyword=' + data + '&limit=1&offset=0', requestOptions).then(handleResponse);;
 }

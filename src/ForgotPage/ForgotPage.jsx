@@ -32,6 +32,12 @@ class ForgotPage extends React.Component {
         }.bind(this), 10);
     }
 
+    componentDidMount(){
+        $().ready(function() {
+            $(".fakeloader").fadeOut();
+        });
+    }
+
     handleChange(e) {
         const { name, value } = e.target;
         this.setState({ [name]: value });

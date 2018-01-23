@@ -131,7 +131,6 @@ class Profile extends React.Component {
                         <div>
                             {user.items.amazon_account.length !== 0 &&
                             <div>
-                                {user.items.amazon_account.length}
                                 <h2>Amazon Associate</h2>
                                 {paymentsPlans.items &&
                                 <div className="data-credit">

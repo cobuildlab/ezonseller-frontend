@@ -28,7 +28,9 @@ export const userActions = {
     deleteAmazonAssociate,
     deleteEbayAssociate,
     getCountry,
-    getSearch
+    getSearch,
+    activateAccount,
+    getProductEbay
 };
 
 function login(username, password) {
@@ -428,7 +430,6 @@ function amazonKey(data){
             .then(
                 amazon  => {
                     dispatch(success(amazon))
-                    console.log(amazon);
                     dispatch(alertActions.success(amazon.message));
                     history.push('/profile')
                 },
@@ -454,19 +455,15 @@ function ebayKey(data){
             .then(
                 ebay  => {
                     dispatch(success(ebay))
-                    console.log(ebay);
                     dispatch(alertActions.success(ebay.message));
                     history.push('/profile')
                 },
                 error => {
                     dispatch(failure, (error));
-                    console.log(error);
                     dispatch(alertActions.error(error));
                 }
         );
 };
-
-
 
     function request()      { return { type: userConstants.GETALLPAYMENTS_REQUEST } }
     function success(ebay)  { return { type: userConstants.GETALLPAYMENTS_SUCCESS, ebay } }
@@ -481,7 +478,6 @@ function deleteAmazonAssociate(id) {
             .then(
                 amazon => {
                     dispatch(success(id));
-                    console.log(amazon)
                     dispatch(alertActions.success(amazon.message));
                     window.location.reload();
                 },
@@ -546,6 +542,51 @@ function getSearch(data){
         dispatch(request());
 
         userService.getSearch(data)
+            .then(
+                data => {
+                    dispatch(success(data));
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request()      { return { type: searchConstants.SEARCH_GET_REQUEST } }
+    function success(data)  { return { type: searchConstants.SEARCH_GET_SUCCESS, data } }
+    function failure(error) { return { type: searchConstants.SEARCH_GET_FAILURE, error } }
+}
+
+
+function activateAccount(data){
+    return dispatch => {
+        dispatch(request());
+
+        userService.activateAccount(data)
+            .then(
+                data => {
+                    dispatch(success(data));
+                    dispatch(alertActions.success(data.message));
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request()      { return { type: searchConstants.SEARCH_GET_REQUEST } }
+    function success(data)  { return { type: searchConstants.SEARCH_GET_SUCCESS, data } }
+    function failure(error) { return { type: searchConstants.SEARCH_GET_FAILURE, error } }
+
+}
+
+function getProductEbay(data){
+    return dispatch => {
+        dispatch(request());
+
+        userService.getProductEbay(data)
             .then(
                 data => {
                     dispatch(success(data));
