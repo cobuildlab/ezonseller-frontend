@@ -43,7 +43,7 @@ class ChangePasswordPage extends React.Component {
         const { code, password } = this.state;
         return (
           <div className="col-md-12">
-            <img src={Logo} className="logo-img center-block img-responsive" alt="" />
+            <img src={Logo} className="logo-img center-block img-fluid" alt="" />
             <div className="row top d-flex justify-content-center">
               <div className="col-md-6 section-register">
                   <h2>Change Password</h2>

@@ -28,9 +28,9 @@ body {
   box-shadow: 1px 1px 8px 1px #ccc;
 }
 .top-section{
-  padding-top: 85px;
+  padding-top: 95px;
   min-height: 100vh;
-  zoom: 0.88;
+  zoom: 0.80;
 }
 .tam-input-nav{
   width: 250px;
@@ -62,4 +62,134 @@ body {
 .pos-menu{
   left: -100px;
   top: 45px;
+}
+.login-section{
+  padding: 85px 80px;
+  background-color: #eaeaea;
+}
+.register-section{
+  background-color: #4487c5;
+  padding: 125px;
+  color: #fff;
+}
+.top{
+  margin-top: 50px;
+}
+.section-forgot{
+  padding: 85px 80px;
+  background-color: #eaeaea;
+  color: #333;
+}
+.content-data{
+  display: inline-block;
+  position: relative;
+  top: -15px;
+  left: 20px;
+}
+
+@media only screen and ( max-width: 768px ) {
+
+  /* Aquí van los estilos para iPad vertical */
+
+  .login-section{
+    padding: 40px;
+    background-color: #eaeaea;
+  }
+  .register-section{
+    background-color: #4487c5;
+    padding: 80px 50px;
+    color: #fff;
+  }
+  .top{
+    margin-top: 100px;
+  }
+  .section-forgot{
+    padding: 50px 60px;
+    background-color: #eaeaea;
+    color: #333;
+  }
+  .border{
+    border-bottom: 1px solid #ccc;
+  }
+
+
+}
+@media only screen and ( max-width: 480px ) {
+
+  /* Aquí van los estilos para iPhone vertical */
+  .top-section{
+    padding-top: 90px;
+    padding-bottom: 50px;
+    min-height: 100vh;
+    zoom: 0.80;
+  }
+  .term {
+    padding: 5px 15px;
+    color: #555;
+    margin-top: -5px;
+    width: 280px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .tam-input-nav{
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .content-data{
+    display: block;
+    position: initial;
+    top: 0px;
+    left: 0px;
+  }
+  .show>.dropdown-menu {
+    display: block;
+    left: -88px;
+  }
+  .content-edit {
+    padding: 30px;
+    background-color: #eaeaea;
+    margin-top: 20px;
+}
+
+}
+@media only screen and ( max-width: 320px ) {
+
+  /* Aquí van los estilos para iPhone vertical */
+  .top-section{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    min-height: 100vh;
+    zoom: 0.80;
+  }
+  .term {
+    padding: 5px 15px;
+    color: #555;
+    margin-top: -50px;
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .tam-input-nav{
+    width: 100%;
+    margin-bottom: 5px;
+    margin-top: 5px
+  }
+  .content-data{
+    display: block;
+    position: initial;
+    top: 0px;
+    left: 0px;
+  }
+  .show>.dropdown-menu {
+    display: block;
+    left: -88px;
+  }
+  .content-edit {
+    padding: 30px;
+    background-color: #eaeaea;
+    margin-top: 20px;
+}
+
 }
