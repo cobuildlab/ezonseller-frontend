@@ -22,7 +22,7 @@ class Profile extends React.Component {
     handleDeleteEbayAssociate(id){
         this.props.dispatch(userActions.deleteEbayAssociate(id));
     }
-    
+
 
     render() {
         const { user, paymentsPlans } = this.props;
@@ -38,13 +38,18 @@ class Profile extends React.Component {
                                 <h5>{user.items.username}</h5>
                                 <h5>{user.items.email}</h5>
                             </div>
-                            <div className="btn-group-vertical btn-opt">
-                                <Link to={"/edit-profile" + valueUser.id} className="btn btn-primary btn-top">Edit Profile</Link>
-                                <Link to={"/edit-password"} className="btn btn-primary btn-top">Change Password</Link>
-                                <Link to={"/amazon-key"} className="btn btn-primary btn-top">Add Amazon Key</Link>
-                                <Link to={"/ebay-key"} className="btn btn-primary btn-top">Add Ebay Key</Link>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-opt dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Action
+                                </button>
+                                <div class="dropdown-menu">
+                                    <Link to={"/edit-profile/" + valueUser.id} className="dropdown-item">Edit Profile</Link>
+                                    <Link to={"/edit-password/"} className="dropdown-item">Change Password</Link>
+                                    <Link to={"/amazon-key/"} className="dropdown-item">Add Amazon Key</Link>
+                                    <Link to={"/ebay-key/"} className="dropdown-item">Add Ebay Key</Link>
+                                </div>
+                              </div>
 
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -52,16 +57,19 @@ class Profile extends React.Component {
                 <div className="col-12 no-padding">
                     <h2>Credit Card <Link to={"/credit-card"} className="btn btn-primary rigth-input rigth-add">Add Credit Card</Link></h2>
                     {user.items &&
-                    <div className="data-credit">
-                        {user.items.credit_cards.map((credit, index) =>
-                        <div key={credit.id}>
-                            <h5>Name: {credit.name}</h5>
-                            <h5>Credit Card Number: {credit.number_card}</h5>
-                            <h5>Date Expiration: {credit.date_expiration}</h5>
-                            <button className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}>Delete Credit Card</button>
+                      <div className="row data-credit">
+                        <div className="col-md-4">
+                              {user.items.credit_cards.map((credit, index) =>
+                              <div key={credit.id}>
+                                  <h5>Name: {credit.name}</h5>
+                                  <h5>Credit Card Number: {credit.number_card}</h5>
+                                  <h5>Date Expiration: {credit.date_expiration}</h5>
+                                  <button role="button" className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}>Delete Credit Card</button>
+                              </div>
+                                  )}
                         </div>
-                            )}
-                    </div>
+                      </div>
+
                         }
                 </div>
 
@@ -128,11 +136,12 @@ class Profile extends React.Component {
                                 <div className="data-credit">
                                     {user.items.amazon_account.map((amazon, index) =>
                                     <div  key={amazon.id}>
-                                        <div>
-                                        <button className="btn btn-danger" onClick={this.handleDeleteAmazonAssociate.bind(this, amazon.id)}>Delete</button>
-                                        </div>
+
                                         <h5>Name: {amazon.associate_tag}</h5>
                                         <h5>Cost: {amazon.access_key_id}</h5>
+                                          <div>
+                                          <button className="btn btn-danger" onClick={this.handleDeleteAmazonAssociate.bind(this, amazon.id)}>Delete</button>
+                                          </div>
                                     </div>
                                         )}
                                 </div>

@@ -28,9 +28,9 @@ class LoginPage extends React.Component {
         $().ready(function() {
             $(".fakeloader").fadeOut();
         });
-        setTimeout(function(){ 
+        setTimeout(function(){
             this.setState({render: true})
-        }.bind(this), 150); 
+        }.bind(this), 150);
     }
 
     handleChange(e) {
@@ -40,7 +40,7 @@ class LoginPage extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        
+
         this.setState({ submitted: true });
         const { username, password } = this.state;
         const { dispatch } = this.props;
@@ -58,7 +58,7 @@ class LoginPage extends React.Component {
             const { username, password, submitted } = this.state;
             return (
                 <div className="col-md-12">
-                    <img src={Logo} className="logo-img center-block img-responsive" alt="" />
+                    <img src={Logo} className="logo-img center-block img-fluid" alt="" />
                     <div className="row top">
                     <div className="col-md-6 login-section">
                     <h1>Login</h1>
@@ -100,7 +100,7 @@ class LoginPage extends React.Component {
 
 
             );
-        
+
         }else{
             return (<div className="backgroud-body"></div>);
         }

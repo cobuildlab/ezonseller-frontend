@@ -3,13 +3,15 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 100px;
 }
 .top{
   margin-top: 50px;
 }
+.bottom-title{
+  margin-bottom: 30px;
+}
 .section-register{
-  padding: 85px 80px;
+  padding: 40px 70px;
   background-color: #eaeaea;
   color: #333;
 }
