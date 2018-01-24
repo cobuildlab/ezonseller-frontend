@@ -42,7 +42,6 @@ class EbayKey extends React.Component {
         const { registering } = this.props;
         return (
             <div className="">
-                <Header url={this.props}/>
                 <div className="container">
                     <h2 className="text-center">Add Ebay Key</h2>
                     <div className="col-md-7 content-edit col-center">

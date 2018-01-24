@@ -38,11 +38,11 @@ class Profile extends React.Component {
                                 <h5>{user.items.username}</h5>
                                 <h5>{user.items.email}</h5>
                             </div>
-                            <div class="btn-group btn-opt">
-                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div className="btn-group btn-opt">
+                                <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   Action
                                 </button>
-                                <div class="dropdown-menu">
+                                <div className="dropdown-menu">
                                     <Link to={"/edit-profile/" + valueUser.id} className="dropdown-item">Edit Profile</Link>
                                     <Link to={"/edit-password/"} className="dropdown-item">Change Password</Link>
                                     <Link to={"/amazon-key/"} className="dropdown-item">Add Amazon Key</Link>

@@ -19,6 +19,7 @@ class Header extends React.Component {
   }
 
     componentDidMount() {
+      console.log(this.props.url);
       if(this.props.url.location.pathname === '/'){
         this.props.dispatch(userActions.getCountry());
       }

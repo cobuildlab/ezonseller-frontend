@@ -24,13 +24,12 @@ class AmazonKeyPage extends React.Component {
 
     render() {
         const { countrys } = this.props;
-        console.log(this.props);
         return (
             <div>
                 <Header url={this.props} />
                 {countrys.items &&
                 <div>
-                    <AmazonKey countrys={countrys.items} />
+                    <AmazonKey />
                 </div>
                 }
 
@@ -40,8 +39,9 @@ class AmazonKeyPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const { countrys } = state;
+    const { user, countrys } = state;
     return {
+        user,
         countrys
     };
 }

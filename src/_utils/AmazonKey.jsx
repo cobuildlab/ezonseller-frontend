@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Header } from '../Header';
 import $ from 'jquery';
 
-
 import { userActions } from '../_actions';
 
 class AmazonKey extends React.Component {
@@ -46,25 +45,26 @@ class AmazonKey extends React.Component {
     }
 
     render() {
-        const { registering, countrys  } = this.props;       
+        const { registering, countrys  } = this.props;
         return (
             <div className="">
-                <Header url={this.props} />
                 <div className="container">
                     <h2 className="text-center">Add Amazon Key</h2>
                     <div className="col-md-7 content-edit col-center">
                         <div className="row d-flex justify-content-center">
                             <div className="col-md-6">
                                 <form name="form" id="formAmazonKey" onSubmit={this.handleSubmit}>
+                                    {countrys.items &&
                                     <div className="form-group">
                                         <label htmlFor="number">Country</label>
                                         <select className="form-control" id="country_id" name="country_id" onChange={this.handleChange} required>
                                             <option defaultValue="" selected>Select a Country</option>
-                                            {countrys.map(option => {
+                                            {countrys.items.map(option => {
                                                 return <option value={option.id} key={option.id}>{option.name} - {option.code}</option>
                                             })}
                                         </select>
                                    </div>
+                                    }
                                     <div className="form-group">
                                         <label htmlFor="name">Associate Tag</label>
                                         <input type="text" className="form-control" placeholder="" name="associate_tag"  onChange={this.handleChange} required />
@@ -96,9 +96,9 @@ class AmazonKey extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const { amazon } = state;
+    const { countrys } = state;
     return {
-        amazon
+        countrys
     };
 }
 
