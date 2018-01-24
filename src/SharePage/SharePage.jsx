@@ -4,13 +4,11 @@ import { Header } from '../Header';
 
 import $ from 'jquery';
 
-
 import { userActions } from '../_actions';
 
 class SharePage extends React.Component {
     
     componentWillMount(){
-        console.log(this.props);
         $().ready(function() {
             $(".fakeloader").show();
         });
