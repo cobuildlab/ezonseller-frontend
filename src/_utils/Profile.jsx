@@ -38,8 +38,8 @@ class Profile extends React.Component {
                                 <h5>{user.items.username}</h5>
                                 <h5>{user.items.email}</h5>
                             </div>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary btn-opt dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="btn-group btn-opt">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   Action
                                 </button>
                                 <div class="dropdown-menu">
@@ -48,13 +48,13 @@ class Profile extends React.Component {
                                     <Link to={"/amazon-key/"} className="dropdown-item">Add Amazon Key</Link>
                                     <Link to={"/ebay-key/"} className="dropdown-item">Add Ebay Key</Link>
                                 </div>
-                              </div>
+                            </div>
 
                         </div>
                     </div>
                 </div>
 
-                <div className="col-12 no-padding">
+                <div className="col-12">
                     <h2>Credit Card <Link to={"/credit-card"} className="btn btn-primary rigth-input rigth-add">Add Credit Card</Link></h2>
                     {user.items &&
                       <div className="row data-credit">
@@ -162,10 +162,10 @@ class Profile extends React.Component {
                                 <div className="data-credit">
                                     {user.items.ebay_account.map((ebay, index) =>
                                     <div  key={ebay.id}>
-                                        <div>
-                                            <button className="btn btn-danger" onClick={this.handleDeleteEbayAssociate.bind(this, ebay.id)}>Delete</button>
-                                        </div>
                                         <h5>Client Id: {ebay.client_id}</h5>
+                                          <div>
+                                              <button className="btn btn-danger" onClick={this.handleDeleteEbayAssociate.bind(this, ebay.id)}>Delete</button>
+                                          </div>
                                     </div>
                                         )}
                                 </div>

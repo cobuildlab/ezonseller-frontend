@@ -71,22 +71,22 @@ class RegisterPage extends React.Component {
             const { user } = this.state;
             return (
 
-            <div className="col-md-12">
-                <img src={Logo} className="logo-img center-block img-responsive" alt="" />
+            <div className="col-md-12 no-padding">
+                <img src={Logo} className="logo-img center-block img-fluid" alt="" />
                 <div className="row top d-flex justify-content-center">
-                <div className="col-md-8 section-register">
+                <div className="col-md-8 col-10 section-register">
                     <h2 className="bottom-title">Register</h2>
                     <form name="form" id="commentForm" onSubmit={this.handleSubmit}>
 
                         <div className="row">
-                          <div className="col-md-6">
+                          <div className="col-md-6 no-padding">
                             <div className='form-group'>
                                 <label htmlFor="firstName">First Name</label>
                                 <input type="text" className="form-control" name="first_name" value={user.first_name} onChange={this.handleChange} required />
 
                             </div>
                           </div>
-                          <div className="col-md-6">
+                          <div className="col-md-6 no-padding">
                             <div className='form-group'>
                                 <label htmlFor="lastName">Last Name</label>
                                 <input type="text" className="form-control" name="last_name" value={user.last_name} onChange={this.handleChange} required />
@@ -96,13 +96,13 @@ class RegisterPage extends React.Component {
                         </div>
 
                         <div className="row">
-                          <div className="col-md-6">
+                          <div className="col-md-6 no-padding">
                             <div className='form-group'>
                                 <label htmlFor="username">Username</label>
                                 <input type="text" className="form-control" name="username" value={user.username} onChange={this.handleChange} required />
                             </div>
                           </div>
-                          <div className="col-md-6">
+                          <div className="col-md-6 no-padding">
                             <div className='form-group'>
                                 <label htmlFor="email">Email</label>
                                 <input type="email" className="form-control" name="email" value={user.email} onChange={this.handleChange} required />
@@ -111,13 +111,13 @@ class RegisterPage extends React.Component {
                         </div>
 
                         <div className="row">
-                          <div className="col-md-6">
+                          <div className="col-md-6 no-padding">
                             <div className='form-group'>
                                 <label htmlFor="password">Password</label>
                                 <input type="password" className="form-control" id="password" name="password" value={user.password} onChange={this.handleChange} required />
                             </div>
                           </div>
-                          <div className="col-md-6">
+                          <div className="col-md-6 no-padding">
                             <div className='form-group'>
                                 <label htmlFor="password">Confirm Password</label>
                                 <input type="password" className="form-control" name="confirm_password" value={user.confirm_password} onChange={this.handleChange} required />
@@ -126,13 +126,13 @@ class RegisterPage extends React.Component {
                         </div>
 
                         <div className="row">
-                          <div className="col-md-12">
+                          <div className="col-md-12 no-padding">
                             <div className='form-group'>
                                 <div className="row">
-                                    <div className="col-md-12">
+                                    <div className="col-md-12 no-padding">
                                     <input type="radio" className="" name="terms" onChange={this.handleChange} required />
                                     <input type="hidden" name="register_form" id="register_form" value={user.register_form} />
-                                    <label htmlFor="terms"> <Link to="/terms" className="btn btn-link term">I Accept the Terms and Conditions Ezonseller.</Link></label>
+                                     <Link to="/terms" className="btn btn-link term">I Accept the Terms and Conditions Ezonseller.</Link>
                                     </div>
                                 </div>
                             </div>

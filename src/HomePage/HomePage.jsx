@@ -7,16 +7,16 @@ import { history } from '../_helpers';
 import $ from 'jquery';
 
 class HomePage extends React.Component {
-    
+
     constructor(props){
         super(props);
         this.state = {
           search: {}
         };
-        
+
         this.handleSaveProduct = this.handleSaveProduct.bind(this);
     }
-    
+
     componentWillMount(){
         $().ready(function() {
             $(".fakeloader").fadeOut();
@@ -40,20 +40,24 @@ class HomePage extends React.Component {
                         {search.items &&
                             <div className="row">
                                 {search.items.slice(0, 9).map((item, index) =>
-                                    <div key={index} className="col"> 
-                                        <img src={item.large_image_url} width="100px" height="100px" alt={item.title} />
-                                        <h5>Name: {item.title}</h5>
-                                        <h5>Asin: {item.asin}</h5>
-                                        <h5>Availability: {item.availability}</h5>
-                                        <a href={item.detail_page_url} target="_blank">Amazon</a>
-                                        <a href={'https://camelcamelcamel.com/' + item.title + '/product/' +  item.asin} target="_blank">Camel Camel Camel</a>
-                                        <button className="btn btn-danger" onClick={this.handleSaveProduct.bind(this, item)}>Share Ebay</button>
+                                    <div key={index} className="col-3">
+                                      <div className="card">
+                                        <img className="card-img-top" src={item.large_image_url} height="250" alt={item.title} />
+                                        <div className="card-body">
+                                          <h5 className="card-title">Name: {item.title}</h5>
+                                          <h5>Asin: {item.asin}</h5>
+                                          <h5>Availability: {item.availability}</h5>
+                                          <a href={item.detail_page_url} target="_blank">Amazon</a>
+                                          <a href={'https://camelcamelcamel.com/' + item.title + '/product/' +  item.asin} target="_blank">Camel Camel Camel</a>
+                                          <button className="btn btn-danger" onClick={this.handleSaveProduct.bind(this, item)}>Share Ebay</button>
+                                        </div>
+                                      </div>
                                     </div>
                                 )}
                             </div>
                         }
-                    </div>    
-                </div> 
+                    </div>
+                </div>
             </div>
         );
     }

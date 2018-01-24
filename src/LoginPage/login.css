@@ -4,18 +4,6 @@
   margin-left: auto;
   margin-right: auto;
 }
-.top{
-  margin-top: 50px;
-}
-.login-section{
-  padding: 85px 80px;
-  background-color: #eaeaea;
-}
-.register-section{
-  background-color: #4487c5;
-  padding: 125px;
-  color: #fff;
-}
 .forgot{
   float: right;
   padding: 10px 0px;

@@ -27,9 +27,9 @@ class ForgotPage extends React.Component {
     }
 
     componentWillMount() {
-        setTimeout(function(){ 
+        setTimeout(function(){
             this.setState({render: true})
-        }.bind(this), 10); 
+        }.bind(this), 10);
     }
 
     componentDidMount(){
@@ -54,7 +54,7 @@ class ForgotPage extends React.Component {
             var value =  $("#forgot_form").val();
             if(value) {
                 dispatch(userActions.recoveryPassword({"email":email}));
-            }     
+            }
         });
     }
 
@@ -64,9 +64,9 @@ class ForgotPage extends React.Component {
             const { email } = this.state;
             return (
             <div className="col-md-12">
-                <img src={Logo} className="logo-img center-block img-responsive" alt="" />
+                <img src={Logo} className="logo-img center-block img-fluid" alt="" />
                 <div className="row top d-flex justify-content-center">
-                    <div className="col-md-6 section-forgot">
+                    <div className="col-md-8 section-forgot">
                         <h1>Forgot Password?</h1>
                         <p>Enter your email shorly we will send you an email with access code </p>
                         <form name="forgotForm" id="forgotForm" onSubmit={this.handleSubmit}>
