@@ -84,7 +84,8 @@ class Acquire extends React.Component {
                                 </div>
                             </div>
                             <button className="btn btn-primary">Purchase</button>
-                        </form>
+                            <Link to={"/profile/"} className="btn btn-danger">Cancel</Link>
+                            </form>
                     </div>
                     }
                     {paymentsPlans.items &&

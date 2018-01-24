@@ -75,7 +75,6 @@ function register(user) {
                   error.then(function(value) {
                     dispatch(failure(value.message));
                     dispatch(alertActions.error(value.message));
-                    alertActions.displayErrorMessage(value.message);
                   });
                 }
             );
@@ -387,8 +386,8 @@ function cancelPlan(data) {
             .then(
                 suscription => {
                 dispatch(alertActions.success(suscription.message));
-                dispatch(success(suscription));
                 history.push('/profile');
+                //dispatch(success(suscription));
                 },
                 error => {
                     dispatch(failure, (error));

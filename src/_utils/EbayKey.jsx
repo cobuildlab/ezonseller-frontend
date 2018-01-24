@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header } from '../Header';
+import $ from 'jquery';
 
 import { userActions } from '../_actions';
 
@@ -35,6 +36,9 @@ class EbayKey extends React.Component {
         const { dispatch } = this.props;
         if (ebay.client_id) {
             dispatch(userActions.ebayKey(ebay));
+            $().ready(function() {
+                $(".fakeloader").show();
+            });
         }
     }
 

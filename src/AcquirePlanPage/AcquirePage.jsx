@@ -19,6 +19,12 @@ class AcquirePlanPage extends React.Component {
             this.handleChange = this.handleChange.bind(this);        
     }
 
+    componentWillMount(){
+        $().ready(function() {
+            $(".fakeloader").show();
+        });
+    }
+
     componentDidMount() {
         let valueUser = JSON.parse(localStorage.getItem('user'));
         this.props.dispatch(userActions.getUserId(valueUser.id));

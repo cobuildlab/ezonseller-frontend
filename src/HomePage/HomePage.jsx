@@ -24,10 +24,17 @@ class HomePage extends React.Component {
     }
 
     handleSaveProduct(data){
-        console.log(data);
         localStorage.setItem('product', JSON.stringify(data));
         history.push('/share/' + data.asin);
     }
+
+    componentWillReceiveProps = (nextProps) =>{
+        if(nextProps.search.items){
+            $().ready(function() {
+                $(".fakeloader").fadeOut();
+            });
+        }
+    };
 
     render() {
         const { search } = this.props;
@@ -39,21 +46,25 @@ class HomePage extends React.Component {
                     <div className="row">
                         {search.items &&
                             <div className="row">
-                                {search.items.slice(0, 9).map((item, index) =>
-                                    <div key={index} className="col-3">
-                                      <div className="card">
-                                        <img className="card-img-top" src={item.large_image_url} height="250" alt={item.title} />
-                                        <div className="card-body">
-                                          <h5 className="card-title">Name: {item.title}</h5>
-                                          <h5>Asin: {item.asin}</h5>
-                                          <h5>Availability: {item.availability}</h5>
-                                          <a href={item.detail_page_url} target="_blank">Amazon</a>
-                                          <a href={'https://camelcamelcamel.com/' + item.title + '/product/' +  item.asin} target="_blank">Camel Camel Camel</a>
-                                          <button className="btn btn-danger" onClick={this.handleSaveProduct.bind(this, item)}>Share Ebay</button>
+                            {search.items.length > 2 &&
+                                <div className="row">
+                                    {search.items.slice(0, 9).map((item, index) =>
+                                        <div key={index} className="col-3">
+                                        <div className="card">
+                                            <img className="card-img-top" src={item.large_image_url} height="250" alt={item.title} />
+                                            <div className="card-body">
+                                            <h5 className="card-title">Name: {item.title}</h5>
+                                            <h5>Asin: {item.asin}</h5>
+                                            <h5>Availability: {item.availability}</h5>
+                                            <a href={item.detail_page_url} target="_blank">Amazon</a>
+                                            <a href={'https://camelcamelcamel.com/' + item.title + '/product/' +  item.asin} target="_blank">Camel Camel Camel</a>
+                                            <button className="btn btn-danger" onClick={this.handleSaveProduct.bind(this, item)}>Share Ebay</button>
+                                            </div>
                                         </div>
-                                      </div>
-                                    </div>
-                                )}
+                                        </div>
+                                    )}
+                                </div>
+                            }
                             </div>
                         }
                     </div>

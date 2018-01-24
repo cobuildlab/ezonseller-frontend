@@ -41,11 +41,7 @@ class App extends React.Component {
         return (
 
             <div className="container top-section">
-                <ToastContainer autoClose={10000} />
-
-                {alert.message &&
-                    <div className={`alert ${alert.type}`}>{alert.message}</div>
-                }
+                <ToastContainer autoClose={5000} />
                 <Router history={history}>
                     <div>
                         <PrivateRoute exact path="/" component={HomePage}  />

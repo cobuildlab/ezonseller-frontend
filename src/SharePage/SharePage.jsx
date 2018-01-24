@@ -34,7 +34,7 @@ class SharePage extends React.Component {
                         <div className="col-12">
                             <div className="content-data">
                             {search.items.slice(0, 1).map((item, index) =>
-                                <div>
+                                <div key={index}>
                                     <img src={item.galleryURL} alt="product ebay" />
                                     <h3>{item.title}</h3>
                                     <h5>{item.location}</h5>

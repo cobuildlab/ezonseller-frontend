@@ -74,7 +74,6 @@ class PaymentCard extends React.Component {
         const { registering  } = this.props;
         return (
             <div className="">
-                <Header url={this.props}/>
                 <div className="container">
                     <h2 className="text-center">Add Credit Card</h2>
                     <div className="col-md-7 content-edit col-center">
@@ -83,24 +82,24 @@ class PaymentCard extends React.Component {
                                 <form name="form" id="formCreditCard" onSubmit={this.handleSubmit}>
                                     <div className="form-group">
                                         <label htmlFor="number">Number Card</label>
-                                        <input type="text" className="form-control" placeholder="xxxxxxxxxx" name="number_card" onChange={this.handleChange} required />
+                                        <input type="text" className="form-control" name="number_card" onChange={this.handleChange} required />
                                    </div>
                                     <div className="form-group">
                                         <label htmlFor="name">Name PlaceHolder</label>
-                                        <input type="text" className="form-control" placeholder="Ex: Jhon Doe" name="name"  onChange={this.handleChange} required />
+                                        <input type="text" className="form-control" name="name"  onChange={this.handleChange} required />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="cod_security">Cod Security</label>
-                                        <input type="text" className="form-control" placeholder="Ex: 123" name="cod_security"  onChange={this.handleChange} required />
+                                        <input type="text" className="form-control" name="cod_security"  onChange={this.handleChange} required />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="year">Year</label>
-                                        <input type="text" className="form-control" placeholder="Ex: 18" name="year" onChange={this.handleChange} required />
+                                        <input type="text" className="form-control" name="year" onChange={this.handleChange} required />
                                         <input type="hidden" name="creditCard_form" id="creditCard_form" />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="month">Month</label>
-                                        <input type="text" className="form-control" placeholder="Ex: 10" name="month" onChange={this.handleChange} required />
+                                        <input type="text" className="form-control" name="month" onChange={this.handleChange} required />
                                     </div>
 
                                     <div className="form-group">

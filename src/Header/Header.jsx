@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import  Logo  from '../assets/logo.png'
 import './header.css';
 import { history } from '../_helpers';
+import $ from 'jquery';
 
 import { userActions } from '../_actions';
 
@@ -13,7 +14,6 @@ class Header extends React.Component {
     this.state = {
       search: {}
     };
-
     this.handleSearchProduct = this.handleSearchProduct.bind(this);
     this.handleChange        = this.handleChange.bind(this);
   }
@@ -42,13 +42,16 @@ class Header extends React.Component {
       const { search } = this.state;
       if(search.country && search.keyword && search.category){
         this.props.dispatch(userActions.getSearch(search))
+        $().ready(function() {
+          $(".fakeloader").show();
+        });
       }
     }
 
     render() {
         const { country, url } = this.props;
         const { search }  = this.state;
-        console.log(url);
+        console.log(this.props)
         return (
           <div className="container-fluid no-padding">
             <nav className="navbar navbar-toggleable-md navbar-light fixed-top bg-faded shadow-nav">
@@ -71,6 +74,7 @@ class Header extends React.Component {
                 </li>
               </ul>
               <ul className="navbar-nav mr-auto">
+                {url.location.pathname === '/' &&
                   <form className="form-inline hidden-sm-down" onSubmit={this.handleSearchProduct}>
                     <li className="nav-item">
                     {country.items  &&
@@ -145,6 +149,7 @@ class Header extends React.Component {
                       </div>
                     </li>
                   </form>
+                }
               </ul>
 
               <ul className="navbar-nav hidden-sm-down">

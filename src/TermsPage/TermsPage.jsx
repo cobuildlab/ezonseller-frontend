@@ -1,12 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import $ from 'jquery';
 import { termsActions } from '../_actions';
 
 class TermsPage extends React.Component {
 
     componentDidMount() {
         this.props.dispatch(termsActions.getTerms());
+        $().ready(function() {
+            $(".fakeloader").fadeOut();
+        });
     }
 
     render() {

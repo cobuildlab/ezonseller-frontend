@@ -20,11 +20,10 @@ class PaymentCardPage extends React.Component {
     }
 
     render() {
-
         return (
             <div className="">
-                <Header/>
-                <PaymentCard  url={this.props} />
+                <Header url={this.props} />
+                <PaymentCard />
             </div>
         );
     }

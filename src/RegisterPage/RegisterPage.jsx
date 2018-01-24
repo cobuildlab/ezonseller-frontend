@@ -49,6 +49,12 @@ class RegisterPage extends React.Component {
         });
     }
 
+    componentDidMount(){
+        $().ready(function() {
+            $(".fakeloader").fadeOut();
+        });
+    }
+
     handleSubmit(event) {
         event.preventDefault();
 
@@ -132,7 +138,7 @@ class RegisterPage extends React.Component {
                                     <div className="col-md-12 no-padding">
                                     <input type="radio" className="" name="terms" onChange={this.handleChange} required />
                                     <input type="hidden" name="register_form" id="register_form" value={user.register_form} />
-                                     <Link to="/terms" className="btn btn-link term">I Accept the Terms and Conditions Ezonseller.</Link>
+                                     <Link to="/terms"  target="_blank" className="btn btn-link term">I Accept the Terms and Conditions Ezonseller.</Link>
                                     </div>
                                 </div>
                             </div>

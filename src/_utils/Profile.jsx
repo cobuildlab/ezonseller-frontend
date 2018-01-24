@@ -54,24 +54,29 @@ class Profile extends React.Component {
                         </div>
                     </div>
                 </div>
-
-                <div className="col-12">
-                    <h2>Credit Card <Link to={"/credit-card"} className="btn btn-primary rigth-input rigth-add">Add Credit Card</Link></h2>
-                    {user.items &&
-                      <div className="row data-credit">
-                        <div className="col-md-4">
-                              {user.items.credit_cards.map((credit, index) =>
-                              <div key={credit.id}>
-                                  <h5>Name: {credit.name}</h5>
-                                  <h5>Credit Card Number: {credit.number_card}</h5>
-                                  <h5>Date Expiration: {credit.date_expiration}</h5>
-                                  <button role="button" className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}>Delete Credit Card</button>
-                              </div>
-                                  )}
+                
+                <div className="col-12 no-padding">
+                    <div>
+                        {user.items &&
+                        <div>
+                        <h2><Link to={"/credit-card"} className="btn btn-primary rigth-input rigth-add">Add Credit Card</Link></h2>
+                            <div className="data-credit">
+                                <h2>Credit Card</h2>
+                                <div className="col-12 no-padding">
+                                    {user.items.credit_cards.map((credit, index) =>
+                                        <div key={credit.id}>
+                                            <h5>Name: {credit.name}</h5>
+                                            <h5>Credit Card Number: {credit.number_card}</h5>
+                                            <h5>Date Expiration: {credit.date_expiration}</h5>
+                                            <button role="button" className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}>Delete Credit Card</button>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                                
                         </div>
-                      </div>
-
-                        }
+                            }
+                    </div>
                 </div>
 
                 <div className="col-12 no-padding">
