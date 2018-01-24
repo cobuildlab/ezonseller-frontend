@@ -124,6 +124,19 @@ $( "body" ).mousemove(function( event ) {
             }
         });
 
+        $("#myFormSupport").validate({
+            submitHandler: function(form) {
+                $('#support_form').val('1');
+            },
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                }
+            }
+        });
+
+
         $("#myFormPurchasePlan").validate({
             submitHandler: function(form) {
         },

@@ -30,7 +30,8 @@ export const userActions = {
     getCountry,
     getSearch,
     activateAccount,
-    getProductEbay
+    getProductEbay,
+    actionSupport
 };
 
 function login(username, password) {
@@ -590,6 +591,30 @@ function getProductEbay(data){
             .then(
                 data => {
                     dispatch(success(data));
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request()      { return { type: searchConstants.SEARCH_GET_REQUEST } }
+    function success(data)  { return { type: searchConstants.SEARCH_GET_SUCCESS, data } }
+    function failure(error) { return { type: searchConstants.SEARCH_GET_FAILURE, error } }
+}
+
+function actionSupport(data){
+    return dispatch => {
+        dispatch(request());
+
+        userService.actionSupport(data)
+            .then(
+                data => {
+                    dispatch(success(data));
+                    history.push('/profile');
+                    dispatch(alertActions.success(data.message));
+
                 },
                 error => {
                     dispatch(failure(error));

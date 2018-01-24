@@ -21,6 +21,7 @@ import { AmazonKeyPage } from '../AmazonKeyPage';
 import { EbayKeyPage } from '../EbayKeyPage';
 import { SharePage } from '../SharePage';
 import { ActivatePage } from '../ActivatePage';
+import { SupportPage } from '../SupportPage';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -57,6 +58,7 @@ class App extends React.Component {
                         <PrivateRoute exact path="/amazon-key" component={AmazonKeyPage} />
                         <PrivateRoute exact path="/ebay-key/" component={EbayKeyPage} />
                         <PrivateRoute exact path="/share/:id" component={SharePage} />
+                        <PrivateRoute exact path="/support" component={SupportPage} />
 
                         <Route path="/activate/:uidb64/:token" component={ActivatePage} />
                         <Route path="/login" refresh="true" component={LoginPage} />

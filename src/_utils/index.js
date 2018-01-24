@@ -5,3 +5,4 @@ export * from './Acquire';
 export * from './PaymentCard';
 export * from './AmazonKey';
 export * from './EbayKey';
+export * from './Support';

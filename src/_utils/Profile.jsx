@@ -47,6 +47,7 @@ class Profile extends React.Component {
                                     <Link to={"/edit-password/"} className="dropdown-item">Change Password</Link>
                                     <Link to={"/amazon-key/"} className="dropdown-item">Add Amazon Key</Link>
                                     <Link to={"/ebay-key/"} className="dropdown-item">Add Ebay Key</Link>
+                                    <Link to={"/support/"} className="dropdown-item">Support</Link>
                                 </div>
                             </div>
 

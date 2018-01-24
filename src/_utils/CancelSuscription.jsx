@@ -8,9 +8,8 @@ class CancelSuscription extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            purchase: {},
-            value: 'asd'
-        };
+            purchase: {}
+       };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);

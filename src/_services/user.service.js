@@ -28,7 +28,8 @@ export const userService = {
     getCountry,
     getSearch,
     activateAccount,
-    getProductEbay
+    getProductEbay,
+    actionSupport
 };
 
 const URL = "https://ezonseller-backend.herokuapp.com/";
@@ -302,10 +303,19 @@ function activateAccount(data) {
 }
 
 function getProductEbay(data) {
-    console.log(data);
     const requestOptions = {
         method: 'GET',
         headers: authHeader()
     };
     return fetch(URL + 'product/ebay-search/?keyword=' + data + '&limit=1&offset=0', requestOptions).then(handleResponse);;
+}
+
+function actionSupport(data){
+    const requestOptions = {
+        method: 'POST',
+        headers: { ...authHeader(), 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    };
+
+    return fetch(URL + 'accounts/contact/', requestOptions).then(handleResponse);
 }
