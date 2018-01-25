@@ -93,12 +93,12 @@ class PaymentCard extends React.Component {
                                         <input type="text" className="form-control" name="cod_security"  onChange={this.handleChange} required />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="year">Year</label>
+                                        <label htmlFor="year">Exp. Year</label>
                                         <input type="text" className="form-control" name="year" onChange={this.handleChange} required />
                                         <input type="hidden" name="creditCard_form" id="creditCard_form" />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="month">Month</label>
+                                        <label htmlFor="month">Exp. Month</label>
                                         <input type="text" className="form-control" name="month" onChange={this.handleChange} required />
                                     </div>
 

@@ -51,7 +51,6 @@ class Header extends React.Component {
     render() {
         const { country, url } = this.props;
         const { search }  = this.state;
-        console.log(this.props)
         return (
           <div className="container-fluid no-padding">
             <nav className="navbar navbar-toggleable-md navbar-light fixed-top bg-faded shadow-nav">
