@@ -86,7 +86,28 @@ body {
   top: -15px;
   left: 20px;
 }
-
+.card-img-top {
+    border-top-right-radius: calc(.25rem - 1px);
+    border-top-left-radius: calc(.25rem - 1px);
+    padding: 1px;
+}
+.card{
+  margin-bottom: 20px;
+  box-shadow: 1px 2px 5px #ccc;
+}
+.card-body{
+    padding: 15px;
+}
+.title-title {
+  overflow: hidden !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical;
+  max-height: 81px;
+}
+.top-btn{
+  margin-top: 10px;
+}
 @media only screen and ( max-width: 768px ) {
 
   /* Aquí van los estilos para iPad vertical */

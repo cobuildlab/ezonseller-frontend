@@ -42,23 +42,24 @@ class HomePage extends React.Component {
             <div>
                 <Header url={this.props} />
                 <div className="container">
-                    <h1>Home</h1>
-                    <div className="row">
+                    <h1>Search for result</h1>
                         {search.items &&
                             <div className="row">
                             {search.items.length > 2 &&
                                 <div className="row">
                                     {search.items.slice(0, 9).map((item, index) =>
-                                        <div key={index} className="col-3">
+                                        <div key={index} className="col-md-4 col-xs-12">
                                         <div className="card">
                                             <img className="card-img-top" src={item.large_image_url} height="250" alt={item.title} />
                                             <div className="card-body">
-                                            <h5 className="card-title">Name: {item.title}</h5>
-                                            <h5>Asin: {item.asin}</h5>
-                                            <h5>Availability: {item.availability}</h5>
-                                            <a href={item.detail_page_url} target="_blank">Amazon</a>
-                                            <a href={'https://camelcamelcamel.com/' + item.title + '/product/' +  item.asin} target="_blank">Camel Camel Camel</a>
-                                            <button className="btn btn-danger" onClick={this.handleSaveProduct.bind(this, item)}>Share Ebay</button>
+                                            <h4 className="card-title title-title">{item.title}</h4>
+                                            <p>Asin: {item.asin}</p>
+                                            <p>Availability: {item.availability}</p>
+                                             <footer class="footer">
+                                               <a className="btn btn-link" href={item.detail_page_url} target="_blank">Amazon</a>
+                                               <a className="btn btn-link" href={'https://camelcamelcamel.com/' + item.title + '/product/' +  item.asin} target="_blank">Camel Camel Camel</a>
+                                               <button className="btn btn-primary btn-block top-btn" onClick={this.handleSaveProduct.bind(this, item)}>Share Ebay</button>
+                                             </footer>
                                             </div>
                                         </div>
                                         </div>
@@ -67,7 +68,7 @@ class HomePage extends React.Component {
                             }
                             </div>
                         }
-                    </div>
+
                 </div>
             </div>
         );

@@ -54,7 +54,7 @@ class Profile extends React.Component {
                         </div>
                     </div>
                 </div>
-                
+
                 <div className="col-12 no-padding">
                     <div>
                         {user.items &&
@@ -63,17 +63,23 @@ class Profile extends React.Component {
                             <div className="data-credit">
                                 <h2>Credit Card</h2>
                                 <div className="col-12 no-padding">
+                                  <div className="row">
                                     {user.items.credit_cards.map((credit, index) =>
-                                        <div key={credit.id}>
-                                            <h5>Name: {credit.name}</h5>
-                                            <h5>Credit Card Number: {credit.number_card}</h5>
-                                            <h5>Date Expiration: {credit.date_expiration}</h5>
-                                            <button role="button" className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}>Delete Credit Card</button>
+
+                                        <div className="col-md-3">
+                                          <div key={credit.id}>
+                                              <h5>Name: {credit.name}</h5>
+                                              <h5>Credit Card Number: {credit.number_card}</h5>
+                                              <h5>Date Expiration: {credit.date_expiration}</h5>
+                                              <button role="button" className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}>Delete Credit Card</button>
+                                          </div>
                                         </div>
+
                                     )}
+                                  </div>
                                 </div>
                             </div>
-                                
+
                         </div>
                             }
                     </div>
