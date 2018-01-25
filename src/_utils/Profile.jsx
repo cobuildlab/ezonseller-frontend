@@ -32,12 +32,29 @@ class Profile extends React.Component {
                 <div className="col-12 section-data">
                     <div className="row">
                         <div className="col-12">
-                            <div className="avatar-profile"></div>
-                            <div className="content-data">
-                                <h3>{user.items.first_name} {user.items.last_name}</h3>
-                                <h5>{user.items.username}</h5>
-                                <h5>{user.items.email}</h5>
+                            {user.items.photo === "" &&
+
+                            <div>
+                                <div className="avatar-profile"></div>
+                                <div className="content-data">
+                                    <h3>{user.items.first_name} {user.items.last_name}</h3>
+                                    <h5>{user.items.username}</h5>
+                                    <h5>{user.items.email}</h5>
+                                </div>
+                               
                             </div>
+                            }
+                            <div>
+                                {user.items.photo !== "" &&
+                                <div className="content-data">
+                                    <img src={user.items.photo} alt="profile-photo" className="rounded" width="100px" height="100px" />
+                                    <h3>{user.items.first_name} {user.items.last_name}</h3>
+                                    <h5>{user.items.username}</h5>
+                                    <h5>{user.items.email}</h5>
+                                </div>
+                                }
+                            </div>
+                            
                             <div className="btn-group btn-opt">
                                 <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   Action

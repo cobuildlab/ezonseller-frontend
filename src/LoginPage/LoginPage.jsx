@@ -91,7 +91,7 @@ class LoginPage extends React.Component {
                     </div>
                     <div className="col-md-6 register-section">
                     <h1 className="text-center">Sign Up</h1>
-                    <p className="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar erat non feugiat sodales. Aliquam sed egestas mi, et cursus mi.</p>
+                    <p className="text-center">Enter your data to register in our system. An email will arrive to confirm your registration and complete the process.</p>
                         <Link to="/register" className="btn btn-primary d-flex justify-content-center">Register Now!</Link>
                     </div>
                     </div>

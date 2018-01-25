@@ -96,11 +96,11 @@ class Acquire extends React.Component {
 
                             
                             </div>
-                                <h5>Name: {payment.title}</h5>
-                                <h5>Description: {payment.description}</h5>
-                                <h5>Terms: {payment.terms}</h5>
-                                <h5>Cost: {payment.cost}$</h5>
-                                <h5>Duration: {payment.duration}</h5>
+                                <h5><b>Name:</b> {payment.title}</h5>
+                                <h5><b>Description:</b> {payment.description}</h5>
+                                <h5><b>Terms:</b> {payment.terms}</h5>
+                                <h5><b>Cost:</b> {payment.cost}$</h5>
+                                <h5><b>Duration:</b> {payment.duration}</h5>
                             </div>
                         )}
                       </div>
