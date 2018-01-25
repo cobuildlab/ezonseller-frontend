@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Header } from '../Header';
 import { history } from '../_helpers';
-
+import './Home.css';
 import $ from 'jquery';
 
 class HomePage extends React.Component {
@@ -47,14 +47,14 @@ class HomePage extends React.Component {
                             <div className="row">
                             {search.items.length > 2 &&
                                 <div className="row">
-                                    {search.items.slice(0, 9).map((item, index) =>
+                                    {search.items.slice(0, 10).map((item, index) =>
                                         <div key={index} className="col-md-4 col-xs-12">
-                                        <div className="card">
+                                        <div className="card height-card">
                                             <img className="card-img-top" src={item.large_image_url} height="250" alt={item.title} />
                                             <div className="card-body">
                                             <h4 className="card-title title-title">{item.title}</h4>
                                             <p>Asin: {item.asin}</p>
-                                            <p>Availability: {item.availability}</p>
+                                            <p>Price: {item.price_and_currency}</p>
                                              <footer class="footer">
                                                <a className="btn btn-link" href={item.detail_page_url} target="_blank">Amazon</a>
                                                <a className="btn btn-link" href={'https://camelcamelcamel.com/' + item.title + '/product/' +  item.asin} target="_blank">Camel Camel Camel</a>

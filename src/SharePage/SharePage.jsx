@@ -27,7 +27,9 @@ class SharePage extends React.Component {
         const { search } = this.props.state;
         let objectProduct = JSON.parse(localStorage.getItem('product'));
         return (
-            <div className="">
+            <div className="">       
+                <Header url={this.props} />
+
                 {search.items &&
                 <div className="col-12 section-data">
                     <div className="row">
