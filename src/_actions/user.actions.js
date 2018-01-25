@@ -143,6 +143,7 @@ function changePasswordEdit(data) {
                     history.push('/profile');
                 },              
                 error => {
+                    console.log(error);
                     dispatch(failure(error));
                     dispatch(alertActions.error(error));
                 }
@@ -276,7 +277,10 @@ function deleteCreditCard(id) {
             .then(
                 card => {
                     dispatch(success(id));
-                    window.location.reload();
+                    dispatch(alertActions.success(card.message));
+                    setTimeout(function(){
+                        window.location.reload();
+                    },1000)
                 },
                 error => {
                     dispatch(failure, (id, error));
@@ -319,7 +323,7 @@ function addCreditCard(data) {
             .then(
                 card  => {
                     dispatch(success(card))
-                    dispatch(alertActions.success(data.message));
+                    dispatch(alertActions.success(card.message));
                     history.push('/profile')
                 },
                 error => {

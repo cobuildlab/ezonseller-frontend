@@ -21,7 +21,7 @@ function success(message) {
 function error(message) {
 
     let error = "";
-
+    console.log(message);
     $().ready(function() {
         $(".fakeloader").fadeOut();
     });
