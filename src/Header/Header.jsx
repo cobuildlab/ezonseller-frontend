@@ -49,8 +49,10 @@ class Header extends React.Component {
     }
 
     render() {
-        const { country, url } = this.props;
+        const { country, url, user } = this.props;
         const { search }  = this.state;
+        let valueUser = user;
+        let styleImage = {};
         return (
           <div className="container-fluid no-padding">
             <nav className="navbar navbar-toggleable-md navbar-light fixed-top bg-faded shadow-nav">
@@ -230,7 +232,33 @@ class Header extends React.Component {
               <ul className="navbar-nav hidden-sm-down">
                 <li className="nav-item">
                   <div className="dropdown">
-                    <div className="avatar-nav"></div>
+                    {user.items &&
+                      <div>
+                        {user.items.photo === '' &&
+                          <div className="avatar-nav"></div>
+                        }
+                      </div>
+                    }
+                    {user.items &&
+                      <div>
+                        {user.items.photo !== '' &&
+                        <div style={
+                                    {  'backgroundImage': 'url( ' + user.items.photo + ')',
+                                      'backgroundRepeat': 'no-repeat',
+                                      'backgroundPosition': 'center',
+                                      'backgroundSize': 'cover',
+                                      'width': '55px',
+                                      'height': '55px',
+                                      'borderRadius':'50%',
+                                      'backgroundColor': '#4487c5',
+                                      'position': 'absolute',
+                                      'top': '-10px',
+                                      'right': '40px'
+                                    }
+                                  } ></div>
+                        }
+                      </div>
+                    }
                     <button className="btn btn-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </button>
                     <div className="dropdown-menu pos-menu" aria-labelledby="dropdownMenuButton">
