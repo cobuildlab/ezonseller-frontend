@@ -52,20 +52,23 @@ class Profile extends React.Component {
                                     <h5>{user.items.username}</h5>
                                     <h5>{user.items.email}</h5>
                                 </div>
-                               
                             </div>
                             }
                             <div>
                                 {user.items.photo !== "" &&
-                                <div className="content-data">
+                                  <div>
                                     <div style={divStyle}></div>
-                                    <h3>{user.items.first_name} {user.items.last_name}</h3>
-                                    <h5>{user.items.username}</h5>
-                                    <h5>{user.items.email}</h5>
-                                </div>
+                                    <div className="content-data">
+
+                                        <h3>{user.items.first_name} {user.items.last_name}</h3>
+                                        <h5>{user.items.username}</h5>
+                                        <h5>{user.items.email}</h5>
+                                    </div>
+                                  </div>
+
                                 }
                             </div>
-                            
+
                             <div className="btn-group btn-opt">
                                 <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   Action
