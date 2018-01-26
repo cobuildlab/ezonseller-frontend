@@ -27,6 +27,17 @@ class Profile extends React.Component {
     render() {
         const { user, paymentsPlans } = this.props;
         let valueUser = JSON.parse(localStorage.getItem('user'));
+        var divStyle = {
+            'backgroundImage': 'url(' + user.items.photo + ')',
+            'backgroundRepeat': 'no-repeat',
+            'backgroundPosition': 'center',
+            'backgroundSize': 'cover',
+            'width':  '120px',
+            'height': '120px',
+            'borderRadius': '50%',
+            'backgroundColor': '#4487c5',
+            'display': 'inline-block'
+          };
         return (
             <div className="">
                 <div className="col-12 section-data">
@@ -35,7 +46,7 @@ class Profile extends React.Component {
                             {user.items.photo === "" &&
 
                             <div>
-                                <div className="avatar-profile"></div>
+                                <div style={divStyle}></div>
                                 <div className="content-data">
                                     <h3>{user.items.first_name} {user.items.last_name}</h3>
                                     <h5>{user.items.username}</h5>
@@ -47,7 +58,7 @@ class Profile extends React.Component {
                             <div>
                                 {user.items.photo !== "" &&
                                 <div className="content-data">
-                                    <img src={user.items.photo} alt="profile-photo" className="rounded" width="100px" height="100px" />
+                                    <div style={divStyle}></div>
                                     <h3>{user.items.first_name} {user.items.last_name}</h3>
                                     <h5>{user.items.username}</h5>
                                     <h5>{user.items.email}</h5>
@@ -83,13 +94,11 @@ class Profile extends React.Component {
                                   <div className="row">
                                     {user.items.credit_cards.map((credit, index) =>
 
-                                        <div className="col-md-3">
-                                          <div key={credit.id}>
+                                        <div className="col-md-3" key={credit.id}>
                                               <h5>Name: {credit.name}</h5>
                                               <h5>Credit Card Number: {credit.number_card}</h5>
                                               <h5>Date Expiration: {credit.date_expiration}</h5>
                                               <button role="button" className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}>Delete Credit Card</button>
-                                          </div>
                                         </div>
 
                                     )}
