@@ -12,6 +12,7 @@ class SharePage extends React.Component {
         $().ready(function() {
             $(".fakeloader").show();
         });
+        
     }
 
     componentDidMount(){
@@ -23,13 +24,13 @@ class SharePage extends React.Component {
     }
 
     render() {
-        const { logginIn, ebay } = this.props;
-
+        const { ebay } = this.props;
+        console.log();
         let objectProduct = JSON.parse(localStorage.getItem('product'));
         return (
             <div>
                 <Header url={this.props} />
-                {ebay.items &&
+                
                     <div className="col-12 section-data">
                         <div className="row">
                             <div className="col-12 section-data">
@@ -53,7 +54,7 @@ class SharePage extends React.Component {
                                 </div>
                             </div>
                             <div className="col-md-12">
-                                
+                            {ebay.items &&        
                                 <div className="content-data">
                                     <h2>By Ebay Result</h2>
                                     {ebay.items.slice(0, 5).map((item, index) =>
@@ -71,21 +72,19 @@ class SharePage extends React.Component {
                                         </div>
                                     )}
                                 </div>
+                            } 
                             </div>
                         </div>
                 </div>
-                }   
+                  
         </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    const { search, ebay } = state;
-    const { loggingIn } = state.authentication;
+    const { ebay } = state;
     return {
-        loggingIn,
-        state, 
         ebay
     };
 }

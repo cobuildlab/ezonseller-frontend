@@ -55,7 +55,7 @@ class HomePage extends React.Component {
                                             <h4 className="card-title title-title">{item.title}</h4>
                                             <p>Asin: {item.asin}</p>
                                             <p>Price: {item.price_and_currency}</p>
-                                             <footer class="footer">
+                                             <footer className="footer">
                                                <a className="btn btn-link" href={item.detail_page_url} target="_blank">Amazon</a>
                                                <a className="btn btn-link" href={'https://camelcamelcamel.com/' + item.title + '/product/' +  item.asin} target="_blank">Camel Camel Camel</a>
                                                <button className="btn btn-primary btn-block top-btn" onClick={this.handleSaveProduct.bind(this, item)}>Share Ebay</button>
