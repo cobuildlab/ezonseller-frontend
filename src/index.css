@@ -8,9 +8,13 @@ body {
     color: #fff;
     background-color: #023049;
     border-color: #023049;
+    height: 50px;
 }
 .btn {
     border-radius: 0;
+}
+.absolute-logo{
+  position: absolute;
 }
 .no-padding{
   padding: 0px !important;
@@ -33,7 +37,8 @@ body {
   zoom: 0.80;
 }
 .tam-input-nav{
-  width: 250px;
+  width: 280px;
+  height: 50px;
 }
 .avatar-nav{
   background-image: url(./assets/avatar.png);
@@ -124,6 +129,10 @@ body {
   }
   .border{
     border-bottom: 1px solid #ccc;
+  }
+  .tam-input-nav{
+    width: 200px;
+    height: 50px;
   }
 
 
