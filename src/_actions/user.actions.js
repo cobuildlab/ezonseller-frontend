@@ -602,9 +602,9 @@ function getProductEbay(data){
             );
     };
 
-    function request()      { return { type: searchConstants.SEARCH_GET_REQUEST } }
-    function success(data)  { return { type: searchConstants.SEARCH_GET_SUCCESS, data } }
-    function failure(error) { return { type: searchConstants.SEARCH_GET_FAILURE, error } }
+    function request()      { return { type: searchConstants.EBAY_GET_REQUEST } }
+    function success(data)  { return { type: searchConstants.EBAY_GET_SUCCESS, data } }
+    function failure(error) { return { type: searchConstants.EBAY_GET_FAILURE, error } }
 }
 
 function actionSupport(data){
