@@ -19,9 +19,7 @@ class Header extends React.Component {
   }
 
     componentDidMount() {
-      if(this.props.url.location.pathname === '/'){
-        this.props.dispatch(userActions.getCountry());
-      }
+        this.props.dispatch(userActions.getCountry());      
     }
 
     handleChange(event) {
@@ -41,9 +39,10 @@ class Header extends React.Component {
       this.setState({ submitted: true });
       const { search } = this.state;
       if(search.country && search.keyword && search.category){
-        this.props.dispatch(userActions.getSearch(search))
         $().ready(function() {
           $(".fakeloader").show();
+          history.push('/show/' + search.country + '/' + search.category + '/' + search.keyword);
+          window.location.reload();
         });
       }
     }
@@ -75,7 +74,6 @@ class Header extends React.Component {
                 </li>
               </ul>
               <ul className="navbar-nav mr-auto">
-                {url.location.pathname === '/' &&
                   <form className="form-inline hidden-sm-down" onSubmit={this.handleSearchProduct}>
                     <li className="nav-item">
                     {country.items  &&
@@ -150,8 +148,7 @@ class Header extends React.Component {
                       </div>
                     </li>
                   </form>
-                }
-                {url.location.pathname === '/' &&
+
                   <form className="form-group hidden-md-up" onSubmit={this.handleSearchProduct}>
                     <li className="nav-item">
                     {country.items  &&
@@ -226,7 +223,6 @@ class Header extends React.Component {
                       </div>
                     </li>
                   </form>
-                }
               </ul>
 
               <ul className="navbar-nav hidden-sm-down">

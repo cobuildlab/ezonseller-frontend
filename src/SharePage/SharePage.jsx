@@ -18,20 +18,27 @@ class SharePage extends React.Component {
     componentDidMount(){
         let objectProduct = JSON.parse(localStorage.getItem('product'));
         this.props.dispatch(userActions.getProductEbay(objectProduct.title));
-        $().ready(function() {
-            $(".fakeloader").fadeOut();
-        });
     }
+
+    componentWillReceiveProps = (nextProps) =>{
+        console.log(nextProps);
+        if(nextProps.ebay.items){
+            $().ready(function() {
+                $(".fakeloader").fadeOut();
+            });
+        }
+    };
 
     render() {
         const { ebay } = this.props;
-        console.log();
         let objectProduct = JSON.parse(localStorage.getItem('product'));
         return (
             <div>
                 <Header url={this.props} />
 
                     <div className="col-12">
+                    {ebay.items &&
+
                         <div className="row">
                           <div className="col-md-12 section-data">
                               <div>
@@ -57,6 +64,7 @@ class SharePage extends React.Component {
                                 </div>
                               </div>
                           </div>
+                        
                           <div className="col-12">
                             <h2>By Ebay Result</h2>
                           </div>
@@ -87,8 +95,9 @@ class SharePage extends React.Component {
 
 
                         </div>
+                    }
                 </div>
-                }
+           
         </div>
         );
     }
