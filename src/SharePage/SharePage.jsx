@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Header } from '../Header';
+import { Link } from 'react-router-dom';
 import '../HomePage/Home.css';
 import $ from 'jquery';
 
@@ -86,6 +87,7 @@ class SharePage extends React.Component {
                                               <h5>{item.location}</h5>
                                               <h5>{item.country}</h5>
                                               <h5>{item.itemId}</h5>
+                                              <Link to={item.viewItemURL} target="_blank">Ebay</Link>
                                           </div>
                                       </div>
                                   </div>
