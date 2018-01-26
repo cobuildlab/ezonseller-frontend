@@ -5,6 +5,11 @@ $( "body" ).mousemove(function( event ) {
         return this.optional(element) || /^[a-zA-Z ]{2,30}$/i.test(value);
     }, "Letters only please"); 
 
+
+    jQuery.validator.addMethod("passwordSecurity", function(value, element) {
+        return this.optional(element) || /^(([a-zA-Z]+\d+)|(\d+[a-zA-Z]+){8,15})[a-zA-Z0-9]*$/i.test(value);
+    }, "Password is not safe"); 
+
     $("#commentForm").validate({
         submitHandler: function(form) {
         $('#register_form').val('1');
@@ -26,7 +31,8 @@ $( "body" ).mousemove(function( event ) {
                     email: true
 				},
 				password: {
-					required: true,
+                    required:         true,
+                    passwordSecurity: true
 				},
 				confirm_password: {
 					required: true,
@@ -62,7 +68,16 @@ $( "body" ).mousemove(function( event ) {
     $("#formEditPassword").validate({
         submitHandler: function(form) {
         $('#editPassword_form').val('1');
-        }
+        },
+        rules: {
+				old_password: {
+					required: true,
+				},
+				new_password: {
+                    required:         true,
+                    passwordSecurity: true
+				}
+            }
     });
 
     $("#formCreditCard").validate({
