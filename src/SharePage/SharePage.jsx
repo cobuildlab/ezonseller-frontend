@@ -86,7 +86,6 @@ class SharePage extends React.Component {
                                               <h5>{item.location}</h5>
                                               <h5>{item.country}</h5>
                                               <h5>{item.itemId}</h5>
-                                              <h5>{item.sellingStatus.currency} {item.sellingStatus.values}</h5>
                                           </div>
                                       </div>
                                   </div>
