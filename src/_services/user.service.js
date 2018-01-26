@@ -282,7 +282,7 @@ function getSearch(data) {
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(URL + '/product/amazon-search/?keyword=' + data.keyword + '&category='+ data.category +'&country=' + data.country +'&limit=10&offset=0', requestOptions).then(handleResponse);;
+    return fetch(URL + 'product/amazon-search/?keyword=' + data.keyword + '&category='+ data.category +'&country=' + data.country +'&limit=20&offset=0', requestOptions).then(handleResponse);;
 }
 
 function handleResponse(response) {
@@ -307,7 +307,7 @@ function getProductEbay(data) {
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(URL + 'product/ebay-search/?keyword=' + data + '&limit=1&offset=0', requestOptions).then(handleResponse);;
+    return fetch(URL + 'product/ebay-search/?keyword=' + data + '&limit=5&offset=0', requestOptions).then(handleResponse);;
 }
 
 function actionSupport(data){

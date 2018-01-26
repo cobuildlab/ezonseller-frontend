@@ -25,7 +25,7 @@ class HomePage extends React.Component {
 
     handleSaveProduct(data){
         localStorage.setItem('product', JSON.stringify(data));
-        history.push('/share/' + data.asin);
+        history.push('/share/' + data.title);
     }
 
     componentWillReceiveProps = (nextProps) =>{
