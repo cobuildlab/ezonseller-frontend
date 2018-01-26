@@ -1,0 +1,18 @@
+.title-title {
+    overflow: hidden;
+    display: -moz-box;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    min-height: 83px;
+/* autoprefixer: off */
+
+-webkit-box-orient: vertical;
+
+/* autoprefixer: on */ 
+  }
+
+
+.height-card{
+    min-height: 400px;
+    max-height: 590px;
+}

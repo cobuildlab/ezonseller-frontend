@@ -98,13 +98,6 @@ body {
 .card-body{
     padding: 15px;
 }
-.title-title {
-  overflow: hidden !important;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 3 !important;
-  -webkit-box-orient: vertical;
-  
-}
 .top-btn{
   margin-top: 10px;
 }
