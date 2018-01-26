@@ -50,7 +50,15 @@ class HomePage extends React.Component {
                                     {search.items.slice(0, 10).map((item, index) =>
                                         <div key={index} className="col-md-4 col-xs-12">
                                         <div className="card height-card">
-                                            <img className="card-img-top" src={item.large_image_url} height="250" alt={item.title} />
+                                          <div className="card-img-top" style={
+                                                      {  'backgroundImage': 'url( ' + item.large_image_url + ')',
+                                                        'backgroundRepeat': 'no-repeat',
+                                                        'backgroundPosition': 'center',
+                                                        'backgroundSize': 'contain',
+                                                        'width': '100%',
+                                                        'height': '250px',
+                                                      }
+                                                    } ></div>
                                             <div className="card-body">
                                             <h4 className="card-title title-title">{item.title}</h4>
                                             <p>Asin: {item.asin}</p>
