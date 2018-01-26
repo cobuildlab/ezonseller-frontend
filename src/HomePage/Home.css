@@ -3,15 +3,13 @@
     display: -moz-box;
     display: -webkit-box;
     -webkit-line-clamp: 3;
-    min-height: 83px;
+    min-height: 82px;
 /* autoprefixer: off */
 
 -webkit-box-orient: vertical;
 
-/* autoprefixer: on */ 
-  }
-
-
+/* autoprefixer: on */
+}
 .height-card{
     min-height: 400px;
     max-height: 590px;
