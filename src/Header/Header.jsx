@@ -19,7 +19,7 @@ class Header extends React.Component {
   }
 
     componentDidMount() {
-        this.props.dispatch(userActions.getCountry());      
+        this.props.dispatch(userActions.getCountry());
     }
 
     handleChange(event) {
@@ -71,7 +71,8 @@ class Header extends React.Component {
                   <Link to="/login" className="nav-link">Logout</Link>
                 </li>
               </ul>
-              <ul className="navbar-nav mr-auto">
+              <div className="container">
+              <ul className="navbar-nav">
                   <form className="form-inline hidden-sm-down" onSubmit={this.handleSearchProduct}>
                     <li className="nav-item">
                     {country.items  &&
@@ -140,7 +141,6 @@ class Header extends React.Component {
                     </li>
                     <li className="nav-item">
                       <div className="form-group">
-                        <label htmlFor="inputPassword2" className="sr-only">Password</label>
                           <input type="text" className="form-control rigth-input tam-input-nav" name="keyword" id="inputPassword2" onChange={this.handleChange} placeholder="Keywords"/>
                           <button type="submit" className="btn btn-primary">Search</button>
                       </div>
@@ -222,6 +222,7 @@ class Header extends React.Component {
                     </li>
                   </form>
               </ul>
+              </div>
 
               <ul className="navbar-nav hidden-sm-down">
                 <li className="nav-item">
