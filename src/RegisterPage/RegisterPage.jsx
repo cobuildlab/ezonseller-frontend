@@ -67,7 +67,7 @@ class RegisterPage extends React.Component {
             $().ready(function() {
                 var value =  $("#register_form").val();
                 if(value) {
-                    user.callback = callback;
+                    user.callback = '6LejRUMUAAAAAEmqctY7MvmGQ3_AAvKcuvYKBU0x';
                     dispatch(userActions.register(user));
                 }
             });
