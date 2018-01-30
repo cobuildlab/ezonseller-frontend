@@ -9,7 +9,6 @@ import Recaptcha from 'react-grecaptcha';
 
 import { userActions } from '../_actions';
 
-
 class RegisterPage extends React.Component {
     constructor(props) {
         super(props);
@@ -24,6 +23,7 @@ class RegisterPage extends React.Component {
                 terms: '',
                 register_form: ''
             },
+            response: {},
             submitted: false,
             invalid: false,
             render: false
@@ -56,25 +56,33 @@ class RegisterPage extends React.Component {
         });
     }
 
+    onChange(response) {
+        this.setState({
+            'response': response
+        });
+        console.log(response);
+    }
+
     handleSubmit(event) {
         event.preventDefault();
 
         this.setState({ submitted: true });
-        const { user } = this.state;
+        const { user, response } = this.state;
         const { dispatch } = this.props;
         let callback;
         if (user.first_name && user.last_name && user.username && user.password && user.email && user.terms) {
             $().ready(function() {
                 var value =  $("#register_form").val();
                 if(value) {
-                    var callback = JSON.parse(localStorage.getItem('callback'));
-                    user.callback = callback;
+                    user.callback = response;
                     dispatch(userActions.register(user));
                 }
             });
         }
     }
-    render() {
+
+
+    render(){
             const { registering  } = this.props;
             const { user } = this.state;
             
@@ -155,13 +163,17 @@ class RegisterPage extends React.Component {
                             </div>
                           </div>
                           <div className="Col">
-                                <Recaptcha
-                                    sitekey="6LejRUMUAAAAAEmqctY7MvmGQ3_AAvKcuvYKBU0x"
-                                    callback={verifyCallback}
-                                    expiredCallback={expiredCallback}
-                                    locale="en-GB"
-                                    className=""
-                                />
+                          <Recaptcha
+                            sitekey='6LejRUMUAAAAAEmqctY7MvmGQ3_AAvKcuvYKBU0x'
+                            callback={verifyCallback}
+                            expiredCallback={expiredCallback}
+                            locale="gb-EN"
+                            className="customClassName"
+
+                            // Other props will be passed into the component.
+                            data-theme=""
+                            />
+ 
                           </div>
                         </div>
                         <div className="form-group d-flex justify-content-center">

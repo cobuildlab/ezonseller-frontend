@@ -6,6 +6,7 @@
     "history": "^4.6.3",
     "jquery": "^3.2.1",
     "react": "^16.2.0",
+    "react-async-script": "^0.9.1",
     "react-bootstrap": "^0.32.0",
     "react-dom": "^16.2.0",
     "react-form-validation": "^1.1.3",
