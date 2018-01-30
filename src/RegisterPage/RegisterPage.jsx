@@ -78,9 +78,10 @@ class RegisterPage extends React.Component {
             const { registering  } = this.props;
             const { user } = this.state;
             
-            const verifyCallback = response;
+            const verifyCallback = response => console.log(response);
             const expiredCallback = () => console.log('expired');
             localStorage.setItem('callback', verifyCallback);
+            console.log(verifyCallback);
             return (
 
             <div className="col-md-12 no-padding">
