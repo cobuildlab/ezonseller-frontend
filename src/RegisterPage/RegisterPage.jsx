@@ -67,7 +67,7 @@ class RegisterPage extends React.Component {
             $().ready(function() {
                 var value =  $("#register_form").val();
                 if(value) {
-                    var callback = JSON.parse(localStorage.getItem('callback'));
+                    var callback = JSON.stringify(localStorage.getItem('callback'));
                     user.callback = callback;
                     dispatch(userActions.register(user));
                 }
