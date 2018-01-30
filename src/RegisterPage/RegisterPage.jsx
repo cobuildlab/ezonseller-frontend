@@ -169,7 +169,7 @@ class RegisterPage extends React.Component {
                           <div className="Col">
                           <Recaptcha
                             sitekey='6LejRUMUAAAAAEmqctY7MvmGQ3_AAvKcuvYKBU0x'
-                            callback={verifyCallback}
+                            callback={this.onChange.bind(this)}
                             expiredCallback={expiredCallback}
                             locale="gb-EN"
                             className="customClassName"
