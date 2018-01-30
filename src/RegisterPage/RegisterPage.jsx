@@ -94,6 +94,7 @@ class RegisterPage extends React.Component {
             const { user } = this.state;
             
             const verifyCallback = response =>  {
+                console.log(response);
                 if(typeof(response) === String){
                     localStorage.setItem('callback', JSON.stringify(verifyCallback));
                 }
