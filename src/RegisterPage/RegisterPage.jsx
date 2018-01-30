@@ -144,7 +144,7 @@ class RegisterPage extends React.Component {
                             </div>
                           </div>
                         </div>
-
+                        <div class="g-recaptcha" data-sitekey="6LejRUMUAAAAAEmqctY7MvmGQ3_AAvKcuvYKBU0x"></div>
                         <div className="form-group d-flex justify-content-center">
                             <button className="btn btn-primary" id="create_account">Create Account</button>
                             {registering &&
