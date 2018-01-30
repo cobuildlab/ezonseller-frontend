@@ -4,7 +4,7 @@ export const termsService = {
     getTerms
 };
 
-const URL = "https://ezonseller-backend.herokuapp.com/";
+const URL = "https://ezonsellerbackend.herokuapp.com/";
 
 function getTerms() {
     const requestOptions = {
