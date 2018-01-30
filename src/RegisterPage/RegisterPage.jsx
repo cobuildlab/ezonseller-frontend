@@ -67,18 +67,20 @@ class RegisterPage extends React.Component {
             $().ready(function() {
                 var value =  $("#register_form").val();
                 if(value) {
-                    user.callback = '6LejRUMUAAAAAEmqctY7MvmGQ3_AAvKcuvYKBU0x';
+                    var callback = JSON.parse(localStorage.getItem('callback'));
+                    user.callback = callback;
                     dispatch(userActions.register(user));
                 }
             });
         }
     }
     render() {
-        let callback;
             const { registering  } = this.props;
             const { user } = this.state;
-            const verifyCallback = response => callback = response;
+            
+            const verifyCallback = response => console.log(response);
             const expiredCallback = () => console.log('expired');
+            localStorage.setItem('callback', verifyCallback);
             return (
 
             <div className="col-md-12 no-padding">
