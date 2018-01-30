@@ -93,16 +93,10 @@ class RegisterPage extends React.Component {
             const { registering  } = this.props;
             const { user } = this.state;
             
-            const verifyCallback = response =>  {
-                console.log(response);
-                console.log(typeof(response));
-
-                if(typeof(response) == String){
-                    localStorage.setItem('callback', JSON.stringify(verifyCallback));
-                }
-                return response
-            };
+            const verifyCallback = response => console.log(response);
             const expiredCallback = () => console.log('expired');
+
+            console.log(verifyCallback);
 
             return (
 
