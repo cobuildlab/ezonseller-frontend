@@ -67,7 +67,7 @@ class RegisterPage extends React.Component {
             $().ready(function() {
                 var value =  $("#register_form").val();
                 if(value) {
-                    var callback = JSON.stringify(localStorage.getItem('callback'));
+                    var callback = JSON.parse(localStorage.getItem('callback'));
                     user.callback = callback;
                     dispatch(userActions.register(user));
                 }
@@ -80,8 +80,9 @@ class RegisterPage extends React.Component {
             
             const verifyCallback = response => console.log(response);
             const expiredCallback = () => console.log('expired');
+            console.log(typeof(verifyCallback));
             if(typeof(verifyCallback) === String){
-                localStorage.setItem('callback', verifyCallback);
+                localStorage.setItem('callback', JSON.stringify(verifyCallback));
                 console.log(verifyCallback);
             }
             console.log(verifyCallback);
