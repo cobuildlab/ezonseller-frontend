@@ -13,7 +13,7 @@ import { userActions } from '../_actions';
 class RegisterPage extends React.Component {
     constructor(props) {
         super(props);
-
+        let callback;
         this.state = {
             user: {
                 first_name: '',
@@ -62,22 +62,23 @@ class RegisterPage extends React.Component {
         this.setState({ submitted: true });
         const { user } = this.state;
         const { dispatch } = this.props;
-
+        let callback;
         if (user.first_name && user.last_name && user.username && user.password && user.email && user.terms) {
             $().ready(function() {
                 var value =  $("#register_form").val();
                 if(value) {
+                    user.callback = callback;
                     dispatch(userActions.register(user));
                 }
             });
         }
     }
     render() {
-
+        let callback;
             const { registering  } = this.props;
             const { user } = this.state;
-            const verifyCallback = response => console.log(response);
-            const expiredCallback = () => response => console.log(response);
+            const verifyCallback = response => callback = response;
+            const expiredCallback = () => console.log('expired');
             return (
 
             <div className="col-md-12 no-padding">
@@ -146,16 +147,15 @@ class RegisterPage extends React.Component {
                                 </div>
                             </div>
                           </div>
-                          <Recaptcha
-                            sitekey="6LejRUMUAAAAAEmqctY7MvmGQ3_AAvKcuvYKBU0x"
-                            callback={verifyCallback}
-                            expiredCallback={expiredCallback}
-                            locale="en-GB"
-                            className="customClassName"
-                            
-                            // Other props will be passed into the component.
-                            data-theme="dark"
-                            />
+                          <div className="Col">
+                                <Recaptcha
+                                    sitekey="6LejRUMUAAAAAEmqctY7MvmGQ3_AAvKcuvYKBU0x"
+                                    callback={verifyCallback}
+                                    expiredCallback={expiredCallback}
+                                    locale="en-GB"
+                                    className=""
+                                />
+                          </div>
                         </div>
                         <div className="form-group d-flex justify-content-center">
                             <button className="btn btn-primary" id="create_account">Create Account</button>

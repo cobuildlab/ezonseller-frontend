@@ -216,3 +216,7 @@ body {
 }
 
 }
+.customClassName{
+  width: 300px;
+  background-color: blue;
+}
