@@ -5,6 +5,7 @@ import  Logo  from '../assets/logo.png'
 import './register.css';
 import '../index.css';
 import $ from 'jquery';
+import Recaptcha from 'react-grecaptcha';
 
 import { userActions } from '../_actions';
 
@@ -34,7 +35,7 @@ class RegisterPage extends React.Component {
 
     componentWillMount() {
         setTimeout(function(){
-            this.setState({render: true})
+            //this.setState({render: true})
         }.bind(this), 10);
     }
 
@@ -72,9 +73,11 @@ class RegisterPage extends React.Component {
         }
     }
     render() {
-        if(this.state.render){
+
             const { registering  } = this.props;
             const { user } = this.state;
+            const verifyCallback = response => console.log(response);
+            const expiredCallback = () => response => console.log(response);
             return (
 
             <div className="col-md-12 no-padding">
@@ -143,8 +146,17 @@ class RegisterPage extends React.Component {
                                 </div>
                             </div>
                           </div>
+                          <Recaptcha
+                            sitekey="6LejRUMUAAAAAEmqctY7MvmGQ3_AAvKcuvYKBU0x"
+                            callback={verifyCallback}
+                            expiredCallback={expiredCallback}
+                            locale="en-GB"
+                            className="customClassName"
+                            
+                            // Other props will be passed into the component.
+                            data-theme="dark"
+                            />
                         </div>
-                        <div className="g-recaptcha" data-sitekey="6LejRUMUAAAAAEmqctY7MvmGQ3_AAvKcuvYKBU0x"></div>
                         <div className="form-group d-flex justify-content-center">
                             <button className="btn btn-primary" id="create_account">Create Account</button>
                             {registering &&
@@ -157,9 +169,7 @@ class RegisterPage extends React.Component {
                 </div>
             </div>
             );
-        }else{
-            return (<div className="backgroud-body"></div>);
-        }
+
     }
 }
 
