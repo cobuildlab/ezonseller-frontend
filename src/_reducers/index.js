@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import { authentication } from './authentication.reducer';
 import { registration } from './registration.reducer';
 import { users } from './users.reducer';
-import { user, editUser, paymentsPlans, cancelPlans } from './user.reducer';
+import { user, editUser, paymentsPlans, cancelPlans, home } from './user.reducer';
 import { term } from './term.reducer';
 import { recovery } from './recovery.reducer';
 import { alert } from './alert.reducer';
@@ -24,7 +24,8 @@ const rootReducer = combineReducers({
   countrys,
   country,
   search,
-  ebay
+  ebay,
+  home
 });
 
 export default rootReducer;

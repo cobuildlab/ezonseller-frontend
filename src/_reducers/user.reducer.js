@@ -126,3 +126,23 @@ export function cancelPlans(state = {}, action) {
       return state
   }
 }
+
+
+export function home(state = {}, action) {
+  switch (action.type) {
+    case userConstants.HOME_GET_REQUEST:
+      return {
+        loading: true
+      };
+    case userConstants.HOME_GET_SUCCESS:
+      return {
+        items: action.home
+      };
+    case userConstants.HOME_GET_FAILURE:
+      return {
+        error: action.error
+      };
+    default:
+      return state
+  }
+}

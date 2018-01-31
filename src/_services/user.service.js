@@ -29,7 +29,8 @@ export const userService = {
     getSearch,
     activateAccount,
     getProductEbay,
-    actionSupport
+    actionSupport,
+    lastSearch
 };
 
 //const URL = "https://ezonseller-backend.herokuapp.com/";
@@ -320,4 +321,13 @@ function actionSupport(data){
     };
 
     return fetch(URL + 'accounts/contact/', requestOptions).then(handleResponse);
+}
+
+
+function lastSearch() {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(URL + 'product/amazon-lastsearch/', requestOptions).then(handleResponse);;
 }

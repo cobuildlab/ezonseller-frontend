@@ -6,6 +6,8 @@ import { history } from '../_helpers';
 import './Home.css';
 import $ from 'jquery';
 
+import { userActions } from '../_actions';
+
 class HomePage extends React.Component {
 
     constructor(props){
@@ -19,6 +21,7 @@ class HomePage extends React.Component {
         $().ready(function() {
             $(".fakeloader").fadeOut();
         });
+        this.props.dispatch(userActions.lastSearch());   
     }
 
 
