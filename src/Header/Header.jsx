@@ -151,7 +151,7 @@ class Header extends React.Component {
                     <li className="nav-item">
                     {country.items  &&
                     <select className="custom-select rigth-input tam-input-nav" id="country_id" name="country" onChange={this.handleChange} required>
-                      <option defaultValue="" selected>Select a Country</option>
+                      <option defaultValue="">Select a Country</option>
                         {country.items.map((option, index)  => {
                           return <option value={option.code} key={index}>{option.name} - {option.code}</option>
                       })}

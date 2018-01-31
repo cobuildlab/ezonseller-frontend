@@ -6,6 +6,8 @@ import './register.css';
 import '../index.css';
 import $ from 'jquery';
 import Recaptcha from 'react-grecaptcha';
+import { toast } from 'react-toastify';
+
 
 import { userActions } from '../_actions';
 
@@ -32,12 +34,6 @@ class RegisterPage extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentWillMount() {
-        setTimeout(function(){
-            //this.setState({render: true})
-        }.bind(this), 10);
-    }
-
     handleChange(event) {
         const { name, value } = event.target;
         const { user } = this.state;
@@ -61,14 +57,21 @@ class RegisterPage extends React.Component {
         this.setState({ submitted: true });
         const { user, callback } = this.state;
         const { dispatch } = this.props;
-        console.log(callback);
+
         if (user.first_name && user.last_name && user.username && user.password && user.email && user.terms) {
             $().ready(function() {
                 var value =  $("#register_form").val();
-                if(value) {
-                    user.callback = callback;
-                    dispatch(userActions.register(user));
+                if(callback){
+                    if(value) {
+                        user.callback = callback;
+                        dispatch(userActions.register(user));
+                    }
+                }else{
+                    toast.error('The Captcha is Required.', {
+                        position: toast.POSITION.BOTTOM_RIGHT
+                    });
                 }
+                
             });
         }
     }
