@@ -81,14 +81,6 @@ class RegisterPage extends React.Component {
         }
     }
 
-    onChange(response) {
-        console.log(response);
-        this.setState({
-            'g-recaptcha-response': response
-        });
-    }
-
-
     render(){
             const { registering  } = this.props;
             const { user } = this.state;
@@ -169,7 +161,7 @@ class RegisterPage extends React.Component {
                           <div className="Col">
                           <Recaptcha
                             sitekey='6LejRUMUAAAAAEmqctY7MvmGQ3_AAvKcuvYKBU0x'
-                            callback={this.onChange.bind(this)}
+                            callback={verifyCallback}
                             expiredCallback={expiredCallback}
                             locale="gb-EN"
                             className="customClassName"
