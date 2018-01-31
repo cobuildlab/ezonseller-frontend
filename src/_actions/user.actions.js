@@ -145,7 +145,6 @@ function changePasswordEdit(data) {
                     history.push('/profile');
                 },              
                 error => {
-                    console.log(error);
                     dispatch(failure(error));
                     dispatch(alertActions.error(error));
                 }

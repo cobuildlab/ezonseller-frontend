@@ -136,7 +136,7 @@ export function home(state = {}, action) {
       };
     case userConstants.HOME_GET_SUCCESS:
       return {
-        items: action.home
+        items: action.data
       };
     case userConstants.HOME_GET_FAILURE:
       return {
