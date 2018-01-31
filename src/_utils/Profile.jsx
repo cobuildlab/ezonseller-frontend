@@ -99,7 +99,8 @@ class Profile extends React.Component {
                                               <h5>Name: {credit.name}</h5>
                                               <h5>Credit Card Number: {credit.number_card}</h5>
                                               <h5>Date Expiration: {credit.date_expiration}</h5>
-                                              <button role="button" className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}>Delete Credit Card</button>
+                                              <button role="button" className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}>Delete</button>
+                                              <Link to={"/edit-credit-card/" + credit.id} className="btn btn-warning">Update</Link>
                                         </div>
                                     )}
                                   </div>

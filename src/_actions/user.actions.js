@@ -32,7 +32,8 @@ export const userActions = {
     activateAccount,
     getProductEbay,
     actionSupport,
-    lastSearch
+    lastSearch,
+    detailCreditCard
 };
 
 function login(username, password) {
@@ -653,4 +654,27 @@ function lastSearch(){
     function request()      { return { type: userConstants.HOME_GET_REQUEST } }
     function success(data)  { return { type: userConstants.HOME_GET_SUCCESS, data } }
     function failure(error) { return { type: userConstants.HOME_GET_FAILURE, error } }
-} 
+}
+
+
+function detailCreditCard(id){
+    return dispatch => {
+        dispatch(request());
+
+        userService.detailCreditCard(id)
+            .then(
+                data => {
+                    dispatch(success(data));
+                    //dispatch(alertActions.success(data.message));
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request()      { return { type: userConstants.CARD_GET_REQUEST } }
+    function success(data)  { return { type: userConstants.CARD_GET_SUCCESS, data } }
+    function failure(error) { return { type: userConstants.CARD_GET_FAILURE, error } }
+}

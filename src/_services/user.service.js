@@ -30,7 +30,8 @@ export const userService = {
     activateAccount,
     getProductEbay,
     actionSupport,
-    lastSearch
+    lastSearch,
+    detailCreditCard
 };
 
 //const URL = "https://ezonseller-backend.herokuapp.com/";
@@ -120,7 +121,7 @@ function editUserId(id) {
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(URL + 'accounts/profile/' + id + '/', requestOptions).then(handleResponse);;
+    return fetch(URL + 'accounts/profile/' + id + '/', requestOptions).then(handleResponse);
 }
 
 function paymentPlans() {
@@ -128,7 +129,7 @@ function paymentPlans() {
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(URL + 'payment/plans', requestOptions).then(handleResponse);;
+    return fetch(URL + 'payment/plans', requestOptions).then(handleResponse);
 }
 
 function update(user) {
@@ -137,7 +138,7 @@ function update(user) {
         headers: { ...authHeader(), 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
-    return fetch(URL + 'accounts/profile/' + user.id + '/', requestOptions).then(handleResponse);;
+    return fetch(URL + 'accounts/profile/' + user.id + '/', requestOptions).then(handleResponse);
 }
 
 function uploadImage(data){
@@ -329,5 +330,14 @@ function lastSearch() {
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(URL + 'product/amazon-lastsearch/', requestOptions).then(handleResponse);;
+    return fetch(URL + 'product/amazon-lastsearch/', requestOptions).then(handleResponse);
+}
+
+
+function detailCreditCard(id){
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(URL + 'payment/card/' + id + '/', requestOptions).then(handleResponse);
 }

@@ -146,3 +146,23 @@ export function home(state = {}, action) {
       return state
   }
 }
+
+
+export function editCard(state = {}, action) {
+  switch (action.type) {
+    case userConstants.CARD_GET_REQUEST:
+      return {
+        loading: true
+      };
+    case userConstants.CARD_GET_SUCCESS:
+      return {
+        items: action.data
+      };
+    case userConstants.CARD_GET_FAILURE:
+      return {
+        error: action.error
+      };
+    default:
+      return state
+  }
+}

@@ -6,3 +6,4 @@ export * from './PaymentCard';
 export * from './AmazonKey';
 export * from './EbayKey';
 export * from './Support';
+export * from './CreditCardEdit';

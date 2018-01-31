@@ -23,6 +23,7 @@ import { SharePage } from '../SharePage';
 import { ActivatePage } from '../ActivatePage';
 import { ShowPage } from '../ShowPage';
 import { SupportPage } from '../SupportPage';
+import { EditCreditCard } from '../EditCreditCard';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -57,6 +58,7 @@ class App extends React.Component {
                         <PrivateRoute exact path="/share/:id" component={SharePage} />
                         <PrivateRoute exact path="/show/:country/:category/:keyword" component={ShowPage} />
                         <PrivateRoute exact path="/support" component={SupportPage} />
+                        <PrivateRoute exact path="/edit-credit-card/:id" component={EditCreditCard} />
 
                         <Route path="/activate/:uidb64/:token" component={ActivatePage} />
                         <Route path="/login" refresh="true" component={LoginPage} />
