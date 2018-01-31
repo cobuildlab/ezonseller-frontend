@@ -90,7 +90,7 @@ class Profile extends React.Component {
                     <div>
                         {user.items &&
                         <div>
-                        <h2><Link to={"/credit-card"} className="btn btn-primary rigth-input rigth-add">Add Credit Card</Link></h2>
+                            <Link to={"/credit-card"} className="btn btn-primary rigth-input rigth-add">Add Credit Card</Link>
                             <div className="data-credit">
                                 <h2>Credit Card</h2>
                                 <div className="col-12 no-padding">
@@ -170,6 +170,7 @@ class Profile extends React.Component {
                     <div>
                         {user.items &&
                         <div>
+                            <Link to={"/amazon-key/"} className="btn btn-primary rigth-input rigth-add">Add Amazon Key</Link>
                             {user.items.amazon_account.length !== 0 &&
                             <div>
                                 <h2>Amazon Associate</h2>
@@ -197,12 +198,14 @@ class Profile extends React.Component {
                     <div>
                         {user.items &&
                         <div>
+                            <Link to={"/ebay-key/"} className="btn btn-primary rigth-input rigth-add">Add Ebay Key</Link>
                             {user.items.ebay_account.length !== 0 &&
                             <div>
                                 <h2>Ebay Associate</h2>
                                 <div className="data-credit">
                                     {user.items.ebay_account.map((ebay, index) =>
                                     <div  key={ebay.id}>
+
                                         <h5>Client Id: {ebay.client_id}</h5>
                                           <div>
                                               <button className="btn btn-danger" onClick={this.handleDeleteEbayAssociate.bind(this, ebay.id)}>Delete</button>

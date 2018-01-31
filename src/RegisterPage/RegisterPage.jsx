@@ -168,7 +168,6 @@ class RegisterPage extends React.Component {
 
                             // Other props will be passed into the component.
                             data-theme=""
-                            onChange={this.onChange.bind(this)}
                             />
  
                           </div>

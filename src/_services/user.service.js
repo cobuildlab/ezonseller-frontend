@@ -32,6 +32,8 @@ export const userService = {
     actionSupport
 };
 
+//const URL = "https://ezonseller-backend.herokuapp.com/";
+
 const URL = "https://ezonsellerbackend.herokuapp.com/";
 //const URL = "http://192.168.0.12:8000/";
 

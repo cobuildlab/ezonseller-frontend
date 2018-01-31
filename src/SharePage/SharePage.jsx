@@ -9,6 +9,12 @@ import { userActions } from '../_actions';
 
 class SharePage extends React.Component {
 
+    constructor(props) {
+        super(props);
+    
+        this.goBack = this.goBack.bind(this)
+      }
+
     componentWillMount(){
         $().ready(function() {
             $(".fakeloader").show();
@@ -30,6 +36,10 @@ class SharePage extends React.Component {
         }
     };
 
+    goBack() {
+        this.props.history.goBack()
+    }
+
     render() {
         const { ebay } = this.props;
         let objectProduct = JSON.parse(localStorage.getItem('product'));
@@ -38,6 +48,8 @@ class SharePage extends React.Component {
                 <Header url={this.props} />
 
                     <div className="col-12">
+                    <button onClick={this.goBack} className="btn btn-primary rigth-input rigth-add">Back</button>
+
                     {ebay.items &&
 
                         <div className="row">
@@ -87,18 +99,18 @@ class SharePage extends React.Component {
                                               <h5>{item.location}</h5>
                                               <h5>{item.country}</h5>
                                               <h5>{item.itemId}</h5>
+                                              <h5>{item.sellingStatus}</h5>
                                               <Link to={item.viewItemURL} target="_blank">Ebay</Link>
                                           </div>
                                       </div>
                                   </div>
 
                                 )}
-
-
+                            
                         </div>
+                          
                     }
                 </div>
-           
         </div>
         );
     }
