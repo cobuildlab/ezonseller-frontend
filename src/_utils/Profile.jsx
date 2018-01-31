@@ -44,7 +44,6 @@ class Profile extends React.Component {
                     <div className="row">
                         <div className="col-12">
                             {user.items.photo === "" &&
-
                             <div>
                                 <div style={divStyle}></div>
                                 <div className="content-data">
@@ -81,7 +80,6 @@ class Profile extends React.Component {
                                     <Link to={"/support/"} className="dropdown-item">Support</Link>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -103,7 +101,6 @@ class Profile extends React.Component {
                                               <h5>Date Expiration: {credit.date_expiration}</h5>
                                               <button role="button" className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}>Delete Credit Card</button>
                                         </div>
-
                                     )}
                                   </div>
                                 </div>

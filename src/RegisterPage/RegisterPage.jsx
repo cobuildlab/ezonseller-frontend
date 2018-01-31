@@ -25,9 +25,7 @@ class RegisterPage extends React.Component {
                 register_form: ''
             },
             callback: '',
-            submitted: false,
-            invalid: false,
-            render: false
+            submitted: false
         };
 
         this.handleChange = this.handleChange.bind(this);
