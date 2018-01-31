@@ -12,7 +12,6 @@ import { userActions } from '../_actions';
 class RegisterPage extends React.Component {
     constructor(props) {
         super(props);
-        let callback;
         this.state = {
             user: {
                 first_name: '',
@@ -23,7 +22,7 @@ class RegisterPage extends React.Component {
                 terms: '',
                 register_form: ''
             },
-            response: {},
+            callback: '',
             submitted: false,
             invalid: false,
             render: false
@@ -60,9 +59,9 @@ class RegisterPage extends React.Component {
         event.preventDefault();
 
         this.setState({ submitted: true });
-        const { user, response } = this.state;
+        const { user, callback } = this.state;
         const { dispatch } = this.props;
-        let callback;
+        console.log(callback);
         if (user.first_name && user.last_name && user.username && user.password && user.email && user.terms) {
             $().ready(function() {
                 var value =  $("#register_form").val();
@@ -79,11 +78,10 @@ class RegisterPage extends React.Component {
             const { user } = this.state;
             
             const verifyCallback = response => {
-                console.log(response);
+                this.setState({
+                    callback: response
+                })
                 localStorage.setItem('callback', JSON.stringify(response)); 
-                console.log(response);
-                console.log(typeof response);
-
             }
             const expiredCallback = () => console.log('expired');
             return (
@@ -184,9 +182,10 @@ class RegisterPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const { edit } = state.registration;
+    const { edit, callback } = state.registration;
     return {
-        edit
+        edit,
+        callback
     };
 }
 
