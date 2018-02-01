@@ -588,11 +588,11 @@ function activateAccount(data){
 
 }
 
-function getProductEbay(data){
+function getProductEbay(country, title){
     return dispatch => {
         dispatch(request());
 
-        userService.getProductEbay(data)
+        userService.getProductEbay(country, title)
             .then(
                 data => {
                     dispatch(success(data));

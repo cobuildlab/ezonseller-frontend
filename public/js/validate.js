@@ -80,6 +80,50 @@ $( "body" ).mousemove(function( event ) {
             }
     });
 
+    $("#formEditCreditCard").validate({
+        submitHandler: function(form) {
+            $('#creditCard_form').val('1');
+        },
+			rules: {
+				name: {
+                    required: true,
+                    lettersonly: true 
+                },
+				number_card: {
+                    required: true,
+                    creditcard: true
+                },
+				cod_security: {
+					required: true,
+                    minlength: 3,
+                    maxlength: 4,
+                    number: true
+				},
+				year: {
+					required: true,
+					minlength: 2,
+                    maxlength: 2,
+                    number: true,
+                    range: [18, 40]
+				},
+				month: {
+					required: true,
+					minlength: 2,
+                    maxlength: 2,
+                    number: true,
+                    range: [01, 12]
+				}
+			},
+			messages: {
+				month: {
+					range: "Month invalid"
+                },
+                year: {
+					range: "Year invalid"
+				}
+            }
+        });
+
     $("#formCreditCard").validate({
         submitHandler: function(form) {
             $('#creditCard_form').val('1');

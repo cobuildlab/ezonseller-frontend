@@ -24,7 +24,7 @@ class SharePage extends React.Component {
 
     componentDidMount(){
         let objectProduct = JSON.parse(localStorage.getItem('product'));
-        this.props.dispatch(userActions.getProductEbay(objectProduct.title));
+        this.props.dispatch(userActions.getProductEbay(this.props.match.params.country, this.props.match.params.id));
     }
 
     componentWillReceiveProps = (nextProps) =>{

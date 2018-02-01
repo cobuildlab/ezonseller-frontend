@@ -306,12 +306,12 @@ function activateAccount(data) {
     return fetch(URL + 'activate/', requestOptions).then(handleResponse);
 }
 
-function getProductEbay(data) {
+function getProductEbay(country, title) {
     const requestOptions = {
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(URL + 'product/ebay-search/?keyword=' + data + '&limit=5&offset=0', requestOptions).then(handleResponse);;
+    return fetch(URL + 'product/ebay-search/?country=' + country + '&keyword=' + title + '&limit=5&offset=0', requestOptions).then(handleResponse);;
 }
 
 function actionSupport(data){

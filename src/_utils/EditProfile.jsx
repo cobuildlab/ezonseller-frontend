@@ -72,7 +72,7 @@ class EditProfile extends React.Component {
                         $(".fakeloader").show();
                     });
                     dispatch(userActions.updateUser(user));
-                 }
+                }
             });
         }
     }

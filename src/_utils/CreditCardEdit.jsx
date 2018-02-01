@@ -22,6 +22,25 @@ class CreditCardEdit extends React.Component {
             this.handleCreditCardTypeFromNumber = this.handleCreditCardTypeFromNumber.bind(this)
     }
 
+    componentWillReceiveProps = (nextProps) =>{
+        if(nextProps.editCard.items){
+            this.setState({
+                cardCredit: {
+                    id: nextProps.editCard.items.id,
+                    number_card: nextProps.editCard.items.number_card, 
+                    name: nextProps.editCard.items.name,
+                    cod_security: nextProps.editCard.items.cod_security,
+                    year: nextProps.editCard.items.year,
+                    month: nextProps.editCard.items.month
+                },
+                render: true
+            })
+            $().ready(function() {
+                $(".fakeloader").fadeOut();
+            });
+        }        
+    };
+
     handleChange(event) {
         const { name, value } = event.target;
         const { cardCredit } = this.state;
@@ -37,18 +56,17 @@ class CreditCardEdit extends React.Component {
         event.preventDefault();
         this.setState({ submitted: true });
         const { cardCredit } = this.state;
-        const { dispatch } = this.props;
-        console.log(cardCredit);
+        const { dispatch }   = this.props;
         if (cardCredit.name && cardCredit.number_card && cardCredit.cod_security &&  cardCredit.year && cardCredit.month) {
             let type_card = this.handleCreditCardTypeFromNumber(cardCredit.number_card);
             cardCredit.date_expiration = '20' + cardCredit.year + '-' + cardCredit.month + '-01';
             cardCredit.type_card = type_card;
+            console.log(cardCredit);
             $().ready(function() {
                 var value =  $("#creditCard_form").val();
                 if(value) {
                     $(".fakeloader").show();
-                    console.log(cardCredit);
-                    //dispatch(userActions.addCreditCard(card));
+                    dispatch(userActions.addCreditCard(cardCredit));
                 }
             });
             
@@ -73,36 +91,36 @@ class CreditCardEdit extends React.Component {
 
 
     render() {
-        const { registering, card } = this.props;
+        const { registering, editCard } = this.props;
         return (
             <div className="">
-                {card.items &&
+                {editCard.items &&
                 <div className="container">
                     <h2 className="text-center">Edit Credit Card</h2>
                     <div className="col-md-7 content-edit col-center">
                         <div className="row d-flex justify-content-center">
                             <div className="col-md-6">
-                                <form name="form" id="formCreditCard" onSubmit={this.handleSubmit}>
+                                <form name="form" id="formEditCreditCard" onSubmit={this.handleSubmit}>
                                     <div className="form-group">
                                         <label htmlFor="number">Number Card</label>
-                                        <input type="text" className="form-control" name="number_card" onChange={this.handleChange} defaultValue={card.items.number_card} required />
+                                        <input type="text" className="form-control" name="number_card" onChange={this.handleChange} defaultValue={editCard.items.number_card} required />
                                    </div>
                                     <div className="form-group">
                                         <label htmlFor="name">Name PlaceHolder</label>
-                                        <input type="text" className="form-control" name="name"  defaultValue={card.items.name} onChange={this.handleChange} required />
+                                        <input type="text" className="form-control" name="name"  defaultValue={editCard.items.name} onChange={this.handleChange} required />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="cod_security">Cod Security</label>
-                                        <input type="text" className="form-control" name="cod_security" onChange={this.handleChange} required />
+                                        <input type="text" className="form-control" name="cod_security" defaultValue={editCard.items.cod_security} onChange={this.handleChange} required />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="year">Exp. Year</label>
-                                        <input type="text" className="form-control" name="year" onChange={this.handleChange} required />
+                                        <input type="text" className="form-control" name="year" defaultValue={editCard.items.year} onChange={this.handleChange} required />
                                         <input type="hidden" name="creditCard_form" id="creditCard_form" />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="month">Exp. Month</label>
-                                        <input type="text" className="form-control" name="month" onChange={this.handleChange} required />
+                                        <input type="text" className="form-control" name="month" defaultValue={editCard.items.month} onChange={this.handleChange} required />
                                     </div>
 
                                     <div className="form-group">
@@ -124,9 +142,9 @@ class CreditCardEdit extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const { card } = state;
+    const { editCard } = state;
     return {
-        card
+        editCard
     };
 }
 
