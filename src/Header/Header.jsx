@@ -19,13 +19,14 @@ class Header extends React.Component {
   }
 
     componentDidMount() {
+        let valueUser = JSON.parse(localStorage.getItem('user'));
+        this.props.dispatch(userActions.getUserId(valueUser.id));
         this.props.dispatch(userActions.getCountry());
     }
 
     handleChange(event) {
       const { name, value } = event.target;
       const { search } = this.state;
-
       this.setState({
         search: {
               ...search,
@@ -38,6 +39,7 @@ class Header extends React.Component {
       event.preventDefault();
       this.setState({ submitted: true });
       const { search } = this.state;
+      console.log(search);
       if(search.country && search.keyword && search.category){
         $().ready(function() {
           $(".fakeloader").show();
@@ -77,7 +79,7 @@ class Header extends React.Component {
                     <li className="nav-item">
                     {country.items  &&
                     <select className="custom-select rigth-input tam-input-nav" id="country_id" name="country" onChange={this.handleChange} required>
-                      <option defaultValue="" selected>Select a Country</option>
+                      <option defaultValue="">Select a Country</option>
                         {country.items.map((option, index)  => {
                           return <option value={option.code} selected key={index}>{option.name} - {option.code}</option>
                       })}
