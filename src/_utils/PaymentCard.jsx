@@ -38,7 +38,8 @@ class PaymentCard extends React.Component {
         this.setState({ submitted: true });
         const { card } = this.state;
         const { dispatch } = this.props;
-        if (card.name && card.number_card && card.cod_security &&  card.year && card.month) {
+        console.log(card);
+        if (card.first_name && card.last_name && card.number_card && card.cod_security &&  card.year && card.month) {
             let type_card = this.handleCreditCardTypeFromNumber(card.number_card);
             card.date_expiration = '20' + card.year + '-' + card.month + '-01';
             card.type_card = type_card;

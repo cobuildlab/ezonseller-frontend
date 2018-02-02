@@ -58,7 +58,7 @@ class CreditCardEdit extends React.Component {
         this.setState({ submitted: true });
         const { cardCredit } = this.state;
         const { dispatch }   = this.props;
-        if (cardCredit.name && cardCredit.number_card && cardCredit.cod_security &&  cardCredit.year && cardCredit.month) {
+        if (cardCredit.first_name && cardCredit.last_name && cardCredit.number_card && cardCredit.cod_security &&  cardCredit.year && cardCredit.month) {
             let type_card = this.handleCreditCardTypeFromNumber(cardCredit.number_card);
             cardCredit.date_expiration = '20' + cardCredit.year + '-' + cardCredit.month + '-01';
             cardCredit.type_card = type_card;
