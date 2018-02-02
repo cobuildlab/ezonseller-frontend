@@ -33,11 +33,14 @@ class CancelSuscription extends React.Component {
         const { purchase } = this.state;
         const { dispatch, url } = this.props;
         purchase.id_plan = url;
-        if(purchase){
+        if(purchase.id_plan && purchase.option){
             $().ready(function() {
+                var value =  $("#cancel_form").val();
+                if(value) {
+                    dispatch(userActions.cancelPlan(purchase));
+                }
                 $(".fakeloader").fadeOut();
             });      
-            dispatch(userActions.cancelPlan(purchase));
         }
     }
 
@@ -57,26 +60,27 @@ class CancelSuscription extends React.Component {
                         )}
                     <div className="row d-flex justify-content-center">
                         <div className="col-md-6">
-
                             <div>
                                 {body.items.map((cancel, index) =>
                                     <div key={index}>
                                         <form name="form-cancel" id="myFormCancel" onSubmit={this.handleSubmit} >
                                             {cancel.list.map((list, index) =>
-                                            <div key={index} className={'form-group' + (!purchase ? ' has-danger' : '')}>
-                                                <input type="radio" className="" name="option" defaultValue={list} onChange={this.handleChange} required  />
-                                                {list}
+                                            <div key={index} className={'form-check' + (!purchase ? ' has-danger' : '')}>         
+                                                    <label>
+                                                        <input type="radio" className="form-group" name="option" defaultValue={list} onChange={this.handleChange} required  /> <span class="label-text"> {list} </span>
+                                                    </label>
                                             </div>
                                                 )}
-                                            <div className={'form-group' + (!purchase ? ' has-danger' : '')}>
-                                                <input type="radio" className="" name="option" defaultValue="Other" onChange={this.handleChange} required  />
-                                                Other
+                                            <div className={'form-check' + (!purchase ? ' has-danger' : '')}>
+                                                <label>
+                                                    <input type="radio" className="form-group" name="option" defaultValue="Other" onChange={this.handleChange} required  /> <span class="label-text"> Other</span>
+                                                </label>
                                             </div>
                                             <div className={'form-group' + (!purchase ? ' has-danger' : '')}>
                                                 <label htmlFor="purchase"><b>Reason:</b></label>
                                                     <textarea name="reason" defaultValue={purchase.reason} className="form-control" onChange={this.handleChange} >
-
                                                     </textarea>
+                                                    <input type="hidden" name="cancel_form" id="cancel_form" />
                                             </div>
                                             <div className="form-group">
                                                 <button className="btn btn-primary">Cancel Suscription</button>

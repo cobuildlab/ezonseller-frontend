@@ -179,6 +179,7 @@ $( "body" ).mousemove(function( event ) {
 
         $("#myFormCancel").validate({
             submitHandler: function(form) {
+                $('#cancel_form').val('1');
             }
         });
 
