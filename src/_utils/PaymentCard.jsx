@@ -85,8 +85,12 @@ class PaymentCard extends React.Component {
                                         <input type="text" className="form-control" name="number_card" onChange={this.handleChange} required />
                                    </div>
                                     <div className="form-group">
-                                        <label htmlFor="name">Name PlaceHolder</label>
-                                        <input type="text" className="form-control" name="name"  onChange={this.handleChange} required />
+                                        <label htmlFor="name">FirstName</label>
+                                        <input type="text" className="form-control" name="first_name"  onChange={this.handleChange} required />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="name">LastName</label>
+                                        <input type="text" className="form-control" name="last_name"  onChange={this.handleChange} required />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="cod_security">Cod Security</label>

@@ -152,7 +152,7 @@ class Profile extends React.Component {
                                             <Link to={"/acquire-plan/" + payment.id} className="btn btn-primary rigth-add">Acquire Plan</Link>
                                         </div>
                                         <h5>Name: {payment.title}</h5>
-                                        <h5>Cost: {payment.cost}</h5>
+                                        <h5>Cost: {payment.cost} $</h5>
                                     </div>
                                         )}
                                 </div>

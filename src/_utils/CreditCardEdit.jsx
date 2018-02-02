@@ -28,7 +28,8 @@ class CreditCardEdit extends React.Component {
                 cardCredit: {
                     id: nextProps.editCard.items.id,
                     number_card: nextProps.editCard.items.number_card, 
-                    name: nextProps.editCard.items.name,
+                    first_name: nextProps.editCard.items.first_name,
+                    last_name: nextProps.editCard.items.last_name,
                     cod_security: nextProps.editCard.items.cod_security,
                     year: nextProps.editCard.items.year,
                     month: nextProps.editCard.items.month
@@ -105,9 +106,13 @@ class CreditCardEdit extends React.Component {
                                         <label htmlFor="number">Number Card</label>
                                         <input type="text" className="form-control" name="number_card" onChange={this.handleChange} defaultValue={editCard.items.number_card} required />
                                    </div>
+                                   <div className="form-group">
+                                        <label htmlFor="name">FirstName</label>
+                                        <input type="text" className="form-control" name="first_name"  onChange={this.handleChange} required />
+                                    </div>
                                     <div className="form-group">
-                                        <label htmlFor="name">Name PlaceHolder</label>
-                                        <input type="text" className="form-control" name="name"  defaultValue={editCard.items.name} onChange={this.handleChange} required />
+                                        <label htmlFor="name">LastName</label>
+                                        <input type="text" className="form-control" name="last_name"  onChange={this.handleChange} required />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="cod_security">Cod Security</label>

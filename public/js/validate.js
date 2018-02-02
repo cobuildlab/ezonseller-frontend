@@ -85,7 +85,11 @@ $( "body" ).mousemove(function( event ) {
             $('#creditCard_form').val('1');
         },
 			rules: {
-				name: {
+				first_name: {
+                    required: true,
+                    lettersonly: true 
+                },
+                last_name: {
                     required: true,
                     lettersonly: true 
                 },
@@ -129,7 +133,11 @@ $( "body" ).mousemove(function( event ) {
             $('#creditCard_form').val('1');
         },
 			rules: {
-				name: {
+				first_name: {
+                    required: true,
+                    lettersonly: true 
+                },
+                last_name: {
                     required: true,
                     lettersonly: true 
                 },

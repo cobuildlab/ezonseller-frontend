@@ -29,7 +29,6 @@ class EditCreditCard extends React.Component {
 
     render() {
         const { card } = this.props;
-        console.log(this.props);
         return (
             <div className="">
                 <Header url={this.props} />
