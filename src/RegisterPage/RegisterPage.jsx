@@ -44,10 +44,11 @@ class RegisterPage extends React.Component {
     }
     componentDidMount(){
         $().ready(function() {
+            console.log(1);
+            console.log($('iframe'));
+            console.log(document.querySelector('iframe'));
+
             $(".fakeloader").fadeOut();
-            console.log($("iframe"));
-            $("iframe").width(374);
-            $("iframe").height(526);
         });
     }
 
@@ -142,7 +143,7 @@ class RegisterPage extends React.Component {
 
                             <div className="row">
                             <div className="col-md-12">
-                                <div className='form-group'>
+                                <div className="form-group">
                                     <div className="col-md-12 no-padding">
                                         <input type="radio" className="" name="terms" onChange={this.handleChange} required />
                                         <input type="hidden" name="register_form" id="register_form" value={user.register_form} />
@@ -151,19 +152,20 @@ class RegisterPage extends React.Component {
                                 </div>
                             </div>
                             
+                           
+
+    
+                            </div>
+                            <div className="col-md-12">
                             <Recaptcha
                                 sitekey='6LejRUMUAAAAAEmqctY7MvmGQ3_AAvKcuvYKBU0x'
                                 callback={verifyCallback}
                                 expiredCallback={expiredCallback}
                                 locale="gb-EN"
                                 className="customClassName"
-                                data-theme="light"
-
                                 // Other props will be passed into the component.
                                 />
-
-    
-                            </div>
+                            </div>  
                             <div className="form-group d-flex justify-content-center">
                                 <button className="btn btn-primary" id="create_account">Create Account</button>
                                 {registering &&
