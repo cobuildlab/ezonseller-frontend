@@ -151,21 +151,27 @@ class RegisterPage extends React.Component {
                                     </div>
                                 </div>
                             </div>
+
+                            <div className="col-md-12">
+                                <div className="form-group">
+                                    <div className="d-flex justify-content-center">
+                                    <Recaptcha
+                                        sitekey='6LejRUMUAAAAAEmqctY7MvmGQ3_AAvKcuvYKBU0x'
+                                        callback={verifyCallback}
+                                        expiredCallback={expiredCallback}
+                                        locale="gb-EN"
+                                        className="customClassName"
+                                        // Other props will be passed into the component.
+                                    />
+                                    </div>
+                                </div>
+                            </div>
                             
                            
 
     
                             </div>
-                            <div className="col-md-12">
-                            <Recaptcha
-                                sitekey='6LejRUMUAAAAAEmqctY7MvmGQ3_AAvKcuvYKBU0x'
-                                callback={verifyCallback}
-                                expiredCallback={expiredCallback}
-                                locale="gb-EN"
-                                className="customClassName"
-                                // Other props will be passed into the component.
-                                />
-                            </div>  
+                            
                             <div className="form-group d-flex justify-content-center">
                                 <button className="btn btn-primary" id="create_account">Create Account</button>
                                 {registering &&

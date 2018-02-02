@@ -1,6 +1,7 @@
 //validate Form Register
 $( "body" ).mousemove(function( event ) {
-
+    $("iframe").width(678);
+    
     jQuery.validator.addMethod("lettersonly", function(value, element) {
         return this.optional(element) || /^[a-zA-Z ]{2,30}$/i.test(value);
     }, "Letters only please"); 
