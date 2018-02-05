@@ -33,7 +33,8 @@ export const userActions = {
     getProductEbay,
     actionSupport,
     lastSearch,
-    detailCreditCard
+    detailCreditCard,
+    histoyPayment
 };
 
 function login(username, password) {
@@ -403,7 +404,7 @@ function cancelPlan(data) {
 };
 
     function request()            { return { type: userConstants.SUSCRIPTION_GET_REQUEST } }
-    function success(suscription) { return { type: userConstants.SUSCRIPTION_GET_SUCCESS, suscription } }
+    //function success(suscription) { return { type: userConstants.SUSCRIPTION_GET_SUCCESS, suscription } }
     function failure(error)       { return { type: userConstants.SUSCRIPTION_GET_FAILURE, error } }
 }
 
@@ -599,6 +600,7 @@ function getProductEbay(country, title){
                 },
                 error => {
                     dispatch(failure(error));
+                    history.goBack();
                     dispatch(alertActions.error(error));
                 }
             );
@@ -677,4 +679,28 @@ function detailCreditCard(id){
     function request()      { return { type: userConstants.CARD_GET_REQUEST } }
     function success(data)  { return { type: userConstants.CARD_GET_SUCCESS, data } }
     function failure(error) { return { type: userConstants.CARD_GET_FAILURE, error } }
+}
+
+
+function histoyPayment(data){
+    console.log(data);
+    return dispatch => {
+        dispatch(request());
+
+        userService.histoyPayment(data)
+            .then(
+                data => {
+                    dispatch(success(data));
+                    //dispatch(alertActions.success(data.message));
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request()      { return { type: userConstants.PAYMENT_HISTORY_GET_REQUEST } }
+    function success(data)  { return { type: userConstants.PAYMENT_HISTORY_GET_SUCCESS, data } }
+    function failure(error) { return { type: userConstants.PAYMENT_HISTORY_GET_FAILURE, error } }
 }

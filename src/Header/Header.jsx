@@ -39,7 +39,6 @@ class Header extends React.Component {
       event.preventDefault();
       this.setState({ submitted: true });
       const { search } = this.state;
-      console.log(search);
       if(search.country && search.keyword && search.category){
         $().ready(function() {
           $(".fakeloader").show();
@@ -50,17 +49,16 @@ class Header extends React.Component {
     }
 
     render() {
-        const { country, url, user } = this.props;
-        const { search }  = this.state;
+        const { country, user } = this.props;
         return (
           <div className="container-fluid no-padding">
             <nav className="navbar navbar-toggleable-md navbar-light fixed-top bg-faded shadow-nav">
             <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
-            <a className="navbar-brand" href="#">
-              <img src={Logo} className="logo-nav center-block img-fluid" alt="Logo ezonSeller" />
-            </a>
+            <Link className="navbar-brand" to="/">
+                <img src={Logo} className="logo-nav center-block img-fluid" alt="Logo ezonSeller" />
+            </Link>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav hidden-md-up">
                 <li className="nav-item">
@@ -240,7 +238,8 @@ class Header extends React.Component {
                       <div>
                         {user.items.photo !== '' &&
                         <div style={
-                                    {  'backgroundImage': 'url( ' + user.items.photo + ')',
+                                    { 
+                                      'backgroundImage': 'url(data:image/png;base64,' + user.items.photo64 + ')',
                                       'backgroundRepeat': 'no-repeat',
                                       'backgroundPosition': 'center',
                                       'backgroundSize': 'cover',

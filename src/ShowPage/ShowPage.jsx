@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { Header } from '../Header';
 import { history } from '../_helpers';
 import $ from 'jquery';

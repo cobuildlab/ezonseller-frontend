@@ -166,3 +166,23 @@ export function editCard(state = {}, action) {
       return state
   }
 }
+
+
+export function paymentHistory(state = {}, action) {
+  switch (action.type) {
+    case userConstants.PAYMENT_HISTORY_GET_REQUEST:
+      return {
+        loading: true
+      };
+    case userConstants.PAYMENT_HISTORY_GET_SUCCESS:
+      return {
+        items: action.data
+      };
+    case userConstants.PAYMENT_HISTORY_GET_FAILURE:
+      return {
+        error: action.error
+      };
+    default:
+      return state
+  }
+}

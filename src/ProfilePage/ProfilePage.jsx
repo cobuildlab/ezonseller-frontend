@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Header } from '../Header';
+import { Footer } from '../Footer';
 import { Profile } from '../_utils';
 import './profile.css';
 
@@ -39,7 +40,9 @@ class ProfilePage extends React.Component {
                 {user.items &&
                     <Profile user={user.items} />
                 }
+                <Footer />
             </div>
+               
         );
     }
 }

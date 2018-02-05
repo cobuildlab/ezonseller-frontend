@@ -38,7 +38,6 @@ class EditProfile extends React.Component {
             });
         }        
     };
-
    
     handleChange(event) {
         const { name, value } = event.target;
@@ -111,7 +110,7 @@ class EditProfile extends React.Component {
                                 <div className="col-md-12 no-padding">
                                     <div className="avatar-profile center"></div>
                                     <div className="form-group">
-                                        <input type="file" name="photo" value={photo} onChange={this.handleChangeImg} required />
+                                        <input type="file" name="photo" id="preview" value={photo} onChange={this.handleChangeImg} required />
                                         <input type="hidden" name="image_form" id="image_form" />
                                     </div>
                                 </div>

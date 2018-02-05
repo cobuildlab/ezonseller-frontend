@@ -28,7 +28,7 @@ class Profile extends React.Component {
         const { user, paymentsPlans } = this.props;
         let valueUser = JSON.parse(localStorage.getItem('user'));
         var divStyle = {
-            'backgroundImage': 'url(' + user.items.photo + ')',
+            'backgroundImage': 'url(data:image/png;base64,' + user.items.photo64 + ')',
             'backgroundRepeat': 'no-repeat',
             'backgroundPosition': 'center',
             'backgroundSize': 'cover',
@@ -38,12 +38,14 @@ class Profile extends React.Component {
             'backgroundColor': '#4487c5',
             'display': 'inline-block'
           };
+          console.log(userActions.items);
+
         return (
             <div className="">
                 <div className="col-12 section-data">
                     <div className="row">
                         <div className="col-12">
-                            {user.items.photo === "" &&
+                            {user.items.photo64 === "" &&
                             <div>
                                 <div style={divStyle}></div>
                                 <div className="content-data">
@@ -54,7 +56,7 @@ class Profile extends React.Component {
                             </div>
                             }
                             <div>
-                                {user.items.photo !== "" &&
+                                {user.items.photo64 !== "" &&
                                   <div>
                                     <div style={divStyle}></div>
                                     <div className="content-data">
@@ -77,6 +79,7 @@ class Profile extends React.Component {
                                     <Link to={"/edit-password/"} className="dropdown-item">Change Password</Link>
                                     <Link to={"/amazon-key/"} className="dropdown-item">Add Amazon Key</Link>
                                     <Link to={"/ebay-key/"} className="dropdown-item">Add Ebay Key</Link>
+                                    <Link to={"/payment-history/"} className="dropdown-item">Payment History</Link>
                                     <Link to={"/support/"} className="dropdown-item">Support</Link>
                                 </div>
                             </div>
@@ -99,7 +102,7 @@ class Profile extends React.Component {
                                               <h5>Name: {credit.name}</h5>
                                               <h5>Credit Card Number: {credit.number_card}</h5>
                                               <h5>Date Expiration: {credit.date_expiration}</h5>
-                                              <button role="button" className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}>Delete</button>
+                                              <button className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}>Delete</button>
                                               <Link to={"/edit-credit-card/" + credit.id} className="btn btn-warning">Update</Link>
                                         </div>
                                     )}
@@ -217,6 +220,7 @@ class Profile extends React.Component {
                             }
                     </div>
                 </div>
+                <br/><br/><br/><br/>
             </div>
         );
     }

@@ -7,17 +7,11 @@ import { userActions } from '../_actions';
 import $ from 'jquery';
 
 class EditCreditCard extends React.Component {
-    constructor(props){
-        super(props);
-    }
-    
-    componentWillMount() {
+
+    componentWillMount(){
         $().ready(function() {
             $(".fakeloader").show();
         });
-    }
-
-    componentWillMount(){
         this.props.dispatch(userActions.detailCreditCard(this.props.match.params.id));
     }
 
@@ -28,7 +22,6 @@ class EditCreditCard extends React.Component {
     }
 
     render() {
-        const { card } = this.props;
         return (
             <div className="">
                 <Header url={this.props} />

@@ -24,7 +24,6 @@ class EbayKeyPage extends React.Component {
     }
 
     render() {
-        const { logginIn } = this.props;
         return (
             <div>
                 

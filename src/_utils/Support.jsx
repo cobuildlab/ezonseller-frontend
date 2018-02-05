@@ -33,7 +33,7 @@ class Support extends React.Component {
         event.preventDefault();
         this.setState({ submitted: true });
         const { support } = this.state;
-        const { dispatch, url } = this.props;
+        const { dispatch } = this.props;
         if(support.email && support.message && support.title){
             $().ready(function() {
                 var value =  $("#support_form").val();
@@ -50,8 +50,6 @@ class Support extends React.Component {
 
         
     render() {
-        const { body } = this.props;
-        const { purchase } = this.state;
         return (
             <div className="container">
                 <div className="col-md-10 content-edit col-center">

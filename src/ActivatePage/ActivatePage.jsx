@@ -1,16 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { history } from '../_helpers';
-import Logo from '../assets/logo.png'
 import $ from 'jquery';
 
 import { userActions } from '../_actions';
 
 class ActivatePage extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     componentWillReceiveProps = (nextProps) =>{
         $().ready(function() {
@@ -24,7 +19,6 @@ class ActivatePage extends React.Component {
     }
 
     render() {
-        const { loggingIn } = this.props;
         return (
             <div>
             </div>

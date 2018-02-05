@@ -4,8 +4,6 @@ import { Header } from '../Header';
 import { Support } from '../_utils';
 import $ from 'jquery';
 
-import { userActions } from '../_actions';
-
 class SupportPage extends React.Component {
     
     componentDidMount() {

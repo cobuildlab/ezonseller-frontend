@@ -5,10 +5,8 @@
     -webkit-line-clamp: 3;
     min-height: 82px;
 /* autoprefixer: off */
-
 -webkit-box-orient: vertical;
 
-/* autoprefixer: on */
 }
 .height-card{
     min-height: 400px;

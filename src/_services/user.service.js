@@ -31,7 +31,8 @@ export const userService = {
     getProductEbay,
     actionSupport,
     lastSearch,
-    detailCreditCard
+    detailCreditCard,
+    histoyPayment
 };
 
 //const URL = "https://ezonseller-backend.herokuapp.com/";
@@ -172,7 +173,7 @@ function changePasswordEdit(data) {
         body: JSON.stringify(data)
     };
 
-    return fetch(URL + 'accounts/profile/' + user.id + '/changePassword/', requestOptions).then(handleResponse);;
+    return fetch(URL + 'accounts/profile/' + user.id + '/changePassword/', requestOptions).then(handleResponse);
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
@@ -181,7 +182,7 @@ function _delete(id) {
         method: 'DELETE',
         headers: authHeader()
     };
-    return fetch('/users/' + id, requestOptions).then(handleResponse);;
+    return fetch('/users/'+id, requestOptions).then(handleResponse);
 }
 
 function deleteCreditCard(id) {
@@ -217,7 +218,7 @@ function cancelSuscription() {
         headers: authHeader()
     };
 
-    return fetch(URL + 'payment/cancel-subscription/', requestOptions).then(handleResponse);;
+    return fetch(URL + 'payment/cancel-subscription/', requestOptions).then(handleResponse);
 }
 
 
@@ -227,7 +228,7 @@ function countryList() {
         headers: authHeader()
     };
 
-    return fetch(URL + 'country-list/', requestOptions).then(handleResponse);;
+    return fetch(URL + 'country-list/', requestOptions).then(handleResponse);
 }
 
 function cancelPlan(data) {
@@ -278,7 +279,7 @@ function getCountry() {
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(URL + 'country/', requestOptions).then(handleResponse);;
+    return fetch(URL + 'country/', requestOptions).then(handleResponse);
 }
 
 function getSearch(data) {
@@ -286,7 +287,7 @@ function getSearch(data) {
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(URL + 'product/amazon-search/?keyword=' + data.keyword + '&category='+ data.category +'&country=' + data.country +'&limit=20&offset=0', requestOptions).then(handleResponse);;
+    return fetch(URL + 'product/amazon-search/?keyword=' + data.keyword + '&category='+ data.category +'&country=' + data.country +'&limit=20&offset=0', requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
@@ -311,7 +312,7 @@ function getProductEbay(country, title) {
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(URL + 'product/ebay-search/?country=' + country + '&keyword=' + title + '&limit=5&offset=0', requestOptions).then(handleResponse);;
+    return fetch(URL + 'product/ebay-search/?country=' + country + '&keyword=' + title + '&limit=5&offset=0', requestOptions).then(handleResponse);
 }
 
 function actionSupport(data){
@@ -340,4 +341,17 @@ function detailCreditCard(id){
         headers: authHeader()
     };
     return fetch(URL + 'payment/card/' + id + '/', requestOptions).then(handleResponse);
+}
+
+function histoyPayment(data){
+    console.log(data);
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    console.log(data);
+    if(data === undefined){
+        data = 1
+    }
+    return fetch(URL + '/payment/history?limit=10&offset=0&page=' + data, requestOptions).then(handleResponse);
 }

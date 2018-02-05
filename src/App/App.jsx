@@ -24,6 +24,7 @@ import { ActivatePage } from '../ActivatePage';
 import { ShowPage } from '../ShowPage';
 import { SupportPage } from '../SupportPage';
 import { EditCreditCard } from '../EditCreditCard';
+import { PaymentHistoryPage } from '../PaymentHistoryPage';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -39,11 +40,9 @@ class App extends React.Component {
     }
 
     render() {
-        const { alert } = this.props;
         return (
-
             <div className="container top-section">
-                <ToastContainer autoClose={5000} />
+                <ToastContainer autoClose={6000} />
                 <Router history={history}>
                     <div>
                         <PrivateRoute exact path="/" component={HomePage}  />
@@ -59,6 +58,7 @@ class App extends React.Component {
                         <PrivateRoute exact path="/show/:country/:category/:keyword" component={ShowPage} />
                         <PrivateRoute exact path="/support" component={SupportPage} />
                         <PrivateRoute exact path="/edit-credit-card/:id" component={EditCreditCard} />
+                        <PrivateRoute exact path="/payment-history/" component={PaymentHistoryPage} />
 
                         <Route path="/activate/:uidb64/:token" component={ActivatePage} />
                         <Route path="/login" refresh="true" component={LoginPage} />
