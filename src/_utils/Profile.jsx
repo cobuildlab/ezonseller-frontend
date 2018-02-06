@@ -78,7 +78,9 @@ class Profile extends React.Component {
                                     <Link to={"/edit-profile/" + valueUser.id} className="dropdown-item">Edit Profile</Link>
                                     <Link to={"/edit-password/"} className="dropdown-item">Change Password</Link>
                                     <Link to={"/amazon-key/"} className="dropdown-item">Add Amazon Key</Link>
+                                    {user.items.ebay_account.length == 0 &&
                                     <Link to={"/ebay-key/"} className="dropdown-item">Add Ebay Key</Link>
+                                    }
                                     <Link to={"/payment-history/"} className="dropdown-item">Payment History</Link>
                                     <Link to={"/support/"} className="dropdown-item">Support</Link>
                                 </div>
@@ -199,7 +201,9 @@ class Profile extends React.Component {
                     <div>
                         {user.items &&
                         <div>
-                            <Link to={"/ebay-key/"} className="btn btn-primary rigth-input rigth-add">Add Ebay Key</Link>
+                            {user.items.ebay_account.length == 0 &&
+                                <Link to={"/ebay-key/"} className="btn btn-primary rigth-input rigth-add">Add Ebay Key</Link>
+                            }
                             {user.items.ebay_account.length !== 0 &&
                             <div>
                                 <h2>Ebay Associate</h2>
@@ -212,7 +216,7 @@ class Profile extends React.Component {
                                               <button className="btn btn-danger" onClick={this.handleDeleteEbayAssociate.bind(this, ebay.id)}>Delete</button>
                                           </div>
                                     </div>
-                                        )}
+                                    )}
                                 </div>
                             </div>
                             }
