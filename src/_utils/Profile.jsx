@@ -94,8 +94,9 @@ class Profile extends React.Component {
                         {user.items &&
                         <div>
                             <Link to={"/credit-card"} className="btn btn-primary rigth-input rigth-add">Add Credit Card</Link>
+                            <h2>Credit Card</h2>
                             <div className="data-credit">
-                                <h2>Credit Card</h2>
+
                                 <div className="col-12 no-padding">
                                   <div className="row">
                                     {user.items.credit_cards.map((credit, index) =>
@@ -154,7 +155,9 @@ class Profile extends React.Component {
                                     {paymentsPlans.items.map((payment, index) =>
                                     <div  key={payment.id}>
                                         <div>
-                                            <Link to={"/acquire-plan/" + payment.id} className="btn btn-primary rigth-add">Acquire Plan</Link>
+                                            <Link to={"/acquire-plan/" + payment.id} className="btn btn-primary rigth-input" style={
+                                                {'position': 'relative', 'top': '-65px', 'float': 'right'}
+                                              }>Acquire Plan</Link>
                                         </div>
                                         <h5>Name: {payment.title}</h5>
                                         <h5>Cost: {payment.cost} $</h5>

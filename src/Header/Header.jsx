@@ -142,7 +142,7 @@ class Header extends React.Component {
                     <li className="nav-item">
                       <div className="form-group">
                           <input type="text" className="form-control rigth-input tam-input-nav" name="keyword" id="inputPassword2" onChange={this.handleChange} placeholder="Keywords"/>
-                          <button type="submit" className="btn btn-primary">Search</button>
+                        <button type="submit" className="btn btn-primary" style={{'height': '50px'}}>Search</button>
                       </div>
                     </li>
                   </form>
@@ -238,7 +238,7 @@ class Header extends React.Component {
                       <div>
                         {user.items.photo !== '' &&
                         <div style={
-                                    { 
+                                    {
                                       'backgroundImage': 'url(data:image/png;base64,' + user.items.photo64 + ')',
                                       'backgroundRepeat': 'no-repeat',
                                       'backgroundPosition': 'center',

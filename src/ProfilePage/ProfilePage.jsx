@@ -42,7 +42,7 @@ class ProfilePage extends React.Component {
                 }
                 <Footer />
             </div>
-               
+
         );
     }
 }
