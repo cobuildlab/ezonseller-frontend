@@ -78,7 +78,7 @@ class SharePage extends React.Component {
                           <div className="col-12">
                             <h2>By Ebay Result</h2>
                           </div>
-                            {ebay.items.slice(0, 5).map((item, index) =>
+                            {ebay.items.slice(0, ebay.items.length-1).map((item, index) =>
 
                                   <div key={index} className="col-md-4">
                                       <div className="card height-card">

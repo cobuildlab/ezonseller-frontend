@@ -47,9 +47,8 @@ class ShowPage extends React.Component {
                     <h1>Search for result</h1>
                         {search.items &&
                             <div className="row">
-                            {search.items.length > 2 &&
                                 <div className="row">
-                                    {search.items.slice(0, 12).map((item, index) =>
+                                    {search.items.slice(0, search.items.length-1).map((item, index) =>
                                         <div key={index} className="col-md-4 col-xs-12">
                                         <div className="card height-card">
                                           <div className="card-img-top" style={
@@ -75,7 +74,6 @@ class ShowPage extends React.Component {
                                         </div>
                                     )}
                                 </div>
-                            }
                             </div>
                         }
                 </div>
