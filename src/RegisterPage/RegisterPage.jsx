@@ -160,7 +160,7 @@ class RegisterPage extends React.Component {
                                         callback={verifyCallback}
                                         expiredCallback={expiredCallback}
                                         locale="gb-EN"
-                                        className="customClassName"
+                                        invisible
                                         // Other props will be passed into the component.
                                     />
                                     </div>
