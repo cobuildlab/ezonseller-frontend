@@ -49,8 +49,5 @@ function error(message) {
 }
 
 function clear() {
-    $().ready(function() {
-        $(".fakeloader").fadeOut();
-    });
     return { type: alertConstants.CLEAR };
 }

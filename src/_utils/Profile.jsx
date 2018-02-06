@@ -78,7 +78,7 @@ class Profile extends React.Component {
                                     <Link to={"/edit-profile/" + valueUser.id} className="dropdown-item">Edit Profile</Link>
                                     <Link to={"/edit-password/"} className="dropdown-item">Change Password</Link>
                                     <Link to={"/amazon-key/"} className="dropdown-item">Add Amazon Key</Link>
-                                    {user.items.ebay_account.length == 0 &&
+                                    {user.items.ebay_account.length === 0 &&
                                     <Link to={"/ebay-key/"} className="dropdown-item">Add Ebay Key</Link>
                                     }
                                     <Link to={"/payment-history/"} className="dropdown-item">Payment History</Link>
@@ -201,7 +201,7 @@ class Profile extends React.Component {
                     <div>
                         {user.items &&
                         <div>
-                            {user.items.ebay_account.length == 0 &&
+                            {user.items.ebay_account.length === 0 &&
                                 <Link to={"/ebay-key/"} className="btn btn-primary rigth-input rigth-add">Add Ebay Key</Link>
                             }
                             {user.items.ebay_account.length !== 0 &&

@@ -65,15 +65,15 @@ class LoginPage extends React.Component {
                     <h6>Sign In to your account</h6>
                         <form name="form" onSubmit={this.handleSubmit}>
                             <div className={'form-group' + (submitted && !username ? ' has-danger' : '')}>
-                                <label htmlFor="username">Username</label>
-                                <input type="text" className="form-control" name="username" value={username} onChange={this.handleChange} />
+                                <label htmlFor="username">Username or Email</label>
+                                <input type="text" className="form-control" placeholder="Username or Email" name="username" value={username} onChange={this.handleChange} />
                                 {submitted && !username &&
                                     <div className="form-control-feedback">Username is required</div>
                                 }
                             </div>
                             <div className={'form-group' + (submitted && !password ? ' has-danger' : '')}>
                                 <label htmlFor="password">Password</label>
-                                <input type="password" className="form-control" name="password" value={password} onChange={this.handleChange} />
+                                <input type="password" className="form-control" placeholder="Password" name="password" value={password} onChange={this.handleChange} />
                                 {submitted && !password &&
                                     <div className="form-control-feedback">Password is required</div>
                                 }

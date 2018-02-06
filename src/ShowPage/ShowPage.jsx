@@ -21,17 +21,19 @@ class ShowPage extends React.Component {
     componentWillMount(){
         $().ready(function() {
             $(".fakeloader").show();
+            console.log(1);
         });
         this.props.dispatch(userActions.getSearch(this.props.match.params))
     }
 
-    handleSaveProduct(data){
+    handleSaveProduct(data) {
         localStorage.setItem('product', JSON.stringify(data));
         history.push('/share/' + this.props.match.params.country + '/' + data.title);
     }
 
-    componentWillReceiveProps = (nextProps) =>{
+    componentWillReceiveProps = (nextProps) => {
         if(nextProps.search.items){
+            console.log(nextProps.search.items);
             $().ready(function() {
                 $(".fakeloader").fadeOut();
             });

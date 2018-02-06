@@ -39,11 +39,13 @@ class Header extends React.Component {
       event.preventDefault();
       this.setState({ submitted: true });
       const { search } = this.state;
+      const { dispatch } = this.props;
+      console.log(this.state);
       if(search.country && search.keyword && search.category){
         $().ready(function() {
           $(".fakeloader").show();
+          dispatch(userActions.getSearch(search))
           history.push('/show/' + search.country + '/' + search.category + '/' + search.keyword);
-          window.location.reload();
         });
       }
     }
@@ -76,7 +78,7 @@ class Header extends React.Component {
                   <form className="form-inline hidden-sm-down" onSubmit={this.handleSearchProduct}>
                     <li className="nav-item">
                     {country.items  &&
-                    <select className="custom-select rigth-input tam-input-nav" id="country_id" name="country" onChange={this.handleChange} required>
+                    <select className="custom-select rigth-input tam-input-nav" id="country_id" name="country" onChange={this.handleChange} value={this.state.country} required>
                       <option defaultValue="">Select a Country</option>
                         {country.items.map((option, index)  => {
                           return <option value={option.code} key={index}>{option.name} - {option.code}</option>

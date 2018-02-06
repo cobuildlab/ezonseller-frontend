@@ -98,14 +98,14 @@ class RegisterPage extends React.Component {
                                 <div className="col-md-6">
                                     <div className="form-group">
                                         <label htmlFor="firstName">First Name</label>
-                                        <input type="text" className="form-control rigth-input" name="first_name" value={user.first_name} onChange={this.handleChange} required />
+                                        <input type="text" className="form-control rigth-input" placeholder="First name" name="first_name" value={user.first_name} onChange={this.handleChange} required />
 
                                     </div>
                                 </div>
                                 <div className="col-md-6">
                                     <div className="form-group">
                                         <label htmlFor="lastName">Last Name</label>
-                                        <input type="text" className="form-control" name="last_name" value={user.last_name} onChange={this.handleChange} required />
+                                        <input type="text" className="form-control" placeholder="Last name" name="last_name" value={user.last_name} onChange={this.handleChange} required />
 
                                     </div>
                                 </div>
@@ -115,13 +115,13 @@ class RegisterPage extends React.Component {
                                 <div className="col-md-6">
                                     <div className="form-group">
                                         <label htmlFor="username">Username</label>
-                                        <input type="text" className="form-control rigth-input" name="username" value={user.username} onChange={this.handleChange} required />
+                                        <input type="text" className="form-control rigth-input" placeholder="Username" name="username" value={user.username} onChange={this.handleChange} required />
                                     </div>
                                 </div>
                                 <div className="col-md-6">
                                     <div className="form-group">
                                         <label htmlFor="email">Email</label>
-                                        <input type="email" className="form-control" name="email" value={user.email} onChange={this.handleChange} required />
+                                        <input type="email" className="form-control" name="email" placeholder="Email" value={user.email} onChange={this.handleChange} required />
                                     </div>
                                 </div>
                             </div>
@@ -130,13 +130,13 @@ class RegisterPage extends React.Component {
                                 <div className="col-md-6">
                                     <div className="form-group">
                                         <label htmlFor="password">Password</label>
-                                        <input type="password" className="form-control" id="password" name="password" value={user.password} onChange={this.handleChange} required />
+                                        <input type="password" className="form-control" placeholder="Password" id="password" name="password" value={user.password} onChange={this.handleChange} required />
                                     </div>
                                 </div>
                                 <div className="col-md-6">
                                     <div className="form-group">
                                         <label htmlFor="password">Confirm Password</label>
-                                        <input type="password" className="form-control" name="confirm_password" value={user.confirm_password} onChange={this.handleChange} required />
+                                        <input type="password" className="form-control" placeholder="Confirm Password" name="confirm_password" value={user.confirm_password} onChange={this.handleChange} required />
                                     </div>
                                 </div>
                             </div>
