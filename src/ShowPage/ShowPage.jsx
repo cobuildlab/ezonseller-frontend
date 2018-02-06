@@ -21,7 +21,6 @@ class ShowPage extends React.Component {
     componentWillMount(){
         $().ready(function() {
             $(".fakeloader").show();
-            console.log(1);
         });
         this.props.dispatch(userActions.getSearch(this.props.match.params))
     }
@@ -33,7 +32,6 @@ class ShowPage extends React.Component {
 
     componentWillReceiveProps = (nextProps) => {
         if(nextProps.search.items){
-            console.log(nextProps.search.items);
             $().ready(function() {
                 $(".fakeloader").fadeOut();
             });
