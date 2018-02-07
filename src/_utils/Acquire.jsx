@@ -79,10 +79,10 @@ class Acquire extends React.Component {
                     {paymentsPlans.items &&
                         <div className="data-credit">
                             {paymentsPlans.items.map((payment, index) =>
-                            <div  key={payment.id}>
+                            <div key={payment.id}>
                                 <h5><b>Name:</b> {payment.title}</h5>
-                                <h5><b>Description:</b> {payment.description}</h5>
-                                <h5><b>Terms:</b> {payment.terms}</h5>
+                                <h5><b>Description:</b> <p className="text-justify">{payment.description}</p></h5>
+                                <h5><b>Terms:</b> <p className="text-justify">{payment.terms}</p></h5>
                                 <h5><b>Cost:</b> {payment.cost}$</h5>
                                 <h5><b>Duration:</b> {payment.duration}</h5>
                             </div>

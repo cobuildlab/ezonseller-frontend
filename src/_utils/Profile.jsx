@@ -102,7 +102,7 @@ class Profile extends React.Component {
                                     {user.items.credit_cards.map((credit, index) =>
 
                                         <div className="col-md-3" key={credit.id}>
-                                              <h5>Name: {credit.name}</h5>
+                                              <h5>Name: {credit.first_name} {credit.last_name}</h5>
                                               <h5>Credit Card Number: {credit.number_card}</h5>
                                               <h5>Date Expiration: {credit.date_expiration}</h5>
                                               <button className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}>Delete</button>
