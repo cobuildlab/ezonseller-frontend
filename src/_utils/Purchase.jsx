@@ -5,7 +5,7 @@ import $ from 'jquery';
 
 import { userActions } from '../_actions';
 
-class Acquire extends React.Component {
+class Purchase extends React.Component {
     constructor(props) {
         super(props);
             this.state = {
@@ -64,7 +64,7 @@ class Acquire extends React.Component {
                     <div>
                         <div className={'form-group' + (submitted && !purchase ? ' has-danger' : '')}>
                             <label htmlFor="credit_card">Credit Card</label>
-                            <select className="form-control" name="id_card" onChange={this.handleChange} defaulValue={purchase.id_card} required>
+                            <select className="form-control" name="id_card" onChange={this.handleChange} required>
                                 <option>Select a Credit Card</option>
                                 {user.items.credit_cards.map(option => {
                                     return <option value={option.id} key={option.id}>{option.first_name} {option.last_name} - {option.type_card}</option>
@@ -92,7 +92,7 @@ class Acquire extends React.Component {
 
                     <div className="form-check">
                         <label>
-                            <input type="radio" className="" name="terms" onChange={this.handleChange} value={purchase.terms} required /> <span class="label-text"> <Link to="/terms" className="btn btn-link term">I Accept the Terms and Conditions Ezonseller.</Link></span>
+                            <input type="radio" name="terms" onChange={this.handleChange} value={purchase.terms} required /> <span className="label-text"> <Link to="/terms" className="btn btn-link term">I Accept the Terms and Conditions Ezonseller.</Link></span>
                         </label>
                     </div>
                     <button className="btn btn-primary">Purchase</button>
@@ -113,5 +113,5 @@ function mapStateToProps(state) {
     };
 }
 
-const connectedAcquire = connect(mapStateToProps)(Acquire);
-export { connectedAcquire as Acquire };
+const connectedPurchase = connect(mapStateToProps)(Purchase);
+export { connectedPurchase as Purchase };

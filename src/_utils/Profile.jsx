@@ -101,10 +101,10 @@ class Profile extends React.Component {
                                   <div className="row">
                                     {user.items.credit_cards.map((credit, index) =>
 
-                                        <div className="col-md-3" key={credit.id}>
-                                              <h5>Name: {credit.first_name} {credit.last_name}</h5>
-                                              <h5>Credit Card Number: {credit.number_card}</h5>
-                                              <h5>Date Expiration: {credit.date_expiration}</h5>
+                                        <div className="col-md-6" key={credit.id}>
+                                              <h5><b>Name:</b> {credit.first_name} {credit.last_name}</h5>
+                                              <h5><b>Credit Card Number:</b> {credit.number_card}</h5>
+                                              <h5><b>Date Expiration:</b> {new Date(credit.date_expiration).getUTCMonth() + 1} - {new Date(credit.date_expiration).getUTCFullYear()}</h5>
                                               <button className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}>Delete</button>
                                               <Link to={"/edit-credit-card/" + credit.id} className="btn btn-warning">Update</Link>
                                         </div>
@@ -128,10 +128,10 @@ class Profile extends React.Component {
                                 <div className="col-12 no-padding">
                                     {user.items.plan_subscription.map((plan, index) =>
                                     <div key={plan.id}>
-                                        <h5>Name: {plan.title}</h5>
-                                        <h5>Description: {plan.description}</h5>
-                                        <h5>Date Start: {new Date(plan.date_start).toDateString()}</h5>
-                                        <h5>Date Finish: {new Date(plan.date_finish).toDateString()}</h5>
+                                        <h5><b>Name:</b> {plan.title}</h5>
+                                        <h5><b>Description:</b> {plan.description}</h5>
+                                        <h5><b>Date Start:</b> {new Date(plan.date_start).toDateString()}</h5>
+                                        <h5><b>Date Finish:</b> {new Date(plan.date_finish).toDateString()}</h5>
                                         <Link to={"/cancel-plan/" + user.items.id_plan} className="btn btn-danger">Cancel Plan</Link>
                                     </div>
                                         )}
@@ -155,12 +155,12 @@ class Profile extends React.Component {
                                     {paymentsPlans.items.map((payment, index) =>
                                     <div  key={payment.id}>
                                         <div>
-                                            <Link to={"/acquire-plan/" + payment.id} className="btn btn-primary rigth-input" style={
+                                            <Link to={"/purchase-plan/" + payment.id} className="btn btn-primary rigth-input" style={
                                                 {'position': 'relative', 'top': '-65px', 'float': 'right'}
-                                              }>Acquire Plan</Link>
+                                              }>Purchase Plan</Link>
                                         </div>
-                                        <h5>Name: {payment.title}</h5>
-                                        <h5>Cost: {payment.cost} $</h5>
+                                        <h5><b>Name:</b> {payment.title}</h5>
+                                        <h5><b>Cost:</b> {payment.cost} $</h5>
                                     </div>
                                         )}
                                 </div>
@@ -185,8 +185,8 @@ class Profile extends React.Component {
                                     {user.items.amazon_account.map((amazon, index) =>
                                     <div  key={amazon.id}>
 
-                                        <h5>Name: {amazon.associate_tag}</h5>
-                                        <h5>Cost: {amazon.access_key_id}</h5>
+                                        <h5><b>Name:</b> {amazon.associate_tag}</h5>
+                                        <h5><b>Cost:</b> {amazon.access_key_id}</h5>
                                           <div>
                                           <button className="btn btn-danger" onClick={this.handleDeleteAmazonAssociate.bind(this, amazon.id)}>Delete</button>
                                           </div>
@@ -214,7 +214,7 @@ class Profile extends React.Component {
                                     {user.items.ebay_account.map((ebay, index) =>
                                     <div  key={ebay.id}>
 
-                                        <h5>Client Id: {ebay.client_id}</h5>
+                                        <h5><b>Client Id:</b> {ebay.client_id}</h5>
                                           <div>
                                               <button className="btn btn-danger" onClick={this.handleDeleteEbayAssociate.bind(this, ebay.id)}>Delete</button>
                                           </div>

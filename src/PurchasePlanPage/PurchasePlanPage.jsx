@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Header } from '../Header';
-import { Acquire } from '../_utils';
-import './AcquirePage.css';
+import { Purchase } from '../_utils';
+import './PurchasePlanPage.css';
 import $ from 'jquery';
 
 import { userActions } from '../_actions';
 
-class AcquirePlanPage extends React.Component {
+class PurchasePlanPage extends React.Component {
     constructor(props) {
         super(props);
             this.state = {
@@ -67,7 +67,7 @@ class AcquirePlanPage extends React.Component {
         return (
             <div className="">
                 <Header url={this.props} />
-                <Acquire user={user} paymentsPlans={paymentsPlans}  params={this.props.match.params.id} />
+                <Purchase user={user} paymentsPlans={paymentsPlans}  params={this.props.match.params.id} />
             </div>
         );
     }
@@ -81,5 +81,5 @@ function mapStateToProps(state) {
     };
 }
 
-const connectedAcquirePlanPage = connect(mapStateToProps)(AcquirePlanPage);
-export { connectedAcquirePlanPage as AcquirePlanPage };
+const connectedPurchasePlanPage = connect(mapStateToProps)(PurchasePlanPage);
+export { connectedPurchasePlanPage as PurchasePlanPage };
