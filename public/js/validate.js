@@ -4,7 +4,7 @@ $( "body" ).mousemove(function( event ) {
     
     jQuery.validator.addMethod("lettersonly", function(value, element) {
         return this.optional(element) || /^[a-zA-Z ]{2,30}$/i.test(value);
-    }, "Letters only please"); 
+    }, "The password must contain letters and numbers - minimum 8 and maximum 12 characters"); 
 
 
     jQuery.validator.addMethod("passwordSecurity", function(value, element) {
