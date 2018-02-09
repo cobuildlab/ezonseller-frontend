@@ -47,7 +47,7 @@ class Profile extends React.Component {
                         <div className="col-12">
                             {user.items.photo64 === "" &&
                             <div>
-                                <div style={divStyle}></div>
+                                <div className="avatar-profile"></div>
                                 <div className="content-data">
                                     <h3>{user.items.first_name} {user.items.last_name}</h3>
                                     <h5>{user.items.username}</h5>
