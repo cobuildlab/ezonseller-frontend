@@ -37,6 +37,9 @@ class App extends React.Component {
             // clear alert on location change
             dispatch(alertActions.clear());
         });
+        if(!localStorage.getItem('user')){
+            history.push('login');
+        }
     }
 
     render() {

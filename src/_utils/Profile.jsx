@@ -38,8 +38,6 @@ class Profile extends React.Component {
             'backgroundColor': '#4487c5',
             'display': 'inline-block'
           };
-          console.log(userActions.items);
-
         return (
             <div className="">
                 <div className="col-12 section-data">
