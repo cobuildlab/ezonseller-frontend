@@ -19,7 +19,7 @@ class EditProfilePage extends React.Component {
             this.setState({
                 user: {
                     id: nextProps.editUser.items.id,
-                    first_name: nextProps.editUser.items.first_name, 
+                    first_name: nextProps.editUser.items.first_name,
                     last_name: nextProps.editUser.items.last_name,
                     username: nextProps.editUser.items.username
                 },
@@ -28,7 +28,7 @@ class EditProfilePage extends React.Component {
             $().ready(function() {
                 $(".fakeloader").fadeOut();
             });
-        }        
+        }
     };
 
     render() {
