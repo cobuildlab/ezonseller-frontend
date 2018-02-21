@@ -1,5 +1,6 @@
 import { alertConstants } from '../_constants';
 import { toast } from 'react-toastify';
+import { history } from '../_helpers';
 import $ from 'jquery';
 
 export const alertActions = {
@@ -28,9 +29,13 @@ function error(message) {
     if(Promise.resolve(message) === message){
         message.then(function(value) {
             if(typeof value === 'object'){
-                toast.error(value.message, {
-                    position: toast.POSITION.BOTTOM_RIGHT
-                });            
+                if(value.detail){
+                    history.push('login');
+                }else{
+                    toast.error(value.message, {
+                        position: toast.POSITION.BOTTOM_RIGHT
+                    });  
+                }      
             }else{
                 value.message.forEach(data => {
                     toast.error(data, {

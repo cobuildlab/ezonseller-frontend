@@ -28,6 +28,9 @@ import { PaymentHistoryPage } from '../PaymentHistoryPage';
 
 import { ToastContainer } from 'react-toastify';
 
+import Idle from 'react-idle'
+
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -37,14 +40,24 @@ class App extends React.Component {
             // clear alert on location change
             dispatch(alertActions.clear());
         });
-        if(!localStorage.getItem('user')){
+
+        this.handleClosedSession = this.handleClosedSession.bind(this);        
+    }
+
+    handleClosedSession(){
+        if(localStorage.getItem('user')){
             history.push('login');
         }
     }
-
+    
     render() {
         return (
             <div className="container top-section">
+                <Idle timeout={300000} onChange={({idle}) => {
+                    if (idle) {
+                    this.handleClosedSession();
+                    }
+                }}/>
                 <ToastContainer autoClose={6000} />
                 <Router history={history}>
                     <div>
