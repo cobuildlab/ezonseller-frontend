@@ -44,10 +44,6 @@ class RegisterPage extends React.Component {
     }
     componentDidMount(){
         $().ready(function() {
-            console.log(1);
-            console.log($('iframe'));
-            console.log(document.querySelector('iframe'));
-
             $(".fakeloader").fadeOut();
         });
     }

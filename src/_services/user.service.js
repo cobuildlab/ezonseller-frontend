@@ -37,8 +37,8 @@ export const userService = {
 
 //const URL = "https://ezonseller-backend.herokuapp.com/";
 
-const URL = "https://ezonsellerbackend.herokuapp.com/";
-//const URL = "http://192.168.0.12:8000/";
+//const URL = "https://ezonsellerbackend.herokuapp.com/";
+const URL = "http://192.168.0.8:8000/";
 
 function login(username, password) {
     const requestOptions = {
@@ -130,7 +130,7 @@ function paymentPlans() {
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(URL + 'payment/plans', requestOptions).then(handleResponse);
+    return fetch(URL + 'payment/plans/', requestOptions).then(handleResponse);
 }
 
 function update(user) {

@@ -297,14 +297,15 @@ function deleteCreditCard(id) {
     function failure(id, error) { return { type: userConstants.CARD_DELETE_FAILURE, id, error } }
 }
 
-function paymentPlans() {
+function paymentPlans(id) {
     return dispatch => {
         dispatch(request());
 
-        userService.paymentPlans()
+        userService.paymentPlans(id)
             .then(
                 payments => {
                     dispatch(success(payments));
+                    localStorage.setItem(user, JSON.stringify(payments.user))
                 },
                 error => {
                     dispatch(failure, (error));
@@ -393,6 +394,7 @@ function cancelPlan(data) {
             .then(
                 suscription => {
                 dispatch(alertActions.success(suscription.message));
+                localStorage.setItem(user, JSON.stringify(suscription.user))
                 history.push('/profile');
                 //dispatch(success(suscription));
                 },

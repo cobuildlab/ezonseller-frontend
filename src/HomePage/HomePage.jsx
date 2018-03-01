@@ -11,7 +11,8 @@ class HomePage extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-          search: {}
+          search: {},
+          plan: ""
         };
     }
 
@@ -19,16 +20,26 @@ class HomePage extends React.Component {
         $().ready(function() {
             $(".fakeloader").fadeOut();
         });
-        this.props.dispatch(userActions.lastSearch());   
+        let value = JSON.parse(localStorage.getItem('user'));
+        this.setState({ plan: value.type_plan })
+        if(value.type_plan !== 'Free'){
+            this.props.dispatch(userActions.lastSearch());   
+        }
     }
 
 
     render() {
         const { home } = this.props;
+        const { plan } = this.state;
         return (
             <div>
                 <Header url={this.props} />
                 <div className="container">
+                    {plan === 'Free' &&
+                    <div>
+                    <p>To enjoy the searches through our system, you must enter the profile register a credit card and then proceed to make the subscription of one of our plans.</p>
+                    </div>
+                    }
                     {home.items &&
                         <div className="row">
                         <h1>Last Searches</h1>
