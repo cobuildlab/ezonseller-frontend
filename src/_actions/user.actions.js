@@ -305,7 +305,7 @@ function paymentPlans(id) {
             .then(
                 payments => {
                     dispatch(success(payments));
-                    localStorage.setItem(user, JSON.stringify(payments.user))
+                    //localStorage.setItem(user, JSON.stringify(payments.user))
                 },
                 error => {
                     dispatch(failure, (error));
@@ -350,6 +350,9 @@ function acquirePlan(data) {
             .then(
                 plan  => {
                     dispatch(success(plan))
+                    var user = JSON.parse(localStorage.getItem('user'))
+                    plan.user.Token = user.Token;
+                    localStorage.setItem('user', JSON.stringify(plan.user))
                     dispatch(alertActions.success(plan.message));
                     history.push('/profile')
                 },
@@ -372,6 +375,7 @@ function cancelSuscription() {
         userService.cancelSuscription()
             .then(
                 suscription => {
+                    console.log(suscription);
                     dispatch(success(suscription));
                 },
                 error => {
@@ -394,7 +398,10 @@ function cancelPlan(data) {
             .then(
                 suscription => {
                 dispatch(alertActions.success(suscription.message));
-                localStorage.setItem(user, JSON.stringify(suscription.user))
+                delete suscription.message;
+                var user = JSON.parse(localStorage.getItem('user'))
+                suscription.Token = user.Token;
+                localStorage.setItem('user', JSON.stringify(suscription))
                 history.push('/profile');
                 //dispatch(success(suscription));
                 },
@@ -557,6 +564,7 @@ function getSearch(data){
                 },
                 error => {
                     dispatch(failure(error));
+                    console.log(error);
                     dispatch(alertActions.error(error));
                 }
             );

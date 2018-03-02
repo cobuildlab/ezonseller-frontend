@@ -69,7 +69,7 @@ class Purchase extends React.Component {
                             <select className="form-control" name="id_card" onChange={this.handleChange} required>
                                 <option>Select a Credit Card</option>
                                 {user.items.credit_cards.map(option => {
-                                    return <option value={option.id} key={option.id}>{option.first_name} {option.last_name} - {option.type_card}</option>
+                                    return <option value={option.id} key={option.id}>{option.first_name} {option.last_name} - {option.type_card} - {option.number_card}</option>
                                 })}
                             </select>
                             {submitted && !purchase &&

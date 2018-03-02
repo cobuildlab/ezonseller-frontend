@@ -40,7 +40,7 @@ class HomePage extends React.Component {
                     <p>To enjoy the searches through our system, you must enter the profile register a credit card and then proceed to make the subscription of one of our plans.</p>
                     </div>
                     }
-                    {home.items &&
+                    {home.items && plan !== 'Free' &&
                         <div className="row">
                         <h1>Last Searches</h1>
                         {home.items.length > 2 &&
