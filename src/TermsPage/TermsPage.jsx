@@ -6,7 +6,7 @@ import { termsActions } from '../_actions';
 class TermsPage extends React.Component {
 
     componentDidMount() {
-        this.props.dispatch(termsActions.getTerms());
+       // this.props.dispatch(termsActions.getTerms());
         $().ready(function() {
             $(".fakeloader").fadeOut();
         });
@@ -18,9 +18,7 @@ class TermsPage extends React.Component {
             <div className="">
                 <div className="container">
                 <h1>Terms</h1>
-                  {term.items &&
-                    <p>{term.items.description}</p>
-                  }
+
                 </div>
             </div>
         );
