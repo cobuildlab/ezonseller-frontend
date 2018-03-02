@@ -152,13 +152,23 @@ class Profile extends React.Component {
                                 <div className="data-credit">
                                     {paymentsPlans.items.map((payment, index) =>
                                     <div  key={payment.id}>
-                                        <div>
-                                            <Link to={"/purchase-plan/" + payment.id} className="btn btn-primary rigth-input" style={
-                                                {'position': 'relative', 'top': '-65px', 'float': 'right'}
+                                      <ul className="list-group list-group-flush">
+                                        <li className="list-group-item">
+                                          <div className="col-md-4">
+                                            <h5><b>Name:</b> {payment.title}</h5>
+                                            <h5><b>Cost:</b> {payment.cost} $</h5>
+                                          </div>
+                                          <div className="col-md-8">
+                                            <Link to={"/purchase-plan/" + payment.id} className="btn btn-primary" style={
+                                                {'float': 'right'}
                                               }>Purchase Plan</Link>
+                                          </div>
+                                          </li>
+                                      </ul>
+                                        <div>
+
                                         </div>
-                                        <h5><b>Name:</b> {payment.title}</h5>
-                                        <h5><b>Cost:</b> {payment.cost} $</h5>
+
                                     </div>
                                         )}
                                 </div>
