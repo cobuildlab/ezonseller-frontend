@@ -76,12 +76,13 @@ class RegisterPage extends React.Component {
     render(){
             const { registering  } = this.props;
             const { user } = this.state;
-            const verifyCallback = response => {
+            /*const verifyCallback = response => {
                 this.setState({
                     callback: response
                 })
             }
             const expiredCallback = () => console.log('expired');
+            */
             return (
             <div className="col-md-12 no-padding">
                 <img src={Logo} className="logo-img center-block img-fluid" alt="" />
