@@ -50,11 +50,9 @@ class RegisterPage extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-
         this.setState({ submitted: true });
         const { user, callback } = this.state;
         const { dispatch } = this.props;
-
         if (user.first_name && user.last_name && user.username && user.password && user.email && user.terms) {
             $().ready(function() {
                 var value =  $("#register_form").val();
