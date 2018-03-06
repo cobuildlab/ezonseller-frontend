@@ -152,7 +152,7 @@ class RegisterPage extends React.Component {
                                 <div className="form-group">
                                     <div className="d-flex justify-content-center">
                                     <Recaptcha
-                                        sitekey='6LejRUMUAAAAAEmqctY7MvmGQ3_AAvKcuvYKBU0x'
+                                        sitekey='6LcX-0oUAAAAAPd2e5t_txQsSZcWrOr6CpLsAr1o'
                                         callback={verifyCallback}
                                         expiredCallback={expiredCallback}
                                         locale="gb-EN"
