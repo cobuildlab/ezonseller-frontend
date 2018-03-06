@@ -10,6 +10,7 @@ class Purchase extends React.Component {
         super(props);
             this.state = {
                 purchase: {},
+                plan: "",
                 submitted: false
             };
 
@@ -21,6 +22,7 @@ class Purchase extends React.Component {
         let valueUser = JSON.parse(localStorage.getItem('user'));
         this.props.dispatch(userActions.getUserId(valueUser.id));
         this.props.dispatch(userActions.paymentPlans());
+        this.setState({plan: this.props.params})
     }
 
     handleChange(event) {
@@ -53,7 +55,7 @@ class Purchase extends React.Component {
 
     render() {
         const { user, paymentsPlans } = this.props;
-        const { purchase, submitted } = this.state;
+        const { purchase, submitted, plan } = this.state;
         return (
             <div className="">
                 <form name="form" id="myFormPurchasePlan" onSubmit={this.handleSubmit}>
@@ -67,7 +69,7 @@ class Purchase extends React.Component {
                             <select className="form-control" name="id_card" onChange={this.handleChange} required>
                                 <option>Select a Credit Card</option>
                                 {user.items.credit_cards.map(option => {
-                                    return <option value={option.id} key={option.id}>{option.first_name} {option.last_name} - {option.type_card}</option>
+                                    return <option value={option.id} key={option.id}>{option.first_name} {option.last_name} - {option.type_card} - {option.number_card}</option>
                                 })}
                             </select>
                             {submitted && !purchase &&
@@ -78,13 +80,18 @@ class Purchase extends React.Component {
                     }
                     {paymentsPlans.items &&
                         <div className="data-credit">
+                        
                             {paymentsPlans.items.map((payment, index) =>
-                            <div key={payment.id}>
-                                <h5><b>Name:</b> {payment.title}</h5>
-                                <h5><b>Description:</b> <p className="text-justify">{payment.description}</p></h5>
-                                <h5><b>Terms:</b> <p className="text-justify">{payment.terms}</p></h5>
-                                <h5><b>Cost:</b> {payment.cost}$</h5>
-                                <h5><b>Duration:</b> {payment.duration}</h5>
+                            <div>
+                                {payment.id == plan &&
+                                    <div key={payment.id}>
+                                        <h5><b>Name:</b> {payment.title}</h5>
+                                        <h5><b>Description:</b> <p className="text-justify">{payment.description}</p></h5>
+                                        <h5><b>Terms:</b> <p className="text-justify">{payment.terms}</p></h5>
+                                        <h5><b>Cost:</b> {payment.cost}$</h5>
+                                        <h5><b>Duration:</b> {payment.duration}</h5>
+                                    </div>
+                                }
                             </div>
                         )}
                       </div>

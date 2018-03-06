@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Header } from '../Header';
 import './Home.css';
+import  Info  from '../assets/info.png'
 import $ from 'jquery';
 
 import { userActions } from '../_actions';
@@ -11,7 +12,8 @@ class HomePage extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-          search: {}
+          search: {},
+          plan: ""
         };
     }
 
@@ -19,17 +21,32 @@ class HomePage extends React.Component {
         $().ready(function() {
             $(".fakeloader").fadeOut();
         });
-        this.props.dispatch(userActions.lastSearch());   
+        let value = JSON.parse(localStorage.getItem('user'));
+        this.setState({ plan: value.type_plan })
+        if(value.type_plan !== 'Free'){
+            this.props.dispatch(userActions.lastSearch());
+        }
     }
 
 
     render() {
         const { home } = this.props;
+        const { plan } = this.state;
         return (
             <div>
                 <Header url={this.props} />
                 <div className="container">
-                    {home.items &&
+                    {plan === 'Free' &&
+                    <div className="media box-info">
+                      <img src={Info} className="align-self-center mr-3" alt="info" />
+                    <div className="media-body text-infor">
+                        To enjoy the searches through our system, you must enter the profile register a credit card and then proceed to make the subscription of one of our plans.
+                      </div>
+                    </div>
+
+
+                    }
+                    {home.items && plan !== 'Free' &&
                         <div className="row">
                         <h1>Last Searches</h1>
                         {home.items.length > 2 &&
