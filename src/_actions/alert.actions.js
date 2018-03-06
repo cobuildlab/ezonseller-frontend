@@ -32,6 +32,12 @@ function error(message) {
                 if(value.detail){
                     history.push('login');
                 }else{
+                    console.log(value);
+                    if(value.type_plan){
+                        var user = JSON.parse(localStorage.getItem('user'))
+                        value.Token = user.Token;
+                        localStorage.setItem('user', JSON.stringify(value))   
+                    }
                     toast.error(value.message, {
                         position: toast.POSITION.BOTTOM_RIGHT
                     });  

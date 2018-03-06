@@ -12,3 +12,21 @@
     min-height: 400px;
     max-height: 590px;
 }
+.box-info{
+  padding: 15px 15px;
+  background-color: #4487c5;
+  color: white;
+  letter-spacing: 0.3px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 9px 2px #ccc;
+}
+.text-infor{
+  margin-top: 10px;
+}
+.img-bottom{
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+.list-group-item{
+  padding: 0.75rem 0.25rem !important;
+}
