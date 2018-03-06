@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import $ from 'jquery';
-import { termsActions } from '../_actions';
 import './term.css';
 
 class TermsPage extends React.Component {
@@ -14,7 +13,6 @@ class TermsPage extends React.Component {
     }
 
     render() {
-        const { term } = this.props;
         return (
             <div className="">
                 <div className="container">

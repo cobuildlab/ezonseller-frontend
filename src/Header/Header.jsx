@@ -39,7 +39,6 @@ class Header extends React.Component {
       event.preventDefault();
       this.setState({ submitted: true });
       const { search } = this.state;
-      const { dispatch } = this.props;
       if(search.country && search.keyword && search.category){
         $().ready(function() {
           $(".fakeloader").show();

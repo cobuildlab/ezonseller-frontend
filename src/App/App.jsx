@@ -28,36 +28,49 @@ import { PaymentHistoryPage } from '../PaymentHistoryPage';
 
 import { ToastContainer } from 'react-toastify';
 
-import Idle from 'react-idle'
+import IdleTimer from 'react-idle-timer';
 
 
 class App extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            timeout: 300000,
+            remaining: null,
+            isIdle: false,
+            lastActive: null,
+            elapsed: null
+        };
 
         const { dispatch } = this.props;
         history.listen((location, action) => {
             // clear alert on location change
             dispatch(alertActions.clear());
         });
-
-        this.handleClosedSession = this.handleClosedSession.bind(this);        
     }
 
-    handleClosedSession(){
+    _onActive = () => {
+        this.setState({ isIdle: false });
+    };
+
+    _onIdle = () => {
+        this.setState({ isIdle: true });
         if(localStorage.getItem('user')){
             history.push('login');
         }
-    }
+    };
     
     render() {
         return (
             <div className="container top-section">
-                <Idle timeout={300000} onChange={({idle}) => {
-                    if (idle) {
-                    this.handleClosedSession();
-                    }
-                }}/>
+                <IdleTimer
+                    ref="idleTimer"
+                    element={document}
+                    activeAction={this._onActive}
+                    idleAction={this._onIdle}
+                    timeout={this.state.timeout}
+                    format="MM-DD-YYYY HH:MM:ss.SSS">
+                </IdleTimer>
                 <ToastContainer autoClose={6000} />
                 <Router history={history}>
                     <div>
