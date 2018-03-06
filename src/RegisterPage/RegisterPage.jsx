@@ -5,7 +5,7 @@ import  Logo  from '../assets/logo.png'
 import './register.css';
 import '../index.css';
 import $ from 'jquery';
-//import Recaptcha from 'react-grecaptcha';
+import Recaptcha from 'react-grecaptcha';
 import { toast } from 'react-toastify';
 
 
@@ -50,22 +50,24 @@ class RegisterPage extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
+
         this.setState({ submitted: true });
         const { user, callback } = this.state;
         const { dispatch } = this.props;
+
         if (user.first_name && user.last_name && user.username && user.password && user.email && user.terms) {
             $().ready(function() {
                 var value =  $("#register_form").val();
-                //if(callback){
+                if(callback){
                     if(value) {
-                        //user.callback = callback;
+                        user.callback = callback;
                         dispatch(userActions.register(user));
                     }
-                //}else{
-                //    toast.error('The Captcha is Required.', {
-                //        position: toast.POSITION.BOTTOM_RIGHT
-                //    });
-               // }
+                }else{
+                    toast.error('The Captcha is Required.', {
+                        position: toast.POSITION.BOTTOM_RIGHT
+                    });
+                }
                 
             });
         }
@@ -74,13 +76,12 @@ class RegisterPage extends React.Component {
     render(){
             const { registering  } = this.props;
             const { user } = this.state;
-            /*const verifyCallback = response => {
+            const verifyCallback = response => {
                 this.setState({
                     callback: response
                 })
             }
             const expiredCallback = () => console.log('expired');
-            */
             return (
             <div className="col-md-12 no-padding">
                 <img src={Logo} className="logo-img center-block img-fluid" alt="" />
@@ -147,7 +148,7 @@ class RegisterPage extends React.Component {
                                 </div>
                             </div>
 
-                        {/*    <div className="col-md-12">
+                            <div className="col-md-12">
                                 <div className="form-group">
                                     <div className="d-flex justify-content-center">
                                     <Recaptcha
@@ -161,7 +162,6 @@ class RegisterPage extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                        */}
                             
                            
 

@@ -35,7 +35,10 @@ export const userService = {
     histoyPayment
 };
 
+//const URL = "https://ezonseller-backend.herokuapp.com/";
+
 const URL = "https://ezonsellerbackend.herokuapp.com/";
+//const URL = "http://192.168.0.8:8000/";
 
 function login(username, password) {
     const requestOptions = {
