@@ -53,6 +53,9 @@ class ForgotPage extends React.Component {
         $().ready(function() {
             var value =  $("#forgot_form").val();
             if(value) {
+                $().ready(function() {
+                    $(".fakeloader").show();
+                });
                 dispatch(userActions.recoveryPassword({"email":email}));
             }
         });

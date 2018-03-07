@@ -183,8 +183,8 @@ class Profile extends React.Component {
                 <div className="col-12 no-padding">
                     <div>
                         {user.items &&
-                        <div>
-                            <Link to={"/amazon-key/"} className="btn btn-primary rigth-input rigth-add">Add Amazon Key</Link>
+                        <div style={{position: 'relative', zIndex:1}}>
+                            <Link to={"/amazon-key/"} className="btn btn-primary rigth-input rigth-add" style={{position: 'relative', zIndex:2}}>Add Amazon Key</Link>
                             {user.items.amazon_account.length !== 0 &&
                             <div>
                                 <h2>Amazon Associate</h2>

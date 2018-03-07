@@ -41,6 +41,7 @@ class HomePage extends React.Component {
                       <img src={Info} className="align-self-center mr-3" alt="info" />
                     <div className="media-body text-infor">
                         To enjoy the searches through our system, you must enter the profile register a credit card and then proceed to make the subscription of one of our plans.
+                        You must also add your Amazon and Ebay keys so that the search can yield results.
                       </div>
                     </div>
 
