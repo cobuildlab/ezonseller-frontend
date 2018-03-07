@@ -80,15 +80,15 @@ class PaymentCard extends React.Component {
                             <div className="col-md-6">
                                 <form name="form" id="formCreditCard" onSubmit={this.handleSubmit}>
                                     <div className="form-group">
-                                        <label htmlFor="number">Number Card</label>
+                                        <label htmlFor="number">Card Number</label>
                                         <input type="text" className="form-control" name="number_card" onChange={this.handleChange} required />
                                    </div>
                                     <div className="form-group">
-                                        <label htmlFor="name">FirstName</label>
+                                        <label htmlFor="name">First Name</label>
                                         <input type="text" className="form-control" name="first_name"  onChange={this.handleChange} required />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="name">LastName</label>
+                                        <label htmlFor="name">Last Name</label>
                                         <input type="text" className="form-control" name="last_name"  onChange={this.handleChange} required />
                                     </div>
                                     <div className="form-group">
