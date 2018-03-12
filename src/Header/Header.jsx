@@ -23,7 +23,6 @@ class Header extends React.Component {
       let valueUser = JSON.parse(localStorage.getItem('user'));
       this.props.dispatch(userActions.getUserId(valueUser.id));
       this.props.dispatch(userActions.getCountry());
-      console.log(valueUser.type_plan)
       if(valueUser.type_plan === 'Free'){
         this.setState({typePlan: true})
       }     
@@ -56,8 +55,8 @@ class Header extends React.Component {
     render() {
         const { country, user } = this.props;
         const { typePlan } = this.state;
-        console.log(typePlan)
-        console.log(this.state)
+
+      if(this.props.url.match.path === '/' || this.props.url.match.url == '/show/' + this.props.url.match.params.country + '/' +  this.props.url.match.params.category + '/' +  this.props.url.match.params.keyword){
         return (
           <div className="container-fluid no-padding">
             <nav className="navbar navbar-toggleable-md navbar-light fixed-top bg-faded shadow-nav">
@@ -278,6 +277,82 @@ class Header extends React.Component {
             </nav>
           </div>
         );
+      }else{
+        return (
+          <div className="container-fluid no-padding">
+            <nav className="navbar navbar-toggleable-md navbar-light fixed-top bg-faded shadow-nav">
+            <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <Link className="navbar-brand" to="/">
+                <img src={Logo} className="logo-nav center-block img-fluid" alt="Logo ezonSeller" />
+            </Link>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav hidden-md-up">
+                <li className="nav-item">
+                  <Link to="/" className="nav-link border">Home <span className="sr-only">(current)</span></Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/profile" className="nav-link border">Profile</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/login" className="nav-link">Logout</Link>
+                </li>
+              </ul>
+              <div className="container">
+              <ul className="navbar-nav">
+
+              </ul>
+              </div>
+
+              <ul className="navbar-nav hidden-sm-down">
+                <li className="nav-item">
+                  <div className="dropdown">
+                  {user.items &&
+                      <div>
+                        {user.items.photo === '' &&
+                          <div className="avatar-nav"></div>
+                        }
+                      </div>
+                    }
+                    {user.items &&
+                      <div>
+                        {user.items.photo !== '' &&
+                        <div style={
+                                    {
+                                      'backgroundImage': 'url(data:image/png;base64,' + user.items.photo64 + ')',
+                                      'backgroundRepeat': 'no-repeat',
+                                      'backgroundPosition': 'center',
+                                      'backgroundSize': 'cover',
+                                      'width': '55px',
+                                      'height': '55px',
+                                      'borderRadius':'50%',
+                                      'backgroundColor': '#4487c5',
+                                      'position': 'absolute',
+                                      'top': '-10px',
+                                      'right': '40px'
+                                    }
+                                  } ></div>
+                        }
+                      </div>
+                    }
+                    <button className="btn btn-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </button>
+                    <div className="dropdown-menu pos-menu" aria-labelledby="dropdownMenuButton">
+                      <Link to="/" className="nav-link">Home <span className="sr-only">(current)</span></Link>
+                      <Link to="/profile" className="nav-link">Profile</Link>
+                      <Link to="/login" className="nav-link">Logout</Link>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+            </div>
+            </nav>
+          </div>
+        );
+
+      }
         
     }
 }
