@@ -25,6 +25,7 @@ import { ShowPage } from '../ShowPage';
 import { SupportPage } from '../SupportPage';
 import { EditCreditCard } from '../EditCreditCard';
 import { PaymentHistoryPage } from '../PaymentHistoryPage';
+import { InfoPage } from '../InfoPage';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -59,7 +60,7 @@ class App extends React.Component {
             history.push('login');
         }
     };
-    
+
     render() {
         return (
             <div className="container top-section">
@@ -95,6 +96,7 @@ class App extends React.Component {
                         <Route path="/forgot" component={ForgotPage} />
                         <Route path="/change" component={ChangePasswordPage} />
                         <Route path="/terms" component={TermsPage} />
+                        <Route path="/info" component={InfoPage} />
                     </div>
                 </Router>
             </div>

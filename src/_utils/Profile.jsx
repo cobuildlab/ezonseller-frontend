@@ -235,6 +235,11 @@ class Profile extends React.Component {
                             }
                     </div>
                 </div>
+                <div className="col-12 no-padding">
+                  <div>
+                    <h2>Information</h2>
+                  </div>
+                </div>
                 <br/><br/><br/><br/>
             </div>
         );
