@@ -203,14 +203,13 @@ class Profile extends React.Component {
                                 <div className="data-credit">
                                     {user.items.amazon_account.map((amazon, index) =>
                                     <div  key={amazon.id}>
-
                                         <h5><b>Name:</b> {amazon.associate_tag}</h5>
                                         <h5><b>Cost:</b> {amazon.access_key_id}</h5>
                                           <div>
-                                          <button className="btn btn-danger" onClick={this.handleDeleteAmazonAssociate.bind(this, amazon.id)} title="Delete"><i className="fa fa-remove" aria-hidden="true"></i> Delete</button>
+                                            <button className="btn btn-danger" onClick={this.handleDeleteAmazonAssociate.bind(this, amazon.id)} title="Delete"><i className="fa fa-remove" aria-hidden="true"></i> Delete</button>
                                           </div>
                                     </div>
-                                        )}
+                                    )}
                                 </div>
                                     }
                             </div>

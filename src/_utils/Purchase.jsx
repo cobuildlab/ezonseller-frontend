@@ -15,7 +15,7 @@ class Purchase extends React.Component {
             };
 
             this.handleSubmit = this.handleSubmit.bind(this);
-            this.handleChange = this.handleChange.bind(this);        
+            this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
@@ -42,6 +42,7 @@ class Purchase extends React.Component {
         this.setState({ submitted: true });
         const { purchase } = this.state;
         const { dispatch } = this.props;
+        console.log(purchase);
         if (purchase.terms && purchase.id_card) {
             purchase.id_plan   = this.props.params;
             purchase.automatic = "False";
@@ -56,6 +57,7 @@ class Purchase extends React.Component {
     render() {
         const { user, paymentsPlans } = this.props;
         const { purchase, submitted, plan } = this.state;
+        console.log(submitted)
         return (
             <div className="">
                 <form name="form" id="myFormPurchasePlan" onSubmit={this.handleSubmit}>
@@ -75,12 +77,12 @@ class Purchase extends React.Component {
                             {submitted && !purchase &&
                                 <div className="form-control-feedback">Credit Card is required</div>
                             }
-                        </div> 
+                        </div>
                     </div>
                     }
                     {paymentsPlans.items &&
                         <div className="data-credit">
-                        
+
                             {paymentsPlans.items.map((payment, index) =>
                             <div>
                                 {payment.id == plan &&
