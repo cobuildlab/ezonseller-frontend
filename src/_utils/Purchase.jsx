@@ -86,7 +86,7 @@ class Purchase extends React.Component {
                         <div className="data-credit">
 
                             {paymentsPlans.items.map((payment, index) =>
-                            <div>
+                            <div key={index}>
                                 {payment.id == plan &&
                                     <div key={payment.id}>
                                         <h5><b>Name:</b> {payment.title}</h5>
