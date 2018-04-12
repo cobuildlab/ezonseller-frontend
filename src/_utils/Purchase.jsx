@@ -15,7 +15,7 @@ class Purchase extends React.Component {
             };
 
             this.handleSubmit = this.handleSubmit.bind(this);
-            this.handleChange = this.handleChange.bind(this);        
+            this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
@@ -42,6 +42,7 @@ class Purchase extends React.Component {
         this.setState({ submitted: true });
         const { purchase } = this.state;
         const { dispatch } = this.props;
+
         if (purchase.terms && purchase.id_card) {
             purchase.id_plan   = this.props.params;
             purchase.automatic = "False";
@@ -50,6 +51,9 @@ class Purchase extends React.Component {
                 $(".fakeloader").show();
             });
             dispatch(userActions.acquirePlan(purchase));
+        }else if(purchase.id_card === undefined){
+          window.scrollTo(0, 0);
+          $("html, body").animate({ scrollTop: 0 }, "slow");
         }
     }
 
@@ -64,7 +68,7 @@ class Purchase extends React.Component {
                         <h2 className="text-center">Plan</h2>
                     {user.items &&
                     <div>
-                        <div className={'form-group' + (submitted && !purchase ? ' has-danger' : '')}>
+                        <div className={'form-group' + (submitted && purchase.id_card === undefined ? ' has-danger' : '')}>
                             <label htmlFor="credit_card">Credit Card</label>
                             <select className="form-control" name="id_card" onChange={this.handleChange} required>
                                 <option>Select a Credit Card</option>
@@ -72,17 +76,17 @@ class Purchase extends React.Component {
                                     return <option value={option.id} key={option.id}>{option.first_name} {option.last_name} - {option.type_card} - {option.number_card}</option>
                                 })}
                             </select>
-                            {submitted && !purchase &&
-                                <div className="form-control-feedback">Credit Card is required</div>
+                            {submitted && purchase.id_card === undefined &&
+                                <div className="form-control-feedback" style={{color: 'red' }}>Credit Card is required</div>
                             }
-                        </div> 
+                        </div>
                     </div>
                     }
                     {paymentsPlans.items &&
                         <div className="data-credit">
-                        
+
                             {paymentsPlans.items.map((payment, index) =>
-                            <div>
+                            <div key={index}>
                                 {payment.id == plan &&
                                     <div key={payment.id}>
                                         <h5><b>Name:</b> {payment.title}</h5>

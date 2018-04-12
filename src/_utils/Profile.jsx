@@ -70,7 +70,7 @@ class Profile extends React.Component {
 
                             <div className="btn-group btn-opt">
                                 <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Action
+                                <i className="fa fa-bars" aria-hidden="true"></i> Action
                                 </button>
                                 <div className="dropdown-menu">
                                     <Link to={"/edit-profile/" + valueUser.id} className="dropdown-item">Edit Profile</Link>
@@ -80,6 +80,7 @@ class Profile extends React.Component {
                                     <Link to={"/ebay-key/"} className="dropdown-item">Add Ebay Key</Link>
                                     }
                                     <Link to={"/payment-history/"} className="dropdown-item">Payment History</Link>
+                                    <Link to={"/info"} className="dropdown-item">Information</Link>
                                     <Link to={"/support/"} className="dropdown-item">Support</Link>
                                 </div>
                             </div>
@@ -91,7 +92,7 @@ class Profile extends React.Component {
                     <div>
                         {user.items &&
                         <div>
-                            <Link to={"/credit-card"} className="btn btn-primary rigth-input rigth-add">Add Credit Card</Link>
+                            <Link to={"/credit-card"} className="btn btn-primary rigth-input rigth-add" title="Add Credit Card"><i className="fa fa-plus" aria-hidden="true"></i> Add Credit Card</Link>
                             <h2>Credit Card</h2>
                             <div className="data-credit">
 
@@ -103,8 +104,8 @@ class Profile extends React.Component {
                                               <h5><b>Name:</b> {credit.first_name} {credit.last_name}</h5>
                                               <h5><b>Credit Card Number:</b> {credit.number_card}</h5>
                                               <h5><b>Date Expiration:</b> {new Date(credit.date_expiration).getUTCMonth() + 1} - {new Date(credit.date_expiration).getUTCFullYear()}</h5>
-                                              <button className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}>Delete</button>
-                                              <Link to={"/edit-credit-card/" + credit.id} className="btn btn-warning">Update</Link>
+                                              <button className="btn btn-danger" onClick={this.handleDeleteCard.bind(this, credit.id)}><i className="fa fa-remove" aria-hidden="true"></i> Delete</button>
+                                              <Link to={"/edit-credit-card/" + credit.id} className="btn btn-warning" title="Update Credit Card">Update</Link>
                                         </div>
                                     )}
                                   </div>
@@ -130,7 +131,7 @@ class Profile extends React.Component {
                                         <h5><b>Description:</b> {plan.description}</h5>
                                         <h5><b>Date Start:</b> {new Date(plan.date_start).toDateString()}</h5>
                                         <h5><b>Date Finish:</b> {new Date(plan.date_finish).toDateString()}</h5>
-                                        <Link to={"/cancel-plan/" + user.items.id_plan} className="btn btn-danger">Cancel Plan</Link>
+                                        <Link to={"/cancel-plan/" + user.items.id_plan} className="btn btn-danger" title="Cancel Plan">Cancel Plan</Link>
                                     </div>
                                         )}
                                 </div>
@@ -145,9 +146,16 @@ class Profile extends React.Component {
                     <div>
                         {user.items &&
                         <div>
+                        <div>
+                          <Link to={"/info"} className="btn btn-primary"
+                          style={
+                                  {'float': 'right'}
+                                } title="Information"><i className="fa fa-info-circle" aria-hidden="true"></i> Information</Link>
+                        </div>
                             {user.items.plan_subscription.length === 0 &&
                             <div>
                                 <h2>Plans</h2>
+
                                 {paymentsPlans.items &&
                                 <div className="data-credit">
                                     {paymentsPlans.items.map((payment, index) =>
@@ -158,10 +166,10 @@ class Profile extends React.Component {
                                             <h5><b>Name:</b> {payment.title}</h5>
                                             <h5><b>Cost:</b> {payment.cost} $</h5>
                                           </div>
-                                          <div className="col-md-8">
+                                          <div className="col-md-12">
                                             <Link to={"/purchase-plan/" + payment.id} className="btn btn-primary" style={
                                                 {'float': 'right'}
-                                              }>Purchase Plan</Link>
+                                              } title="Purchase Plan"><i className="fa fa-shopping-cart" aria-hidden="true"></i> Purchase Plan</Link>
                                           </div>
                                           </li>
                                       </ul>
@@ -171,10 +179,13 @@ class Profile extends React.Component {
 
                                     </div>
                                         )}
+
                                 </div>
                                     }
+
                             </div>
                                 }
+
                         </div>
                             }
                     </div>
@@ -184,7 +195,7 @@ class Profile extends React.Component {
                     <div>
                         {user.items &&
                         <div style={{position: 'relative', zIndex:1}}>
-                            <Link to={"/amazon-key/"} className="btn btn-primary rigth-input rigth-add" style={{position: 'relative', zIndex:2}}>Add Amazon Key</Link>
+                            <Link to={"/amazon-key/"} className="btn btn-primary rigth-input rigth-add" style={{position: 'relative', zIndex:2}} title="Add Amazon Key"><i className="fa fa-plus" aria-hidden="true"></i> Add Amazon Key</Link>
                             {user.items.amazon_account.length !== 0 &&
                             <div>
                                 <h2>Amazon Associate</h2>
@@ -192,14 +203,13 @@ class Profile extends React.Component {
                                 <div className="data-credit">
                                     {user.items.amazon_account.map((amazon, index) =>
                                     <div  key={amazon.id}>
-
                                         <h5><b>Name:</b> {amazon.associate_tag}</h5>
                                         <h5><b>Cost:</b> {amazon.access_key_id}</h5>
                                           <div>
-                                          <button className="btn btn-danger" onClick={this.handleDeleteAmazonAssociate.bind(this, amazon.id)}>Delete</button>
+                                            <button className="btn btn-danger" onClick={this.handleDeleteAmazonAssociate.bind(this, amazon.id)} title="Delete"><i className="fa fa-remove" aria-hidden="true"></i> Delete</button>
                                           </div>
                                     </div>
-                                        )}
+                                    )}
                                 </div>
                                     }
                             </div>
@@ -213,7 +223,7 @@ class Profile extends React.Component {
                         {user.items &&
                         <div>
                             {user.items.ebay_account.length === 0 &&
-                                <Link to={"/ebay-key/"} className="btn btn-primary rigth-input rigth-add">Add Ebay Key</Link>
+                                <Link to={"/ebay-key/"} className="btn btn-primary rigth-input rigth-add" title="Add Ebay Key"><i className="fa fa-plus" aria-hidden="true"></i> Add Ebay Key</Link>
                             }
                             {user.items.ebay_account.length !== 0 &&
                             <div>
@@ -224,7 +234,7 @@ class Profile extends React.Component {
 
                                         <h5><b>Client Id:</b> {ebay.client_id}</h5>
                                           <div>
-                                              <button className="btn btn-danger" onClick={this.handleDeleteEbayAssociate.bind(this, ebay.id)}>Delete</button>
+                                              <button className="btn btn-danger" onClick={this.handleDeleteEbayAssociate.bind(this, ebay.id)} title="Delete Ebay Key"><i className="fa fa-remove" aria-hidden="true"></i> Delete</button>
                                           </div>
                                     </div>
                                     )}
@@ -235,7 +245,7 @@ class Profile extends React.Component {
                             }
                     </div>
                 </div>
-                <br/><br/><br/><br/>
+                 <br/><br/><br/><br/>
             </div>
         );
     }
