@@ -8,3 +8,36 @@ patch:
         patched: '2018-07-06T06:06:56.257Z'
     - npm > npm-audit-report > cli-table2 > lodash:
         patched: '2018-07-06T06:06:56.257Z'
+  'npm:hoek:20180212':
+    - npm > npm-lifecycle > node-gyp > request > hawk > hoek:
+        patched: '2018-06-22T06:06:44.644Z'
+    - npm > node-gyp > request > hawk > hoek:
+        patched: '2018-06-22T06:06:44.644Z'
+    - npm > node-gyp > request > hawk > sntp > hoek:
+        patched: '2018-06-22T06:06:44.644Z'
+    - npm > node-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-06-22T06:06:44.644Z'
+    - npm > libcipm > npm-lifecycle > node-gyp > request > hawk > hoek:
+        patched: '2018-06-22T06:06:44.644Z'
+    - npm > libcipm > npm-lifecycle > node-gyp > request > hawk > boom > hoek:
+        patched: '2018-06-22T06:06:44.644Z'
+    - npm > libcipm > npm-lifecycle > node-gyp > request > hawk > sntp > hoek:
+        patched: '2018-06-22T06:06:44.644Z'
+    - npm > libcipm > npm-lifecycle > node-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-06-22T06:06:44.644Z'
+    - npm > node-gyp > request > hawk > boom > hoek:
+        patched: '2018-06-22T06:06:44.644Z'
+    - npm > npm-lifecycle > node-gyp > request > hawk > boom > hoek:
+        patched: '2018-06-22T06:06:44.644Z'
+    - npm > npm-lifecycle > node-gyp > request > hawk > sntp > hoek:
+        patched: '2018-06-22T06:06:44.644Z'
+    - npm > npm-lifecycle > node-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-06-22T06:06:44.644Z'
+    - react-scripts > fsevents > node-pre-gyp > hawk > hoek:
+        patched: '2018-06-22T06:06:44.644Z'
+    - react-scripts > fsevents > node-pre-gyp > hawk > boom > hoek:
+        patched: '2018-06-22T06:06:44.644Z'
+    - react-scripts > fsevents > node-pre-gyp > hawk > sntp > hoek:
+        patched: '2018-06-22T06:06:44.644Z'
+    - react-scripts > fsevents > node-pre-gyp > hawk > cryptiles > boom > hoek:
+        patched: '2018-06-22T06:06:44.644Z'
