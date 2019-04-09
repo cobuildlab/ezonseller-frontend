@@ -40,7 +40,8 @@ class RegisterPage extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleChangeCard = this.handleChangeCard.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleCreditCardTypeFromNumber = this.handleCreditCardTypeFromNumber.bind(this)
+        this.handleCreditCardTypeFromNumber = this.handleCreditCardTypeFromNumber.bind(this);
+        this.handleValidCard = this.handleValidCard.bind(this)
 
     }
 
@@ -73,19 +74,8 @@ class RegisterPage extends React.Component {
         });
     }
 
-    handleSubmit(event) {
-        event.preventDefault();
-
-        this.setState({ submitted: true });
-        const { user, callback } = this.state;
-        const { dispatch } = this.props;
-        let {card} = this.state;
-
-        console.log(card);
-
-
-        if (user.first_name && user.last_name && user.username && user.password && user.email && user.terms && card.first_name_card && card.last_name_card && card.number_card && card.cod_security &&  card.year && card.month) {
-            console.log("aca")
+    handleValidCard(card){
+        if( card.first_name_card && card.last_name_card && card.number_card && card.cod_security &&  card.year && card.month){
             let type_card = this.handleCreditCardTypeFromNumber(card.number_card);
             card.date_expiration = '20' + card.year + '-' + card.month + '-01';
             card.type_card = type_card;
@@ -97,9 +87,27 @@ class RegisterPage extends React.Component {
             delete cn.year;
             delete cn.month;
             card = cn;
+            return card
+        }
+
+        return false
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+
+        this.setState({ submitted: true });
+        const { user, callback } = this.state;
+        const { dispatch } = this.props;
+        let {card} = this.state;
+
+
+        card = this.handleValidCard(card);
+
+        if (user.first_name && user.last_name && user.username && user.password && user.email && user.terms && card) {
+
             let data = {user:user,card:card};
 
-            console.log(data);
 
             $().ready(function() {
                 var value =  $("#register_form").val();
@@ -117,6 +125,7 @@ class RegisterPage extends React.Component {
             });
         }
     }
+
 
 
     handleCreditCardTypeFromNumber(num) {
@@ -197,7 +206,7 @@ class RegisterPage extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <h2 className="text-center">Edit Credit Card</h2>
+                            <h2 className="">Add Credit Card</h2>
                             <div className="row">
                                 <div className="col-md-6">
                                     <div className="form-group">
@@ -256,7 +265,7 @@ class RegisterPage extends React.Component {
                                 </div>
                             </div>
 
-                            <div className="col-md-12">
+                           <div className="col-md-12">
                                 <div className="form-group">
                                     <div className="d-flex justify-content-center">
                                     <Recaptcha
@@ -270,10 +279,7 @@ class RegisterPage extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            
-                           
 
-    
                             </div>
                             
                             <div className="form-group d-flex justify-content-center">
