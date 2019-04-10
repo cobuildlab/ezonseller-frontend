@@ -97,8 +97,6 @@ function register(user) {
         body: JSON.stringify(user)
     };
 
-    console.log(user);
-
     return fetch(URL + 'accounts/register/', requestOptions).then(handleResponse);
 }
 

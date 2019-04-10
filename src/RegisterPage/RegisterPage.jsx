@@ -203,7 +203,7 @@ class RegisterPage extends React.Component {
                             <div className="row">
                                 <div className="col-md-6">
                                     <div className="form-group">
-                                        <label htmlFor="number">Number Card</label>
+                                        <label htmlFor="number">Card Number</label>
                                         <input type="text" className="form-control" name="number_card" value={card.number_card} onChange={this.handleChangeCard} required />
                                     </div>
                                 </div>
