@@ -79,14 +79,8 @@ class RegisterPage extends React.Component {
             let type_card = this.handleCreditCardTypeFromNumber(card.number_card);
             card.date_expiration = '20' + card.year + '-' + card.month + '-01';
             card.type_card = type_card;
-            let  cn = card;
-            cn.first_name = card.first_name_card;
-            cn.last_name = card.last_name_card;
-            delete cn.first_name_card;
-            delete cn.last_name_card;
-            delete cn.year;
-            delete cn.month;
-            card = cn;
+            card.first_name = card.first_name_card;
+            card.last_name = card.last_name_card;
             return card
         }
 
@@ -103,11 +97,10 @@ class RegisterPage extends React.Component {
 
 
         card = this.handleValidCard(card);
-
+        
         if (user.first_name && user.last_name && user.username && user.password && user.email && user.terms && card) {
 
             let data = {user:user,card:card};
-
 
             $().ready(function() {
                 var value =  $("#register_form").val();
