@@ -97,7 +97,7 @@ class RegisterPage extends React.Component {
 
 
         card = this.handleValidCard(card);
-        
+
         if (user.first_name && user.last_name && user.username && user.password && user.email && user.terms && card) {
 
             let data = {user:user,card:card};
