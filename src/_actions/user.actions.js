@@ -78,7 +78,7 @@ function register(user) {
                 },
                 error => {
                   error.then(function(value) {
-                    //window.grecaptcha.reset();
+                    window.grecaptcha.reset();
                     dispatch(failure(value.message));
                     dispatch(alertActions.error(value.message));
                   });
