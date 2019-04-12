@@ -8,7 +8,7 @@ export function term(state = {}, action) {
       };
     case termConstants.TERM_SUCCESS:
       return {
-        items: action.term
+        items: action.detailsplanpage
       };
     case termConstants.TERM_FAILURE:
       return {
