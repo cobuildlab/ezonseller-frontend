@@ -101,7 +101,7 @@ class CreditCardEdit extends React.Component {
                             <div className="col-md-6">
                                 <form name="form" id="formEditCreditCard" onSubmit={this.handleSubmit}>
                                     <div className="form-group">
-                                        <label htmlFor="number">Number Card</label>
+                                        <label htmlFor="number">Card Number</label>
                                         <input type="text" className="form-control" name="number_card" onChange={this.handleChange} defaultValue={editCard.items.number_card} required />
                                    </div>
                                    <div className="form-group">
