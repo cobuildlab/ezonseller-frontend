@@ -126,7 +126,6 @@ class RegisterPage extends React.Component {
 
             $().ready(function () {
                 var value = $("#register_form").val();
-                let callback = true;
 
                 if (callback) {
                     if (value) {
@@ -351,7 +350,7 @@ class RegisterPage extends React.Component {
                                 </div>
 
 
-                                {/* <div className="col-md-12">
+                                 <div className="col-md-12">
                                 <div className="form-group">
                                     <div className="d-flex justify-content-center">
                                     <Recaptcha
@@ -364,7 +363,7 @@ class RegisterPage extends React.Component {
                                     />
                                     </div>
                                 </div>
-                            </div>*/}
+                            </div>
 
                             </div>
 
