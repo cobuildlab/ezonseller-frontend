@@ -27,6 +27,7 @@ import { EditCreditCard } from '../EditCreditCard';
 import { PaymentHistoryPage } from '../PaymentHistoryPage';
 import { InfoPage } from '../InfoPage';
 import { DetailsPlanPage } from '../PlanDetailsPage';
+import { NotFound } from '../NotFound';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -99,6 +100,7 @@ class App extends React.Component {
                         <Route path="/terms" component={TermsPage} />
                         <Route path="/plan-details/:id" component={DetailsPlanPage} />
                         <Route path="/info" component={InfoPage} />
+                        <Route component={NotFound} />
                     </div>
                 </Router>
             </div>

@@ -126,7 +126,6 @@ class RegisterPage extends React.Component {
 
             $().ready(function () {
                 var value = $("#register_form").val();
-                let callback = true;
 
                 if (callback) {
                     if (value) {
@@ -315,9 +314,9 @@ class RegisterPage extends React.Component {
                             </div>
 
                             <h2 className="">Plan</h2>
-                            <h2 className="text-center">First 14 Days Free</h2>
+                            <h3 className="text-center">First 14 Days Free</h3>
                             <div className="row">
-                                <div className="col-md-6 offset-md-2">
+                                <div className="col-md-7 offset-md-2">
                                     <div className="form-group">
                                         {plan_list.items &&
                                         <select className="form-control" onChange={this.handleChangePlan}>
@@ -351,7 +350,7 @@ class RegisterPage extends React.Component {
                                 </div>
 
 
-                                {/* <div className="col-md-12">
+                                 <div className="col-md-12">
                                 <div className="form-group">
                                     <div className="d-flex justify-content-center">
                                     <Recaptcha
@@ -364,7 +363,7 @@ class RegisterPage extends React.Component {
                                     />
                                     </div>
                                 </div>
-                            </div>*/}
+                            </div>
 
                             </div>
 
