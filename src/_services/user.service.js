@@ -32,7 +32,9 @@ export const userService = {
     actionSupport,
     lastSearch,
     detailCreditCard,
-    histoyPayment
+    histoyPayment,
+    getAllPlan,
+    getPlan
 };
 
 //const URL = "https://ezonseller-backend.herokuapp.com/";
@@ -96,8 +98,6 @@ function register(user) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
-
-    console.log(user);
 
     return fetch(URL + 'accounts/register/', requestOptions).then(handleResponse);
 }
@@ -357,4 +357,24 @@ function histoyPayment(data){
         data = 1
     }
     return fetch(URL + '/payment/history?limit=10&offset=0&page=' + data, requestOptions).then(handleResponse);
+}
+
+
+function getAllPlan() {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    };
+
+    return fetch(URL + 'payment/services/getallplan/', requestOptions).then(handleResponse);
+}
+
+function getPlan(id) {
+
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    };
+
+    return fetch(URL + 'payment/services/getplan/'+ id +'/', requestOptions).then(handleResponse);
 }

@@ -34,7 +34,9 @@ export const userActions = {
     actionSupport,
     lastSearch,
     detailCreditCard,
-    histoyPayment
+    histoyPayment,
+    getAllPlan,
+    getPlan
 };
 
 function login(username, password) {
@@ -300,7 +302,6 @@ function deleteCreditCard(id) {
 function paymentPlans(id) {
     return dispatch => {
         dispatch(request());
-
         userService.paymentPlans(id)
             .then(
                 payments => {
@@ -713,4 +714,46 @@ function histoyPayment(data){
     function request()      { return { type: userConstants.PAYMENT_HISTORY_GET_REQUEST } }
     function success(data)  { return { type: userConstants.PAYMENT_HISTORY_GET_SUCCESS, data } }
     function failure(error) { return { type: userConstants.PAYMENT_HISTORY_GET_FAILURE, error } }
+}
+
+function getAllPlan() {
+        return dispatch => {
+        dispatch(request());
+        userService.getAllPlan()
+            .then(
+                plan => {
+                    dispatch(success(plan));
+                    //localStorage.setItem(user, JSON.stringify(payments.user))
+                },
+                error => {
+                    dispatch(failure, (error));
+                    dispatch(alertActions.error(error));
+                }
+        );
+};
+
+    function request()         { return { type: userConstants.GET_DETAILS_PLAN_REQUEST } }
+    function success(plan) { return { type: userConstants.GET_DETAILS_PLAN_SUCCESS, plan } }
+    function failure(error)    { return { type: userConstants.GET_DETAILS_PLAN_FAILURE, error } }
+}
+
+function getPlan(id) {
+        return dispatch => {
+        dispatch(request());
+        userService.getPlan(id)
+            .then(
+                plan => {
+                    dispatch(success(plan));
+                    //localStorage.setItem(user, JSON.stringify(payments.user))
+                },
+                error => {
+                    dispatch(failure, (error));
+                    dispatch(alertActions.error(error));
+                }
+        );
+};
+
+    function request()         { return { type: userConstants.GET_PLAN_REQUEST } }
+    function success(plan) { return { type: userConstants.GET_PLAN_SUCCESS, plan } }
+    function failure(error)    { return { type: userConstants.GET_PLAN_FAILURE, error } }
 }
