@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route } from 'react-router-dom';
+import { Router, Route ,Switch, } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { history } from '../_helpers';
@@ -77,6 +77,7 @@ class App extends React.Component {
                 <ToastContainer autoClose={6000} />
                 <Router history={history}>
                     <div>
+                        <Switch>
                         <PrivateRoute exact path="/" component={HomePage}  />
                         <PrivateRoute exact path="/profile" component={ProfilePage} />
                         <PrivateRoute exact path="/edit-profile/:id" component={EditProfilePage} />
@@ -100,7 +101,8 @@ class App extends React.Component {
                         <Route path="/terms" component={TermsPage} />
                         <Route path="/plan-details/:id" component={DetailsPlanPage} />
                         <Route path="/info" component={InfoPage} />
-                        <Route component={NotFound} />
+                        <Route path="*" component={NotFound} />
+                    </Switch>
                     </div>
                 </Router>
             </div>
