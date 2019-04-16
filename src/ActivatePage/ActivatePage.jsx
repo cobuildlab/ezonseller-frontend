@@ -12,9 +12,11 @@ class ActivatePage extends React.Component {
             $(".fakeloader").fadeOut();
         });
         history.push('/profile')
+        console.log(nextProps)
     };
 
     componentWillMount() {
+        console.log(this.props.match.params)
        this.props.dispatch(userActions.activateAccount(this.props.match.params))
     }
 
