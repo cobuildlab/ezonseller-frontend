@@ -12,3 +12,8 @@
   background-color: #eaeaea;
   color: #333;
 }
+.registerLoad{
+  display: none;
+  position: relative;
+  left: -7px;
+}

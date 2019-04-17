@@ -16,22 +16,22 @@ class RegisterPage extends React.Component {
         super(props);
         this.state = {
             user: {
-                first_name: '',
-                last_name: '',
-                email: '',
-                username: '',
-                password: '',
-                confirm_password: '',
-                terms: '',
-                register_form: ''
+                first_name:'',
+                last_name:'',
+                email:'',
+                username:'',
+                password:'',
+                confirm_password:'',
+                terms:'',
+                register_form:''
             },
-            card: {
-                number_card: '',
-                first_name_card: '',
-                last_name_card: '',
-                cod_security: '',
-                year: '',
-                month: ''
+            card:{
+                number_card:'',
+                first_name_card:'',
+                last_name_card:'',
+                cod_security:'',
+                year:'',
+                month:''
             },
             callback: '',
             submitted: false,
@@ -116,22 +116,22 @@ class RegisterPage extends React.Component {
         const {dispatch} = this.props;
         let {card} = this.state;
         let {plan} = this.state;
-
-
         card = this.handleValidCard(card);
 
         if (user.first_name && user.last_name && user.username && user.password && user.email && user.terms && card && plan) {
 
             let data = {user: user, card: card, plan:plan};
-
             $().ready(function () {
+                $('.registerLoad').fadeIn();
                 var value = $("#register_form").val();
-
                 if (callback) {
                     if (value) {
                         user.callback = callback;
                         dispatch(userActions.register(data));
                     }
+
+                    $('.registerLoad').fadeOut();
+
                 } else {
                     toast.error('The Captcha is Required.', {
                         position: toast.POSITION.BOTTOM_RIGHT
@@ -139,6 +139,8 @@ class RegisterPage extends React.Component {
                 }
 
             });
+
+
         }
     }
 
@@ -166,6 +168,7 @@ class RegisterPage extends React.Component {
     };
 
 
+
     handleCreditCardTypeFromNumber(num) {
         // first, sanitize the number by removing all non-digit characters.
         num = num.replace(/[^\d]/g, '');
@@ -184,7 +187,7 @@ class RegisterPage extends React.Component {
 
     render() {
         const {registering} = this.props;
-        const {user, card, plan_list, plan} = this.state;
+        const {user, card, plan_list, plan } = this.state;
         const verifyCallback = response => {
             this.setState({
                 callback: response
@@ -316,7 +319,7 @@ class RegisterPage extends React.Component {
                             <h2 className="">Plan</h2>
                             <h3 className="text-center">First 14 Days Free</h3>
                             <div className="row">
-                                <div className="col-md-7 offset-md-2">
+                                <div className="col-md-8 offset-md-1">
                                     <div className="form-group">
                                         {plan_list.items &&
                                         <select className="form-control" onChange={this.handleChangePlan}>
@@ -338,19 +341,19 @@ class RegisterPage extends React.Component {
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="form-group">
-                                        <div className="col-md-12 no-padding">
+                                        <div className="col-md-12 no-padding text-center">
                                             <input type="radio" className="" name="terms" onChange={this.handleChange}
                                                    required/>
                                             <input type="hidden" name="register_form" id="register_form"
                                                    value={user.register_form}/>
-                                            <Link to="/terms" target="_blank" className="btn btn-link term">I Accept the
+                                            <Link to="/terms" target="_blank" className="btn btn-link term ">I Accept the
                                                 Terms and Conditions Ezonseller.</Link>
                                         </div>
                                     </div>
                                 </div>
 
 
-                                 <div className="col-md-12">
+                                <div className="col-md-12">
                                 <div className="form-group">
                                     <div className="d-flex justify-content-center">
                                     <Recaptcha
@@ -367,23 +370,14 @@ class RegisterPage extends React.Component {
 
                             </div>
 
-                            <div className="row">
-
-
-                                {<div>
-
-
-                                </div>}
-                            </div>
 
                             <div className="form-group d-flex justify-content-center">
-                                <button className="btn btn-primary" id="create_account">Create Account</button>
-                                {registering &&
-                                <img
+                                <button className="btn btn-primary" id="create_account"><img
                                     src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
-                                    alt="logo"/>
-                                }
-                                <Link to="/login" className="btn btn-danger">Cancel</Link>
+                                    alt="logo" className='registerLoad'/>Create Account</button>
+
+
+                                <Link to="/login" className='btn btn-danger'>Cancel</Link>
                             </div>
                         </form>
                     </div>
@@ -402,7 +396,8 @@ function mapStateToProps(state) {
         callback,
         card,
         getallplan,
-        plan
+        plan,
+
     };
 }
 
