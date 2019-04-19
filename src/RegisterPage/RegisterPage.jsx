@@ -15,15 +15,15 @@ class RegisterPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: {
-                first_name:'',
-                last_name:'',
-                email:'',
-                username:'',
-                password:'',
-                confirm_password:'',
-                terms:'',
-                register_form:''
+             user: {
+                first_name: '',
+                last_name: '',
+                email: '',
+                username: '',
+                password: '',
+                confirm_password: '',
+                terms: '',
+                register_form: ''
             },
             card:{
                 number_card:'',
@@ -117,22 +117,22 @@ class RegisterPage extends React.Component {
         let {card} = this.state;
         let {plan} = this.state;
         card = this.handleValidCard(card);
-
         if (user.first_name && user.last_name && user.username && user.password && user.email && user.terms && card && plan) {
 
             let data = {user: user, card: card, plan:plan};
+
             $().ready(function () {
-                $('.registerLoad').fadeIn();
+                let registerLoad = $('.registerLoad');
+                registerLoad.fadeIn();
                 var value = $("#register_form").val();
+                var callback = true;
                 if (callback) {
                     if (value) {
                         user.callback = callback;
                         dispatch(userActions.register(data));
                     }
-
-                    $('.registerLoad').fadeOut();
-
                 } else {
+                registerLoad.fadeOut();
                     toast.error('The Captcha is Required.', {
                         position: toast.POSITION.BOTTOM_RIGHT
                     });
@@ -353,7 +353,7 @@ class RegisterPage extends React.Component {
                                 </div>
 
 
-                                <div className="col-md-12">
+                               <div className="col-md-12">
                                 <div className="form-group">
                                     <div className="d-flex justify-content-center">
                                     <Recaptcha

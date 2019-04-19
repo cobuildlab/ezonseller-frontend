@@ -12,6 +12,7 @@ export const alertActions = {
 function success(message) {
     $().ready(function() {
         $(".fakeloader").fadeOut();
+        $('.registerLoad').fadeOut();
     });
     toast.success(message, {
         position: toast.POSITION.BOTTOM_RIGHT
@@ -24,6 +25,7 @@ function error(message) {
     let error = "";
     $().ready(function() {
         $(".fakeloader").fadeOut();
+        $('.registerLoad').fadeOut();
     });
 
     if(Promise.resolve(message) === message){
