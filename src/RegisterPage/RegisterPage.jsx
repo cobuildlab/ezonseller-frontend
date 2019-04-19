@@ -125,7 +125,6 @@ class RegisterPage extends React.Component {
                 let registerLoad = $('.registerLoad');
                 registerLoad.fadeIn();
                 var value = $("#register_form").val();
-                var callback = true;
                 if (callback) {
                     if (value) {
                         user.callback = callback;
