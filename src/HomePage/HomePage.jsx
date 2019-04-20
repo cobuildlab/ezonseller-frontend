@@ -17,25 +17,52 @@ class HomePage extends React.Component {
         super(props);
         this.state = {
           search: {},
-          plan: ""
+          plan: "",
+            acc_product:false,
+
+
         };
     }
 
     componentDidMount(){
-        $().ready(function() {
-            $(".fakeloader").fadeOut();
-        });
         let value = JSON.parse(localStorage.getItem('user'));
-        this.setState({ plan: value.type_plan })
+        this.setState(
+            { plan: value.type_plan,
+                acc_product: value.acc_product
+            });
         if(value.type_plan !== 'Free'){
             this.props.dispatch(userActions.lastSearch());
         }
+
     }
 
 
+
+
+    componentWillReceiveProps = (nextProps) => {
+
+        $().ready(function() {
+            $(".fakeloader").fadeOut();
+        });
+
+        if (nextProps.user && nextProps.user.items ) {
+
+            let amazon = nextProps.user.items.amazon_account.length;
+            let ebay  = nextProps.user.items.ebay_account.length;
+            if(amazon !== 0 ||  ebay !== 0) {
+                this.setState({ acc_product: true });
+            }else{
+                this.setState({ acc_product: false });
+            }
+
+
+        }
+    };
+
+
     render() {
-        const { home } = this.props;
-        const { plan } = this.state;
+        const { home ,user} = this.props;
+        const { plan,acc_product } = this.state;
         return (
             <div>
                 <Header url={this.props} />
@@ -51,6 +78,7 @@ class HomePage extends React.Component {
                             Register your credit card by entering your profile and place the information requested.
                           </div>
                         </div>
+
                         <div className="media d-flex align-items-center">
                           <img src={ Pay } className="align-self-center mr-3" width="115" alt="info"/>
                           <div className="media-body text-infor">
@@ -75,7 +103,39 @@ class HomePage extends React.Component {
                     </div>
 
                     }
-                    {home.items && plan !== 'Free' &&
+
+                    {plan !== 'Free' && !acc_product &&
+                    <div className="row">
+                      <div className="col-12">
+                        <h1 className="text-center title">Welcome to our <img src={ Logo } className="align-self-center logo img-fluid ml-2 mr-2" alt="info"/> system.</h1>
+                      <h4 className="text-center sub-title">In order to enjoy the services we offer you, you must follow the following steps:</h4>
+                        <div className="media">
+                          <img src={ Amazon } className=" mr-3" width="115" alt="info"/>
+                          <div className="media-body text-infor">
+                              Proceed to register your Amazon key, if you do not have one you should go to the following link: <a href="https://affiliate-program.amazon.com" target="_blank">https://affiliate-program.amazon.com</a>
+
+                          </div>
+                        </div>
+
+
+                        <div className="media">
+                          <img src={ Ebay } className=" mr-3" width="115" alt="info"/>
+                          <div className="media-body text-infor">
+                              Proceed to register your ebay key, if you do not have one you must enter the following link: <a href="https://go.developer.ebay.com/" target="_blank">https://go.developer.ebay.com/</a>
+
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    }
+
+
+
+
+
+                    {home.items && plan !== 'Free' && acc_product &&
                         <div className="row">
                         <h1>Last Searches</h1>
                         {home.items.length > 2 &&
@@ -116,11 +176,12 @@ class HomePage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const { home } = state;
+    const { home,user } = state;
     const { loggingIn } = state.authentication;
     return {
         loggingIn,
-        home
+        home,
+        user
     };
 }
 
