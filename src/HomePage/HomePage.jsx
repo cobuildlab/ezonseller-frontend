@@ -33,18 +33,15 @@ class HomePage extends React.Component {
         if(value.type_plan !== 'Free'){
             this.props.dispatch(userActions.lastSearch());
         }
-
     }
 
 
 
 
     componentWillReceiveProps = (nextProps) => {
-
         $().ready(function() {
             $(".fakeloader").fadeOut();
         });
-
         if (nextProps.user && nextProps.user.items ) {
 
             let amazon = nextProps.user.items.amazon_account.length;
@@ -108,7 +105,6 @@ class HomePage extends React.Component {
                     <div className="row">
                       <div className="col-12">
                         <h1 className="text-center title">Welcome to our <img src={ Logo } className="align-self-center logo img-fluid ml-2 mr-2" alt="info"/> system.</h1>
-                      <h4 className="text-center sub-title">In order to enjoy the services we offer you, you must follow the following steps:</h4>
                         <div className="media">
                           <img src={ Amazon } className=" mr-3" width="115" alt="info"/>
                           <div className="media-body text-infor">

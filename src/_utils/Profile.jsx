@@ -129,6 +129,9 @@ class Profile extends React.Component {
                                     <div key={plan.id}>
                                         <h5><b>Name:</b> {plan.title}</h5>
                                         <h5><b>Description:</b> {plan.description}</h5>
+                                        {plan.days_free !== 0 &&
+                                            <h5><b>Days Free:</b> {plan.days_free}</h5>
+                                        }
                                         <h5><b>Date Start:</b> {new Date(plan.date_start).toDateString()}</h5>
                                         <h5><b>Date Finish:</b> {new Date(plan.date_finish).toDateString()}</h5>
                                         <Link to={"/cancel-plan/" + user.items.id_plan} className="btn btn-danger" title="Cancel Plan">Cancel Plan</Link>
